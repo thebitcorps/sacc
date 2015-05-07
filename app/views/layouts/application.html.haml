@@ -25,13 +25,12 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand(href="#") SACC
+        = link_to 'SACC', root_path, class: 'navbar-brand'
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Clients", "/path1"
-            %li= link_to "Appointments", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+            %li= link_to "Home", root_path
+            %li= link_to "Clients", clients_path
+            %li= link_to "Appointments", nil
 
     .container
       .row

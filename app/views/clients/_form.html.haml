@@ -7,13 +7,13 @@
     = f.input :maternal_name
     = f.input :curp
     = f.input :imss
+    = f.input :marital_status, collection: Client::MARITAL_STATUS
     = f.input :spouse
     = f.input :birthdate
     = f.input :mail
     = f.input :income
     = f.input :notes
     = f.input :workplace
-    = f.input :current_salesman_id
 
   .form-actions
     = f.button :submit
