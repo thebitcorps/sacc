@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :clients
   get 'pages/index'
 
   get 'pages/help'
