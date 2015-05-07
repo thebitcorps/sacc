@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @user.name
+%p
+  %b Paternal lastname:
+  = @user.paternal_lastname
+%p
+  %b Maternal lastname:
+  = @user.maternal_lastname
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Cellphone:
+  = @user.cellphone
+%p
+  %b Gender:
+  = @user.gender
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path
