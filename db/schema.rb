@@ -16,6 +16,24 @@ ActiveRecord::Schema.define(version: 20150507215706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "clients", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "paternal_name"
+    t.string   "maternal_name"
+    t.string   "curp"
+    t.string   "imss"
+    t.string   "spouse"
+    t.date     "birthdate"
+    t.string   "mail"
+    t.decimal  "income"
+    t.text     "notes"
+    t.string   "workplace"
+    t.integer  "current_salesman_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "marital_status"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "paternal_lastname"

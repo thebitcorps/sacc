@@ -1,0 +1,43 @@
+%h1 Listing clients
+
+%table
+  %thead
+    %tr
+      %th First name
+      %th Paternal name
+      %th Maternal name
+      %th Curp
+      %th Imss
+      %th Spouse
+      %th Birthdate
+      %th Mail
+      %th Income
+      %th Notes
+      %th Workplace
+      %th Current salesman
+      %th
+      %th
+      %th
+
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td= client.first_name
+        %td= client.paternal_name
+        %td= client.maternal_name
+        %td= client.curp
+        %td= client.imss
+        %td= client.spouse
+        %td= client.birthdate
+        %td= client.mail
+        %td= client.income
+        %td= client.notes
+        %td= client.workplace
+        %td= client.current_salesman_id
+        %td= link_to 'Show', client
+        %td= link_to 'Edit', edit_client_path(client)
+        %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Client', new_client_path

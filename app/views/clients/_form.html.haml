@@ -1,0 +1,19 @@
+= simple_form_for(@client) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :paternal_name
+    = f.input :maternal_name
+    = f.input :curp
+    = f.input :imss
+    = f.input :marital_status, collection: Client::MARITAL_STATUS
+    = f.input :spouse
+    = f.input :birthdate
+    = f.input :mail
+    = f.input :income
+    = f.input :notes
+    = f.input :workplace
+
+  .form-actions
+    = f.button :submit

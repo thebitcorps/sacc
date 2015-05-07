@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @client.first_name
+%p
+  %b Paternal name:
+  = @client.paternal_name
+%p
+  %b Maternal name:
+  = @client.maternal_name
+%p
+  %b Curp:
+  = @client.curp
+%p
+  %b Imss:
+  = @client.imss
+%p
+  %b Spouse:
+  = @client.spouse
+%p
+  %b Birthdate:
+  = @client.birthdate
+%p
+  %b Mail:
+  = @client.mail
+%p
+  %b Income:
+  = @client.income
+%p
+  %b Notes:
+  = @client.notes
+%p
+  %b Workplace:
+  = @client.workplace
+%p
+  %b Current salesman:
+  = @client.current_salesman_id
+
+= link_to 'Edit', edit_client_path(@client)
+\|
+= link_to 'Back', clients_path
