@@ -7,7 +7,7 @@
     = f.input :maternal_lastname
     = f.input :email
     = f.input :cellphone
-    = f.input :gender, as: :select, collection: User.get_gender_dropdown
+    = f.input :gender, as: :select, collection: ApplicationHelper.get_gender_dropdown
 
   .form-actions
     = f.button :submit
