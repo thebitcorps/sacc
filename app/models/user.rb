@@ -3,4 +3,20 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :name,:maternal_lastname,:paternal_lastname,:email,:cellphone,:gender,presence: true
+
+
+  MALE = { :value => true, :display_name => "Male" }
+  FEMALE = { :value => false, :display_name => "Female" }
+
+  def self.get_gender_dropdown
+    {MALE[:display_name] => MALE[:value], FEMALE[:display_name]=> MALE[:value]}
+  end
+
+  def gender_displayname
+    self.gender == MALE[:value] ? MALE[:display_name] : FEMALE[:display_name]
+  end
+
+
 end
