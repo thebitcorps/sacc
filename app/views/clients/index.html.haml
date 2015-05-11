@@ -3,9 +3,7 @@
 %table.table
   %thead
     %tr
-      %th First name
-      %th Paternal name
-      %th Maternal name
+      %th Name
       %th Number of visits
       %th Curp
       %th Imss
@@ -23,9 +21,7 @@
   %tbody
     - @clients.each do |client|
       %tr
-        %td= client.name
-        %td= client.paternal_lastname
-        %td= client.maternal_lastname
+        %td= client.fullname
         %td= client.visits.length
         %td= client.curp
         %td= client.imss

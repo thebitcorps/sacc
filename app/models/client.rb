@@ -5,4 +5,9 @@ class Client < ActiveRecord::Base
   has_many :phones, dependent: :destroy
 
   accepts_nested_attributes_for :phones,reject_if: :all_blank, allow_destroy: true
+
+
+  def fullname
+    self.name + ' ' + self.paternal_lastname + ' ' + self.maternal_lastname
+  end
 end

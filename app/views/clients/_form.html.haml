@@ -20,7 +20,7 @@
       =  f.simple_fields_for :phones do |phone|
         = render 'phone_fields', f: phone
       .links
-        = link_to_add_association 'Agregar numero', f, :phones
+        = link_to_add_association 'Agregar numero', f, :phones, {class: 'btn btn-info'}
 
 
   .form-actions

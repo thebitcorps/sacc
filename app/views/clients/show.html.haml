@@ -4,14 +4,8 @@
   %b{class: 'btn btn-primary'} New visit button goes here
 
 %p
-  %b First name:
-  = @client.name
-%p
-  %b Paternal name:
-  = @client.paternal_lastname
-%p
-  %b Maternal name:
-  = @client.maternal_lastname
+  %b Name:
+  = @client.fullname
 %p
   %b Curp:
   = @client.curp
