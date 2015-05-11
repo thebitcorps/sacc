@@ -23,9 +23,9 @@
   %tbody
     - @clients.each do |client|
       %tr
-        %td= client.first_name
-        %td= client.paternal_name
-        %td= client.maternal_name
+        %td= client.name
+        %td= client.paternal_lastname
+        %td= client.maternal_lastname
         %td= client.visits.length
         %td= client.curp
         %td= client.imss

@@ -18,7 +18,7 @@ class ClientsControllerTest < ActionController::TestCase
 
   test "should create client" do
     assert_difference('Client.count') do
-      post :create, client: { birthdate: @client.birthdate, curp: @client.curp, current_salesman_id: @client.current_salesman_id, first_name: @client.first_name, imss: @client.imss, income: @client.income, mail: @client.mail, maternal_name: @client.maternal_name, notes: @client.notes, paternal_name: @client.paternal_name, spouse: @client.spouse, workplace: @client.workplace }
+      post :create, client: { birthdate: @client.birthdate, curp: @client.curp, current_salesman_id: @client.current_salesman_id, name: @client.name, imss: @client.imss, income: @client.income, mail: @client.mail, maternal_lastname: @client.maternal_lastname, notes: @client.notes, paternal_lastname: @client.paternal_lastname, spouse: @client.spouse, workplace: @client.workplace }
     end
 
     assert_redirected_to client_path(assigns(:client))
@@ -35,7 +35,7 @@ class ClientsControllerTest < ActionController::TestCase
   end
 
   test "should update client" do
-    patch :update, id: @client, client: { birthdate: @client.birthdate, curp: @client.curp, current_salesman_id: @client.current_salesman_id, first_name: @client.first_name, imss: @client.imss, income: @client.income, mail: @client.mail, maternal_name: @client.maternal_name, notes: @client.notes, paternal_name: @client.paternal_name, spouse: @client.spouse, workplace: @client.workplace }
+    patch :update, id: @client, client: { birthdate: @client.birthdate, curp: @client.curp, current_salesman_id: @client.current_salesman_id, name: @client.name, imss: @client.imss, income: @client.income, mail: @client.mail, maternal_lastname: @client.maternal_lastname, notes: @client.notes, paternal_lastname: @client.paternal_lastname, spouse: @client.spouse, workplace: @client.workplace }
     assert_redirected_to client_path(assigns(:client))
   end
 

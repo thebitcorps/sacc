@@ -1,9 +1,9 @@
 class CreateClients < ActiveRecord::Migration
   def change
     create_table :clients do |t|
-      t.string :first_name
-      t.string :paternal_name
-      t.string :maternal_name
+      t.string :name
+      t.string :paternal_lastname
+      t.string :maternal_lastname
       t.string :curp
       t.string :imss
       t.string :spouse
