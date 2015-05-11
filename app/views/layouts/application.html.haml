@@ -19,23 +19,10 @@
 
 
   %body
-    .navbar.navbar-default.navbar-static-top
-      .container
-        %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        = link_to 'SACC', root_path, class: 'navbar-brand'
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Home", root_path
-            %li= link_to "Clients", clients_path
-            %li= link_to "Appointments", nil
-
+    = render partial: 'common/nav'
     .container
       .row
         .col-lg-12
           = bootstrap_flash
           = yield
-      %footer
-        %p &copy; Company 2015
+    = render partial: 'common/footer'

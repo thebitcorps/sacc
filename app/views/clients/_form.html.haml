@@ -5,6 +5,7 @@
     = f.input :first_name
     = f.input :paternal_name
     = f.input :maternal_name
+    = f.input :gender, as: :select, collection: ApplicationHelper.get_gender_dropdown
     = f.input :curp
     = f.input :imss
     = f.input :marital_status, collection: Client::MARITAL_STATUS

@@ -1,11 +1,12 @@
 %h1 Listing clients
 
-%table
+%table.table
   %thead
     %tr
       %th First name
       %th Paternal name
       %th Maternal name
+      %th Number of visits
       %th Curp
       %th Imss
       %th Spouse
@@ -25,6 +26,7 @@
         %td= client.first_name
         %td= client.paternal_name
         %td= client.maternal_name
+        %td= client.visits.length
         %td= client.curp
         %td= client.imss
         %td= client.spouse
