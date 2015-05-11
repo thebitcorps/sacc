@@ -39,6 +39,8 @@
 %p
   %b Current salesman:
   = @client.current_salesman_id
+%p
+  = render 'show_phones'
 
 = link_to 'Edit', edit_client_path(@client)
 \|
