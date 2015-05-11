@@ -11,6 +11,7 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
     @client.phones.build
+    @client.addresses.build
   end
 
   def edit
