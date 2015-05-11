@@ -1,0 +1,6 @@
+.nested-fields
+  = f.input :number
+  = f.input :phone_type, collection: Phone::PHONE_TYPES
+  = f.input :available_from
+  = f.input :available_to
+  = link_to_remove_association "Remover numero", f

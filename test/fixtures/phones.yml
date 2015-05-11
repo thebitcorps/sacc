@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  type: 
+  available_from: 2015-05-11 08:21:36
+  available_to: 2015-05-11 08:21:36
+  client_id: 
+
+two:
+  number: MyString
+  type: 
+  available_from: 2015-05-11 08:21:36
+  available_to: 2015-05-11 08:21:36
+  client_id: 
