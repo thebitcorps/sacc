@@ -1,0 +1,14 @@
+= simple_form_for(@appointment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :client
+    = f.association :user
+    = f.input :date
+    = f.input :notes
+    = f.input :time
+    = f.input :mood
+    = f.input :interest
+
+  .form-actions
+    = f.button :submit

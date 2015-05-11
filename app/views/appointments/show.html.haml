@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Client:
+  = @appointment.client
+%p
+  %b User:
+  = @appointment.user
+%p
+  %b Date:
+  = @appointment.date
+%p
+  %b Notes:
+  = @appointment.notes
+%p
+  %b Time:
+  = @appointment.time
+%p
+  %b Mood:
+  = @appointment.mood
+%p
+  %b Interest:
+  = @appointment.interest
+
+= link_to 'Edit', edit_appointment_path(@appointment)
+\|
+= link_to 'Back', appointments_path

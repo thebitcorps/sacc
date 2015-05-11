@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_id: 
+  user_id: 
+  date: 2015-05-11
+  notes: MyText
+  time: 2015-05-11 15:52:08
+  mood: 1
+  interest: 1
+
+two:
+  client_id: 
+  user_id: 
+  date: 2015-05-11
+  notes: MyText
+  time: 2015-05-11 15:52:08
+  mood: 1
+  interest: 1
