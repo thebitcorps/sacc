@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   validates :name,:maternal_lastname,:paternal_lastname,:email,:cellphone,:gender,presence: true
 
   def gender_displayname
-    self.gender == MALE[:value] ? MALE[:display_name] : FEMALE[:display_name]
+    self.gender == ApplicationHelper::MALE[:value] ? ApplicationHelper::MALE[:display_name] : ApplicationHelper::FEMALE[:display_name]
+  end
+
+  def fullname
+    self.name + " " + self.paternal_lastname + " " + self.maternal_lastname
   end
 end

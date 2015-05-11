@@ -1,11 +1,9 @@
 %h1 Listing users
 
-%table
+%table.table
   %thead
     %tr
       %th Name
-      %th Paternal lastname
-      %th Maternal lastname
       %th Email
       %th Cellphone
       %th Gender
@@ -16,9 +14,7 @@
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.name
-        %td= user.paternal_lastname
-        %td= user.maternal_lastname
+        %td= user.fullname
         %td= user.email
         %td= user.cellphone
         %td= user.gender_displayname
