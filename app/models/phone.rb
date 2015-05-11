@@ -1,9 +1,6 @@
 class Phone < ActiveRecord::Base
 
-  PHONE_TYPES = %w[casa oficina celular otro]
+  KINDS = %w(casa oficina celular otro)
   belongs_to :client
-  validates :phone_type ,inclusion: PHONE_TYPES
-
-
-
+  validates :kind, inclusion: KINDS
 end
