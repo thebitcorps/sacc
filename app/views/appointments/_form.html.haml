@@ -3,9 +3,9 @@
 
   .form-inputs
     = f.input :date
-    = f.input :notes
     = f.input :time
-    = f.input :status
+    = f.input :notes
+    = f.input :status, collection: Appointment::STATUS
     = f.input :mood
     = f.input :interest
 
