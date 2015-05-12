@@ -18,10 +18,10 @@
 
 
   %body
+
     = render partial: 'common/nav'
+
     %main
-      .container
-        .row
-          / # = bootstrap_flash #hay que encontrar el método para substituir esta madre
-          = yield
+      / # = bootstrap_flash #hay que encontrar el método para substituir esta madre
+      = yield
     = render partial: 'common/footer'

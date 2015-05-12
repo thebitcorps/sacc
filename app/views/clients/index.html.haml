@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Name
-      %th Number of visits
+
       %th Curp
       %th Imss
       %th Spouse
@@ -22,7 +22,7 @@
     - @clients.each do |client|
       %tr
         %td= client.fullname
-        %td= client.visits.length
+
         %td= client.curp
         %td= client.imss
         %td= client.spouse
