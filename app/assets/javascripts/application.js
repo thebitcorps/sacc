@@ -16,16 +16,3 @@
 //= require cocoon
 //= require materialize-sprockets
 //= require_tree .
-
-$(document).ready(function() {
-    $('select').material_select();
-    $(".button-collapse").sideNav();
-});
-$(document).on('change',function() {
-    $('select').material_select();
-    $(".button-collapse").sideNav();
-});
-$(document).change(function(){
-    $('select').material_select();
-    $(".button-collapse").sideNav();    
-});

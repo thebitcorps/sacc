@@ -20,13 +20,13 @@
       =  f.simple_fields_for :phones do |phone|
         = render 'phone_fields', f: phone
       .links{style: 'display: inline;'}
-        = link_to_add_association 'Agregar numero', f, :phones, {class: 'btn col s6'}
+        = link_to_add_association 'Agregar numero', f, :phones, class: 'btn'
     #addresses
       %b Direccion
       = f.simple_fields_for :addresses do |address|
         = render 'address_fields', f: address
       .links
-        = link_to_add_association 'Agregar direccion', f, :addresses, {class: 'btn col s6'}
+        = link_to_add_association 'Agregar direccion', f, :addresses, class: 'btn'
 
   .form-actions
     = f.button :submit

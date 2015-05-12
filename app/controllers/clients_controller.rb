@@ -10,8 +10,6 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
-    @client.phones.build
-    @client.addresses.build
   end
 
   def edit
@@ -46,6 +44,7 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:name, :paternal_lastname, :maternal_lastname, :curp, :imss, :spouse, :birthdate, :mail, :income, :notes, :workplace, :gender,
-                                     phones_attributes: [:number, :phone_type, :available_from, :available_to])
+                                      phones_attributes: [:number, :phone_type, :available_from, :available_to],
+                                      addresses_attributes: [:street, :colony,:external_number, :internal_number,:zip_code])
     end
 end
