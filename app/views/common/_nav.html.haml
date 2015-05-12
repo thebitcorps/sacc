@@ -1,14 +1,13 @@
-.navbar.navbar-default.navbar-static-top
+%header
+  %nav.top-nav
+    .container
+      .nav-wrapper
+        %a.page-title SACC
   .container
-    %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    = link_to 'SACC', root_path, class: 'navbar-brand'
-    .navbar-collapse.collapse.navbar-responsive-collapse
-      %ul.nav.navbar-nav
-        %li= link_to "Home", root_path
-        / if current_user == salesman (my_clients)
-        %li= link_to "My clients", clients_path
-        / if current_user == manager (all_clients)
-        %li= link_to "Appointments", appointments_path
+    %a{href: "#", class: "button-collapse top-nav full", data: {activates: "nav-mobile"}}
+      %i.mdi-navigation-menu
+  %ul{id: 'nav-mobile', class: "side-nav fixed"}
+    %li.logo
+      %a{id: 'logo-container', href: "/", class: "brand-logo"}
+    %li= link_to "Clients", clients_path, class: "waves-effect waves-teal"
+    %li= link_to "Appointments", appointments_path, class: "waves-effect waves-teal"
