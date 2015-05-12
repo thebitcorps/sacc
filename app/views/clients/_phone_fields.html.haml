@@ -1,6 +1,6 @@
-.nested-fields
+.nested-fields{style: 'display: inline;'}
   = f.input :number
   = f.input :phone_type, collection: Phone::KINDS
   = f.input :available_from
   = f.input :available_to
-  = link_to_remove_association "Remover numero  ", f, {class: 'btn btn-danger'}
+  = link_to_remove_association "Remover numero  ", f, {class: 'btn red darken-4'}

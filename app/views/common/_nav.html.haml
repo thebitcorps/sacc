@@ -1,21 +1,11 @@
 %header
   %nav
-    %ul.right.hide-on-med-and-down
     %ul#slide-out.side-nav.fixed
+      %li.logo
+        %a{id: 'logo-container', href: '/', class: 'brand-logo'}
+          %object
       %li.bold= link_to 'Clients', clients_path, class: 'waves-effect waves-teal'
       %li.bold= link_to 'Appointments', appointments_path, class: 'waves-effect waves-teal'
 
     %a.button-collapse{"data-activates" => "slide-out",:href => "#"}
       %i.mdi-navigation-menu
-
-
-  -#
-  -#.container
-  -#  %a{href: '#', class: "button-collapse top-nav waves-effect waves-light circle", data: {activates: 'nav-mobile'}}
-  -#    %i.mdi-navigation-menu
-  -#%ul{id: 'nav-mobile', class: 'side-nav fixed'}
-  -#  %li.logo
-  -#    %a{id: 'logo-container', href: '/', class: 'brand-logo'}
-  -#      %object
-  -#  %li.bold= link_to 'Clients', clients_path, class: 'waves-effect waves-teal'
-  -#  %li.bold= link_to 'Appointments', appointments_path, class: 'waves-effect waves-teal'
