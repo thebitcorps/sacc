@@ -37,5 +37,5 @@
         %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
+= paginate @clients
 = link_to 'New Client', new_client_path

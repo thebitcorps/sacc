@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-    @clients = Client.all
+    @clients = Client.page(params[:page]).per(10)
   end
 
   def show
@@ -43,7 +43,7 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:name, :paternal_lastname, :maternal_lastname, :curp, :imss, :spouse, :birthdate, :mail, :income, :notes, :workplace, :gender,
+      params.require(:client).permit(:page,:name, :paternal_lastname, :maternal_lastname, :curp, :imss, :spouse, :birthdate, :mail, :income, :notes, :workplace, :gender,
                                       phones_attributes: [:number, :phone_type, :available_from, :available_to],
                                       addresses_attributes: [:street, :colony,:external_number, :internal_number,:zip_code])
     end
