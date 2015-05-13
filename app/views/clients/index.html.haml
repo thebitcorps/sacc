@@ -12,7 +12,7 @@
       %th Income
       %th Notes
       %th Workplace
-      %th Current salesman
+      %th= sortable "current_salesman"
       %th
       %th
       %th
@@ -30,7 +30,7 @@
         %td= client.income
         %td= client.notes
         %td= client.workplace
-        %td= client.current_salesman_id
+        %td= client.salesman.fullname
         %td= link_to 'Show', client
         %td= link_to 'Edit', edit_client_path(client)
         %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }

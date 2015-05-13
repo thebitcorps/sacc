@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :date
     = f.input :time
-    = f.input :notes
+    = f.input :notes,input_html: {class: 'materialize-textarea'}
     = f.input :status, collection: Appointment::STATUS
     = f.input :mood
     = f.input :interest
