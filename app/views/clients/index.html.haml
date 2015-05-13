@@ -3,13 +3,12 @@
 %table.table
   %thead
     %tr
-      %th Name
-
-      %th Curp
-      %th Imss
-      %th Spouse
-      %th Birthdate
-      %th Mail
+      %th= sortable "name"
+      %th= sortable "curp"
+      %th= sortable "imss"
+      %th= sortable "spouse"
+      %th= sortable "birthdate"
+      %th= sortable "mail"
       %th Income
       %th Notes
       %th Workplace
@@ -38,4 +37,5 @@
 
 %br
 = paginate @clients
+%br
 = link_to 'New Client', new_client_path

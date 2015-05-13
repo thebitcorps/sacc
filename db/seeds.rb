@@ -3,6 +3,13 @@ User.create(name: 'Developer', paternal_lastname: 'Bit', maternal_lastname: 'Tho
 
 
 
-50.times do
+5.times do
   Client.create(name: 'Juan', paternal_lastname: 'De Las', maternal_lastname: 'Cuerdas', current_salesman_id: 1, gender: true)
+end
+
+5.times do
+  Client.create(name: 'Diego', paternal_lastname: 'De Las', maternal_lastname: 'Cuerdas', current_salesman_id: 1, gender: true)
+end
+5.times do
+  Client.create(name: 'Zacarias', paternal_lastname: 'De Las', maternal_lastname: 'Cuerdas', current_salesman_id: 1, gender: true)
 end
