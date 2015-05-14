@@ -5,4 +5,12 @@ module ApplicationHelper
   def self.get_gender_dropdown
     { MALE[:display_name] => MALE[:value], FEMALE[:display_name] => MALE[:value] }
   end
+
+  #return a link with the sort and direction params sanitize by @sort_column and @sort_direction in client_controller
+  #title can be nil if is nil it will use the column name for the link name
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    direction = column == sort_column && sort_direction == 'asc' ? 'desc' : 'asc'
+    link_to title , sort: column , direction: direction
+  end
 end

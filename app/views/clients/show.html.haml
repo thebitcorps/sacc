@@ -1,43 +1,41 @@
 %p#notice= notice
 
-%p
-  %b{class: 'btn btn-primary waves-effect waves-light'} New visit button goes here
+.card.z-depth-3
+  .card-content
+    %span.card-title.black-text
+      =@client.fullname
+    %p
+      %b Curp:
+      = @client.curp
+    %p
+      %b Imss:
+      = @client.imss
+    %p
+      %b Spouse:
+      = @client.spouse
+    %p
+      %b Birthdate:
+      = @client.birthdate
+    %p
+      %b Mail:
+      = @client.mail
+    %p
+      %b Income:
+      = @client.income
+    %p
+      %b Notes:
+      = @client.notes
+    %p
+      %b Workplace:
+      = @client.workplace
+    %p
+      %b Current salesman:
+      = @client.salesman.fullname
+    %p
+      = render 'show_phones'
+    %p
+      = render 'show_directions'
+  .card-action
+    %a{:href => "#"} Nueva visita
+    = link_to 'Edit', edit_client_path(@client)
 
-%p
-  %b Name:
-  = @client.fullname
-%p
-  %b Curp:
-  = @client.curp
-%p
-  %b Imss:
-  = @client.imss
-%p
-  %b Spouse:
-  = @client.spouse
-%p
-  %b Birthdate:
-  = @client.birthdate
-%p
-  %b Mail:
-  = @client.mail
-%p
-  %b Income:
-  = @client.income
-%p
-  %b Notes:
-  = @client.notes
-%p
-  %b Workplace:
-  = @client.workplace
-%p
-  %b Current salesman:
-  = @client.current_salesman_id
-%p
-  = render 'show_phones'
-%p
-  = render 'show_directions'
-
-= link_to 'Edit', edit_client_path(@client)
-\|
-= link_to 'Back', clients_path

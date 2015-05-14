@@ -3,17 +3,16 @@
 %table.table
   %thead
     %tr
-      %th Name
-
-      %th Curp
-      %th Imss
-      %th Spouse
-      %th Birthdate
-      %th Mail
+      %th= sortable "name"
+      %th= sortable "curp"
+      %th= sortable "imss"
+      %th= sortable "spouse"
+      %th= sortable "birthdate"
+      %th= sortable "mail"
       %th Income
       %th Notes
       %th Workplace
-      %th Current salesman
+      %th= sortable "current_salesman"
       %th
       %th
       %th
@@ -31,11 +30,12 @@
         %td= client.income
         %td= client.notes
         %td= client.workplace
-        %td= client.current_salesman_id
+        %td= client.salesman.fullname
         %td= link_to 'Show', client
         %td= link_to 'Edit', edit_client_path(client)
         %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-
+= paginate @clients
+%br
 = link_to 'New Client', new_client_path

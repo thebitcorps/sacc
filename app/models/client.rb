@@ -11,4 +11,8 @@ class Client < ActiveRecord::Base
   def fullname
     [name, paternal_lastname, maternal_lastname].join(" ")
   end
+
+  def self.columns_names
+    %w[name paternal_lastname maternal_lastname imss spouse mail]
+  end
 end
