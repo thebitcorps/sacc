@@ -3,7 +3,11 @@ class ClientsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @clients = Client.order("#{sort_column}  #{sort_direction}").page(params[:page]).per(10)
+    @clients = Client.search_by_name_or_lastname(params[:search]).order("#{sort_column}  #{sort_direction}").page(params[:page]).per(10)
+    respond_to do |format|
+      format.html
+      format.js{ @clients}
+    end
   end
 
   def show
@@ -44,7 +48,7 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:sort,:direction,:page,:name, :paternal_lastname, :maternal_lastname, :curp, :imss, :spouse, :birthdate, :mail, :income, :notes, :workplace, :gender,
+      params.require(:client).permit(:search,:sort,:direction,:page,:name, :paternal_lastname, :maternal_lastname, :curp, :imss, :spouse, :birthdate, :mail, :income, :notes, :workplace, :gender,
                                       phones_attributes: [:number, :phone_type, :available_from, :available_to],
                                       addresses_attributes: [:street, :colony,:external_number, :internal_number,:zip_code])
     end
