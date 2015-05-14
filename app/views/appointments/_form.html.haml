@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :date
+    = f.input :date, as: :string, input_html: { class: :datepicker}
     = f.input :time
     = f.input :notes
     = f.input :status, collection: Appointment::STATUS
