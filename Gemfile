@@ -36,6 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sidekiq'
 
+# Gems to use with twilio for messages
+gem 'twilio-ruby'
+gem 'delayed_job_active_record'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

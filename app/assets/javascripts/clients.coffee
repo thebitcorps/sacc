@@ -4,3 +4,4 @@ $(document).on "ready page:change", ->
   $('.datepicker').pickadate()
     selectMonths: true,
     selectYears: 15
+

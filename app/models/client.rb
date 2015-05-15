@@ -15,4 +15,21 @@ class Client < ActiveRecord::Base
   def self.columns_names
     %w[name paternal_lastname maternal_lastname imss spouse mail]
   end
+
+  def self.search(search, column)
+    column = 'name' unless columns_names.include?(column)
+    if search
+      where("#{column} LIKE ?","%#{search}%")
+    end
+  end
+
+  def self.search_by_name_or_lastname(search)
+    if search and !search.empty?
+      search = "#{search.downcase}%"
+      where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ?',search,search,search)
+    else
+      all
+    end
+
+  end
 end

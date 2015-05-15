@@ -1,0 +1,44 @@
+
+%table.table.striped
+  %thead
+    %tr
+      %th= sortable "name"
+      %th= sortable "curp"
+      %th= sortable "imss"
+      %th= sortable "spouse"
+      %th= sortable "birthdate"
+      %th= sortable "mail"
+      %th Income
+      %th Notes
+      %th Workplace
+      %th= sortable "current_salesman"
+      %th
+      %th
+      %th
+
+  %tbody
+
+    - @clients.each do |client|
+      %tr
+        %td= client.fullname
+        %td= client.curp
+        %td= client.imss
+        %td= client.spouse
+        %td= client.birthdate
+        %td= client.mail
+        %td= client.income
+        %td= client.notes
+        %td= client.workplace
+        %td= client.salesman.fullname
+        %td= link_to 'Show', client
+        %td= link_to 'Edit', edit_client_path(client)
+        %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]
+
+%br
+= paginate @clients
+-  if @clients.empty?
+  = link_to 'Crear nuevo Cliente',new_client_path,class: 'waves-effect waves-light btn'
