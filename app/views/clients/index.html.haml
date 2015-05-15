@@ -3,8 +3,6 @@
   %p
     = text_field_tag :search, params[:search], onkeyup: 'keyUpFunction()'
     = button_tag "Search" ,action: :index ,type: 'submit',class: 'btn waves-effect waves-light',id: 'submit-search'
--##loading.progress{style: 'display: none;'}
--#  .indeterminate
 #clients
   = render 'clients'
 

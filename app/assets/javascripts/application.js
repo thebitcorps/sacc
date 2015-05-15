@@ -21,3 +21,11 @@ function keyUpFunction()
     $('#submit-search').click();
     return true;
 }
+
+
+$( document ).ready(function() {
+    $('#phones').on("cocoon:after-insert", function() {
+        $('select').material_select();
+    });
+});
+
