@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # :confirmable, :lockable, :timeoutable and :omniauthable, :recoverable,  
+  devise :database_authenticatable, :trackable, :validatable, :rememberable
 
   has_many :clients, class_name: "Client", foreign_key: 'current_salesman_id'
   has_many :appointments, class_name: "Appointment"
