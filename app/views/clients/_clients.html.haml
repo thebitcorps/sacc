@@ -17,7 +17,8 @@
       %th
 
   %tbody
-    = "No match found" if @clients.empty?
+    -  if @clients.empty?
+      = link_to 'Crear nuevo Cliente',new_client_path
     - @clients.each do |client|
       %tr
         %td= client.fullname
