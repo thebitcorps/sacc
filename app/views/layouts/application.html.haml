@@ -22,7 +22,10 @@
     = render partial: 'common/nav'
 
     %main
-      = b_flash #hay que encontrar el método para substituir esta madre
+
+      -#= b_flash not working properly for devise views
       .container
+        #notice
+          = b_flash
         = yield
     = render partial: 'common/footer'

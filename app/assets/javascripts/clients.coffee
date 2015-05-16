@@ -1,4 +1,4 @@
-$(document).on "ready page:change", ->
+$(document).on "ready page:load", ->
   $('select').material_select()
   $(".button-collapse").sideNav()
   $('.datepicker').pickadate()
