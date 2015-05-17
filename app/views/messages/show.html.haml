@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Phone number:
+  = @message.phone_number
+%p
+  %b Body:
+  = @message.body
+%p
+  %b To date:
+  = @message.to_date
+%p
+  %b To time:
+  = @message.to_time
+
+= link_to 'Edit', edit_message_path(@message)
+\|
+= link_to 'Back', messages_path

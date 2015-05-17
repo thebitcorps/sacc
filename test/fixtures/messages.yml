@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  phone_number: MyString
+  body: MyString
+  to_date: 2015-05-17
+  to_time: 2015-05-17 15:06:26
+
+two:
+  phone_number: MyString
+  body: MyString
+  to_date: 2015-05-17
+  to_time: 2015-05-17 15:06:26

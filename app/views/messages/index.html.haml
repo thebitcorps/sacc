@@ -1,0 +1,27 @@
+%h1 Listing messages
+
+%table
+  %thead
+    %tr
+      %th Phone number
+      %th Body
+      %th To date
+      %th To time
+      %th
+      %th
+      %th
+
+  %tbody
+    - @messages.each do |message|
+      %tr
+        %td= message.phone_number
+        %td= message.body
+        %td= message.to_date
+        %td= message.to_time
+        %td= link_to 'Show', message
+        %td= link_to 'Edit', edit_message_path(message)
+        %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Message', new_message_path
