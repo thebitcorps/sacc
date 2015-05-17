@@ -1,10 +1,9 @@
-%h1 Listing appointments
+%h1 My appointments
 
 %table.table
   %thead
     %tr
       %th Client
-      %th User
       %th Date
       %th Time
       %th Place
@@ -15,13 +14,12 @@
   %tbody
     - @appointments.each do |appointment|
       %tr
-        %td= appointment.client
-        %td= appointment.user
+        %td= appointment.client.fullname
         %td= appointment.date
         %td= appointment.time
         %td= appointment.place
         %td= link_to 'Show', appointment
-        %td= link_to 'Edit', edit_appointment_path(appointment)
+        %td= link_to 'Edit', edit_appointment_path(appointment,client_id: appointment.client_id)
         %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
