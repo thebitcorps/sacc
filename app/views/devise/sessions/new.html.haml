@@ -3,9 +3,7 @@
   .form-inputs
     = f.input :email, required: true, autofocus: true
     = f.input :password, required: true
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
   .form-actions
-    = f.button :submit do
-      %i{class: "mdi-content-send right"}
-      "Log in"
+    = f.submit "Log in", class: 'btn'
 / = render "devise/shared/links"

@@ -1,4 +1,6 @@
-@import "materialize";
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import 'materialize';
 
 body {
   display: flex;
@@ -28,6 +30,4 @@ header, main, footer {
     cursor:pointer;
     overflow: hidden;
     outline:none;
-
-
 }
