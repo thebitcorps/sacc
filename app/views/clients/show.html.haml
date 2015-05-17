@@ -23,5 +23,5 @@
       = render 'show_directions'
   .card-action
     %p Nueva visita => nueva interacción
-    %a{:href => "#"} New visit
+    = link_to 'Appointment',new_appointment_path(client_id: @client.id)
     = link_to 'Edit', edit_client_path(@client)

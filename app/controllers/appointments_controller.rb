@@ -19,6 +19,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.user = current_user
     if @appointment.save
       redirect_to @appointment, notice: 'Appointment was successfully created.'
     else
@@ -28,6 +29,7 @@ class AppointmentsController < ApplicationController
 
   def update
     if @appointment.update(appointment_params)
+      @appointment.user = current_user
       redirect_to @appointment, notice: 'Appointment was successfully updated.'
     else
       render :edit
@@ -45,6 +47,6 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-      params.require(:appointment).permit(:date, :notes, :time, :mood, :interest)
+      params.require(:appointment).permit(:date, :notes, :time, :mood, :interest,:client_id)
     end
 end
