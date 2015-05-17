@@ -11,11 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require materialize-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require cocoon
-//= require materialize-sprockets
 //= require_tree .
+
 function keyUpFunction()
 {
     $('#submit-search').click();
@@ -39,6 +40,3 @@ $( document ).ready(function() {
         $('select').material_select();
     });
 });
-
-
-
