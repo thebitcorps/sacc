@@ -49,25 +49,20 @@ ActiveRecord::Schema.define(version: 20150511205431) do
     t.string   "name"
     t.string   "paternal_lastname"
     t.string   "maternal_lastname"
-    t.string   "curp"
-    t.string   "imss"
     t.string   "spouse"
     t.date     "birthdate"
     t.string   "mail"
-    t.decimal  "income"
     t.text     "notes"
-    t.string   "workplace"
     t.integer  "current_salesman_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "marital_status"
     t.boolean  "gender"
-    t.integer  "appointments_count",  default: 0
   end
 
   create_table "phones", force: :cascade do |t|
     t.string   "number"
-    t.string   "phone_type"
+    t.string   "kind"
     t.time     "available_from"
     t.time     "available_to"
     t.integer  "client_id"

@@ -1,15 +1,7 @@
-
-
 .card.z-depth-3
   .card-content
     %span.card-title.black-text
       =@client.fullname
-    %p
-      %b Curp:
-      = @client.curp
-    %p
-      %b Imss:
-      = @client.imss
     %p
       %b Spouse:
       = @client.spouse
@@ -20,14 +12,8 @@
       %b Mail:
       = @client.mail
     %p
-      %b Income:
-      = @client.income
-    %p
       %b Notes:
       = @client.notes
-    %p
-      %b Workplace:
-      = @client.workplace
     %p
       %b Current salesman:
       = @client.salesman.fullname
@@ -36,6 +22,6 @@
     %p
       = render 'show_directions'
   .card-action
-    %a{:href => "#"} Nueva visita
+    %p Nueva visita => nueva interacción
+    %a{:href => "#"} New visit
     = link_to 'Edit', edit_client_path(@client)
-

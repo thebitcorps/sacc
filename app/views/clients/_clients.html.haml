@@ -3,16 +3,9 @@
   %thead
     %tr
       %th= sortable "name"
-      %th= sortable "curp"
-      %th= sortable "imss"
-      %th= sortable "spouse"
       %th= sortable "birthdate"
       %th= sortable "mail"
-      %th Income
       %th Notes
-      %th Workplace
-      %th= sortable "current_salesman"
-      %th
       %th
       %th
 
@@ -20,20 +13,12 @@
 
     - @clients.each do |client|
       %tr
-        %td= client.fullname
-        %td= client.curp
-        %td= client.imss
-        %td= client.spouse
+        %td= link_to salutation(client), client
         %td= client.birthdate
         %td= client.mail
-        %td= client.income
         %td= client.notes
-        %td= client.workplace
-        %td= client.salesman.fullname
-        %td= link_to 'Show', client
-        %td= link_to 'Edit', edit_client_path(client)
-        %td= link_to 'Destroy', client, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        %td= link_to 'Edit', edit_client_path(client), class: 'btn'
+        %td= link_to 'Unprofile', nil, class: 'btn'
 
 = hidden_field_tag :direction, params[:direction]
 = hidden_field_tag :sort, params[:sort]
@@ -42,4 +27,4 @@
 = paginate @clients
 -  if @clients.empty?
   %p.flow-text
-    No se encontro resultado
+    No result found

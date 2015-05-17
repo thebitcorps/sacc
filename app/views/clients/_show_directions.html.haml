@@ -1,21 +1,19 @@
-
-
 - @client.addresses.each_with_index  do |address, index|
   %b
-    =  "Direccion #{index + 1}"
+    =  "Address numer #{index + 1}:"
   %ul
     %li
-      Calle:
+      Street:
       = address.street
     %li
-      Colonia:
+      Colony:
       = address.colony
     %li
-      Numero interios:
+      Interior number:
       = address.internal_number
     %li
-      Numero Exterior:
+      Exterior number:
       = address.external_number
     %li
-      Codigo postal:
+      Zip code:
       = address.zip_code

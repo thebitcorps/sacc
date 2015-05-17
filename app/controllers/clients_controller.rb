@@ -1,12 +1,14 @@
 class ClientsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
   def index
-    @clients = Client.search_by_name_or_lastname(params[:search]).order("#{sort_column}  #{sort_direction}").page(params[:page]).per(10)
+    my_clients = Client.my_clients(current_user)
+    @clients = my_clients.search_by_name_or_lastname(params[:search]).order("#{sort_column}  #{sort_direction}").page(params[:page]).per(10)
     respond_to do |format|
       format.html
-      format.js{ @clients}
+      format.js{ @clients }
     end
   end
 
@@ -22,6 +24,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.current_salesman = current_user
     if @client.save
       redirect_to @client, notice: 'Client was successfully created.'
     else
@@ -48,9 +51,9 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:search,:sort,:direction,:page,:name, :paternal_lastname, :maternal_lastname, :curp, :imss, :spouse, :birthdate, :mail, :income, :notes, :workplace, :gender,
-                                      phones_attributes: [:number, :phone_type, :available_from, :available_to],
-                                      addresses_attributes: [:street, :colony,:external_number, :internal_number,:zip_code])
+      params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender,
+                                      phones_attributes: [:number, :kind, :available_from, :available_to],
+                                      addresses_attributes: [:street, :colony, :external_number, :internal_number, :zip_code])
     end
 
     def sort_column

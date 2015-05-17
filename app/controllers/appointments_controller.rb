@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   def index
