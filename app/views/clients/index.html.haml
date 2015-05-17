@@ -1,10 +1,13 @@
 %h1 Clients
-= form_tag clients_path, method: 'get', id: "clients_search",remote:true,autocomplete: 'off' do
-  %p
-    = text_field_tag :search, params[:search], onkeyup: 'keyUpFunction()'
-    = button_tag "Search" ,action: :index ,type: 'submit',class: 'btn waves-effect waves-light',id: 'submit-search'
+= form_tag clients_path, method: 'get', id: "clients_search", remote: true, autocomplete: 'off' do
+  .input-group
+    %p
+      = label_tag :search
+    = search_field_tag :search, params[:search], onkeyup: 'keyUpFunction()'
+    = button_tag nil, action: :index, type: 'submit', class: 'btn waves-effect waves-light', id: 'submit-search' do
+      %i{class: 'mdi-action-search'}
 #clients
   = render 'clients'
 
 %br
-= link_to 'New Client', new_client_path,class: 'btn waves-effect waves-light'
+= link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'

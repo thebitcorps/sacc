@@ -9,17 +9,11 @@
   %b Date:
   = @appointment.date
 %p
-  %b Notes:
-  = @appointment.notes
-%p
   %b Time:
   = @appointment.time
 %p
-  %b Mood:
-  = @appointment.mood
-%p
-  %b Interest:
-  = @appointment.interest
+  %b Place:
+  = @appointment.place
 
 = link_to 'Edit', edit_appointment_path(@appointment)
 \|

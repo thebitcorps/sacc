@@ -4,10 +4,11 @@ class CreateAppointments < ActiveRecord::Migration
       t.references :client, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
       t.date :date
-      t.text :notes
+      t.string :place # en lugar de las notas, el lugar de la cita
       t.time :time
-      t.integer :mood
-      t.integer :interest
+      # t.text :notes
+      # t.integer :mood
+      # t.integer :interest
 
       t.timestamps null: false
     end
