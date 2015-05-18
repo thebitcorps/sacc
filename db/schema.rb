@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517164503) do
+ActiveRecord::Schema.define(version: 20150517200626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20150517164503) do
 
   add_index "interactions", ["client_id"], name: "index_interactions_on_client_id", using: :btree
   add_index "interactions", ["user_id"], name: "index_interactions_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "phone_number"
+    t.string   "body"
+    t.date     "to_date"
+    t.time     "to_time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "phones", force: :cascade do |t|
     t.string   "number"

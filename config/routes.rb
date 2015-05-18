@@ -1,6 +1,11 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
 
+
   resources :interactions
+
+  resources :messages
+
   resources :appointments
   devise_for :users
   resources :users
@@ -14,4 +19,6 @@ Rails.application.routes.draw do
   get 'pages/about'
 
   root to: 'pages#index'
+
+  mount Sidekiq::Web, at: '/sidekiq'
 end
