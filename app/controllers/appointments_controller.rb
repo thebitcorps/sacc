@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_client,only: [:new,:edit]
 
   def index
     # @appointments = current_user.appointments
@@ -48,5 +49,9 @@ class AppointmentsController < ApplicationController
 
     def appointment_params
       params.require(:appointment).permit(:date, :notes, :time, :mood, :interest,:client_id)
+    end
+
+    def set_client
+      @client = Client.find params[:client_id]
     end
 end

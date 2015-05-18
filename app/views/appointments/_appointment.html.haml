@@ -1,0 +1,22 @@
+.card.z-depth-3
+  .card-content
+    -#%span.card-title.black-text
+    -#  = "Appointment with #{appointment.client.fullname}"
+    %p
+      %b Client:
+      = appointment.client.fullname
+    %p
+      %b Salesman:
+      = appointment.user.fullname
+    %p
+      %b Date:
+      = appointment.date
+    %p
+      %b Time:
+      = appointment.time.to_s :time
+    %p
+      %b Place:
+      = appointment.place
+  .card-action
+    = link_to 'Edit', edit_appointment_path(appointment,client_id: appointment.client.id)
+    = link_to 'Back', appointments_path

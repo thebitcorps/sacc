@@ -1,0 +1,30 @@
+.card.z-depth-3
+  .card-content
+
+    %p
+      %b Kind:
+      = @interaction.kind
+    %p
+      %b Date:
+      = @interaction.date
+    %p
+      %b Time:
+      = @interaction.time
+    %p
+      %b Mood:
+      = @interaction.mood
+    %p
+      %b Interest:
+      = @interaction.interest
+    %p
+      %b User:
+      = @interaction.user
+    %p
+      %b Client:
+      = @interaction.client
+    %p
+      %b Notes:
+      = @interaction.notes
+  .card-action
+    = link_to 'Edit', edit_interaction_path(@interaction,client_id: @interaction.client_id)
+    = link_to 'Back', interactions_path

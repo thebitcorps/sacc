@@ -9,8 +9,8 @@
           %th Interactions
           %th Appointments
           %th Actions
-        = render partial: 'clients/client', collection: @my_clients, client: :client\
+        = render partial: 'clients/client', collection: @my_clients, client: :client
+  -#Is an idea how could it be
   .col.s3
-    %h2 Today's appointments
-    %p This is supposed to be a sidebar,
-    %p fucking materials :(
+    - current_user.today_appointments.each do |appointment|
+      = render 'appointments/appointment', appointment: appointment

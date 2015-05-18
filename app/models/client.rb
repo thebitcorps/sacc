@@ -5,7 +5,8 @@ class Client < ActiveRecord::Base
   # marital_status, gender, appointments_count
   MARITAL_STATUS = %w(single married widowed divorced)
   belongs_to :salesman, class_name: "User", foreign_key: "current_salesman_id"
-  has_many :appointments, class_name: "Appointment"
+  has_many :appointments, class_name: "Appointment",dependent: :destroy
+  has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_many :addresses, dependent: :destroy
 
