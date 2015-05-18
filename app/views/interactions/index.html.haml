@@ -23,8 +23,8 @@
         %td= interaction.time
         %td= interaction.mood
         %td= interaction.interest
-        %td= interaction.user
-        %td= interaction.client
+        %td= interaction.user.fullname
+        %td= interaction.client.fullname
         %td= interaction.notes
         %td= link_to 'Show', interaction
         %td= link_to 'Edit', edit_interaction_path(interaction,client_id: interaction.client_id)

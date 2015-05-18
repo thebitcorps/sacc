@@ -4,5 +4,6 @@ class Interaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :client
   validates :kind,inclusion: KINDS
+  validates :kind,:date,:time,:date, presence: true
 
 end

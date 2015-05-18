@@ -20,4 +20,6 @@ class User < ActiveRecord::Base
   def today_appointments
     appointments.where(date: Date.today)
   end
+
+
 end

@@ -3,7 +3,7 @@ class InteractionsController < ApplicationController
   before_action :set_client, only: [:new,:edit]
 
   def index
-    @interactions = Interaction.all
+    @interactions = Interaction.where user: current_user
   end
 
   def show
@@ -19,7 +19,7 @@ class InteractionsController < ApplicationController
 
   def create
     @interaction = Interaction.new(interaction_params)
-
+    @interaction.user = current_user
     respond_to do |format|
       if @interaction.save
         format.html { redirect_to @interaction, notice: 'Interaction was successfully created.' }
@@ -32,6 +32,7 @@ class InteractionsController < ApplicationController
   def update
     respond_to do |format|
       if @interaction.update(interaction_params)
+        @interaction.user = current_user
         format.html { redirect_to @interaction, notice: 'Interaction was successfully updated.' }
       else
         format.html { render :edit }
