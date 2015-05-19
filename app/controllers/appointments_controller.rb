@@ -4,8 +4,12 @@ class AppointmentsController < ApplicationController
   before_action :set_client,only: [:new,:edit]
 
   def index
-    # @appointments = current_user.appointments
-    @appointments = Appointment.where(user: current_user).order('date')
+
+    @appointments = class_eval %Q{Appointment.#{sanitize_type_list}_from(#{current_user.id.to_s})}
+    respond_to do |format|
+      format.html
+      format.js {@appointments}
+    end
   end
 
   def show
@@ -43,12 +47,17 @@ class AppointmentsController < ApplicationController
   end
 
   private
+    # validate that the params is one that matches the method in the model
+    def sanitize_type_list
+      Appointment.type_list.include?(params[:type_list]) ? params[:type_list] : 'all'
+    end
+
     def set_appointment
       @appointment = Appointment.find(params[:id])
     end
 
     def appointment_params
-      params.require(:appointment).permit(:date, :notes, :time, :mood, :interest,:client_id)
+      params.require(:appointment).permit(:type_list,:date, :notes, :time, :mood, :interest,:client_id)
     end
 
     def set_client

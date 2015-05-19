@@ -12,5 +12,15 @@
         = render partial: 'clients/client', collection: @my_clients, client: :client
   -#Is an idea how could it be
   .col.s3
-    - current_user.today_appointments.each do |appointment|
-      = render 'appointments/appointment', appointment: appointment
+    .s12
+      %ul.tabs
+        %li.tab.col.s6
+          %a{:href => "#test1",class: 'active'} Today
+        %li.tab.col.s6
+          %a{:href => "#test2"} All
+      #test1.s12
+        - current_user.today_appointments.each do |appointment|
+          = render 'appointments/appointment', appointment: appointment
+      #test2.s12
+        - current_user.appointments.each do |appointment|
+          = render 'appointments/appointment', appointment: appointment

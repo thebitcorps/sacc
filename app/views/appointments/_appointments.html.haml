@@ -1,0 +1,21 @@
+%table.table
+  %thead
+    %tr
+      %th Client
+      %th Date
+      %th Time
+      %th Place
+      %th
+      %th
+      %th
+
+  %tbody
+    - @appointments.each do |appointment|
+      %tr
+        %td= link_to salutation(appointment.client), appointment.client
+        %td= appointment.date
+        %td= appointment.time.to_s :time
+        %td= appointment.place
+        %td= link_to 'Show', appointment,class: 'btn'
+        %td= link_to 'Edit', edit_appointment_path(appointment,client_id: appointment.client_id),class: 'btn'
+        %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' },class: 'btn'
