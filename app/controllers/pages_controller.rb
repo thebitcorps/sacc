@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
+  def dashboard
     @my_clients = Client.my_clients(current_user)
   end
 

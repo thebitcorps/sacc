@@ -3,7 +3,10 @@ class Interaction < ActiveRecord::Base
   KINDS = %w[Phone Module House Other]
   belongs_to :user
   belongs_to :client
-  validates :kind,inclusion: KINDS
-  validates :kind,:date,:time,:date, presence: true
+  validates :kind, presence: true, inclusion: KINDS
+  validates :date, :time, :date, presence: true
 
+  def self.my_interactions(salesman)
+    where(user: salesman)
+  end
 end

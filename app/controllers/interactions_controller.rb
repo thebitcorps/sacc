@@ -1,17 +1,17 @@
 class InteractionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_interaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:new,:edit]
+  before_action :set_client
 
   def index
-    @interactions = Interaction.where user: current_user
+    @interactions = @client.interactions
   end
 
   def show
   end
 
-
   def new
-    @interaction = Interaction.new
+    @interaction = Interaction.new(client_id: @client.id)
   end
 
   def edit
@@ -20,31 +20,25 @@ class InteractionsController < ApplicationController
   def create
     @interaction = Interaction.new(interaction_params)
     @interaction.user = current_user
-    respond_to do |format|
-      if @interaction.save
-        format.html { redirect_to @interaction, notice: 'Interaction was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @interaction.save
+      redirect_to @interaction, notice: 'Interaction was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @interaction.update(interaction_params)
-        @interaction.user = current_user
-        format.html { redirect_to @interaction, notice: 'Interaction was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @interaction.update(interaction_params)
+      @interaction.user = current_user
+      redirect_to @client, notice: 'Interaction was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @interaction.destroy
-    respond_to do |format|
-      format.html { redirect_to interactions_url, notice: 'Interaction was successfully destroyed.' }
-    end
+    redirect_to @client, notice: 'Interaction was successfully destroyed.'
   end
 
   private
@@ -57,6 +51,6 @@ class InteractionsController < ApplicationController
     end
 
     def set_client
-      @client = Client.find params[:client_id]
+      @client = Client.find(params[:client_id])
     end
 end

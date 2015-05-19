@@ -1,4 +1,4 @@
-%h1 Listing interactions
+%h1= "Listing interactions for #{@client.fullname}"
 
 %table
   %thead
@@ -32,4 +32,4 @@
 
 %br
 
-= link_to 'New Interaction', new_interaction_path
+= link_to 'New Interaction', new_interaction_path(client_id: @client.id)
