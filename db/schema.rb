@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517200626) do
+ActiveRecord::Schema.define(version: 20150519045300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "addresses", force: :cascade do |t|
-    t.string   "street"
-    t.string   "external_number"
-    t.string   "internal_number"
-    t.string   "colony"
-    t.integer  "zip_code"
-    t.integer  "client_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "addresses", ["client_id"], name: "index_addresses_on_client_id", using: :btree
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "client_id"
@@ -57,6 +44,32 @@ ActiveRecord::Schema.define(version: 20150517200626) do
     t.string   "marital_status"
     t.boolean  "gender"
   end
+
+  create_table "dossiers", force: :cascade do |t|
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "dossiers", ["client_id"], name: "index_dossiers_on_client_id", using: :btree
+
+  create_table "employment_records", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "extension"
+    t.integer  "zip_code"
+    t.string   "position"
+    t.string   "email"
+    t.integer  "seniority"
+    t.decimal  "income"
+    t.string   "type"
+    t.integer  "dossier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "employment_records", ["dossier_id"], name: "index_employment_records_on_dossier_id", using: :btree
 
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
@@ -118,9 +131,10 @@ ActiveRecord::Schema.define(version: 20150517200626) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "addresses", "clients"
   add_foreign_key "appointments", "clients"
   add_foreign_key "appointments", "users"
+  add_foreign_key "dossiers", "clients"
+  add_foreign_key "employment_records", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
   add_foreign_key "phones", "clients"

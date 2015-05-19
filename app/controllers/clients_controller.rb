@@ -52,8 +52,7 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender,
-                                      phones_attributes: [:number, :kind, :available_from, :available_to],
-                                      addresses_attributes: [:street, :colony, :external_number, :internal_number, :zip_code])
+                                      phones_attributes: [:number, :kind, :available_from, :available_to])
     end
 
     def sort_column

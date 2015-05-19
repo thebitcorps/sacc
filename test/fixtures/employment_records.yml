@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  phone: MyString
+  extension: MyString
+  zip_code: 1
+  position: MyString
+  email: MyString
+  seniority: 1
+  income: 9.99
+  type: 
+  dossier_id: 
+
+two:
+  name: MyString
+  address: MyString
+  phone: MyString
+  extension: MyString
+  zip_code: 1
+  position: MyString
+  email: MyString
+  seniority: 1
+  income: 9.99
+  type: 
+  dossier_id: 
