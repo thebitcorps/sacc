@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @client.current_salesman = current_user
+    @client.salesman = current_user
     if @client.save
       redirect_to @client, notice: 'Client was successfully created.'
     else

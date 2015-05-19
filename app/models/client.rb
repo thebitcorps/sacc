@@ -35,7 +35,7 @@ class Client < ActiveRecord::Base
   def self.search_by_name_or_lastname(search)
     if search and !search.empty?
       search = "#{search.downcase}%"
-      where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ?',search,search,search)
+      where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
     else
       all
     end
