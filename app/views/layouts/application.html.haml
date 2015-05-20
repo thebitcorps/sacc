@@ -19,10 +19,8 @@
 
   %body
     = render partial: 'common/nav'
-    %main
-      -#= b_flash not working properly for devise views
-      .container
-        / #notice
-        = b_flash
-        = yield
+    .container
+      / #notice
+      = b_flash
+      = yield
     = render partial: 'common/footer'

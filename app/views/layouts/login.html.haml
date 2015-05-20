@@ -16,10 +16,9 @@
     = favicon_link_tag 'favicon.png', :rel => 'shortcut icon'
 
   %body
-    %main
-      .container
-        = b_flash
-        .col.s12
-          = yield
+    .container
+      = b_flash
+      .col.s12
+        = yield
     = render partial: 'common/footer'
   = javascript_include_tag "application"

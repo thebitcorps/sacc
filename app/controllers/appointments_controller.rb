@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
 
   def index
     # @appointments = current_user.appointments
-    @appointments = Appointment.where(user: current_user).order('date')
+    @appointments = Appointment.where(user: current_user).order('date') # wrong wrong, this scoping goes into the model >:(
   end
 
   def show
@@ -48,7 +48,7 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-      params.require(:appointment).permit(:date, :notes, :time, :mood, :interest,:client_id)
+      params.require(:appointment).permit(:date, :place, :time, :status, :client_id)
     end
 
     def set_client

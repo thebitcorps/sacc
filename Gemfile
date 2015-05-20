@@ -14,7 +14,6 @@ gem 'cancan'
 gem 'royce'
 gem 'therubyracer'
 gem 'cocoon'
-gem 'materialize-sass'
 gem 'kaminari'
 # gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 # gem 'twitter-bootstrap-rails'

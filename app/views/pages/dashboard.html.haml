@@ -10,7 +10,6 @@
           %th Appointments
           %th Actions
         = render partial: 'clients/client', collection: @my_clients, client: :client
-  -#Is an idea how could it be
+  / Is an idea how could it be
   .col.s3
-    - current_user.today_appointments.each do |appointment|
-      = render 'appointments/appointment', appointment: appointment
+    = render partial: 'appointments/appointment', collection: @today_appointments, as: :appointment

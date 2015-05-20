@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @my_clients = Client.my_clients(current_user)
+    @today_appointments = current_user.today_appointments
   end
 
   def help
