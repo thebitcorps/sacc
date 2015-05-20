@@ -10,7 +10,7 @@
           %th Appointments
           %th Actions
         = render partial: 'clients/client', collection: @my_clients, client: :client
-  -#Is an idea how could it be
+  / Is an idea how could it be
   .col.s3
     .s12
       %ul.tabs
@@ -19,8 +19,7 @@
         %li.tab.col.s6
           %a{:href => "#test2"} All
       #test1.s12
-        - current_user.today_appointments.each do |appointment|
-          = render 'appointments/appointment', appointment: appointment
+        = render partial: 'appointments/appointment', collection: @today_appointments, as: :appointment
       #test2.s12
-        - current_user.appointments.each do |appointment|
+        - current_user.appointments.each do |appointment| # this scope can be done elsewhere
           = render 'appointments/appointment', appointment: appointment

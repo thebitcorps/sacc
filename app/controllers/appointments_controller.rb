@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
   before_action :set_client,only: [:new,:edit]
 
   def index
+    # I think this scoping goes into the model :\
     @appointments = class_eval %Q{Appointment.#{sanitize_type_list}_from(#{current_user.id.to_s})}
     respond_to do |format|
       format.html
@@ -56,7 +57,7 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-      params.require(:appointment).permit(:type_list,:date, :notes, :time, :mood, :interest,:client_id)
+      params.require(:appointment).permit(:date, :place, :time, :status, :client_id)
     end
 
     def set_client
