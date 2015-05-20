@@ -14,5 +14,4 @@ module ApplicationHelper
     link_to title , params.merge(sort: column , direction: direction,page: nil)
   end
 
-
 end

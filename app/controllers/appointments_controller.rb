@@ -21,6 +21,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
+      MessageManager.reminder(0, @appointment)
       redirect_to @appointment, notice: 'Appointment was successfully created.'
     else
       render :new

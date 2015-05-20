@@ -1,4 +1,0 @@
-class MessageManger
-
-	
-end
