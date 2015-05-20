@@ -17,12 +17,6 @@
         = render 'phone_fields', f: phone
       .links{style: 'display: inline;'}
         = link_to_add_association 'Add phone', f, :phones, class: 'btn'
-    #addresses
-      %b Addresses
-      = f.simple_fields_for :addresses do |address|
-        = render 'address_fields', f: address
-      .links
-        = link_to_add_association 'Add address', f, :addresses, class: 'btn'
 
   .form-actions
     = f.button :submit

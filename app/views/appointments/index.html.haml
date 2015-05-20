@@ -1,27 +1,13 @@
 %h1 My appointments
+.row
+  .col.s12
+    = link_to 'Today', appointments_path( type_list: 'today'),class: 'col s3 btn waves-effect waves-light',remote: true
+    = link_to 'upcoming', appointments_path(type_list: 'upcoming'),class: 'col s3 btn waves-effect waves-light',remote: true
+    = link_to 'previous', appointments_path(type_list: 'previous'),class: 'col s3 btn waves-effect waves-light',remote: true
+    = link_to 'All', appointments_path(type_list: 'all'),class: 'col s3 btn waves-effect waves-light',remote: true
 
-%table.table
-  %thead
-    %tr
-      %th Client
-      %th Date
-      %th Time
-      %th Place
-      %th
-      %th
-      %th
-
-  %tbody
-    - @appointments.each do |appointment|
-      %tr
-        %td= appointment.client.fullname
-        %td= appointment.date
-        %td= appointment.time
-        %td= appointment.place
-        %td= link_to 'Show', appointment
-        %td= link_to 'Edit', edit_appointment_path(appointment,client_id: appointment.client_id)
-        %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+#appointments
+  = render 'appointments',appointments: @appointments
 %br
 
 

@@ -20,7 +20,7 @@ module FlashHelper
         class: "alert fade in alert-#{type} #{tag_class} card-panel #{color} lighten-5 z-depth-1 #{color}-text  text-lighten-2"
       }.merge(options)
 
-      close_button = content_tag(:button, raw("&times;"), class: "close right",onclick: "dismiss()")
+      close_button = content_tag(:button, raw("&times;"), class: "close right", onclick: "dismiss()")
 
 
       Array(message).each do |msg|

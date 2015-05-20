@@ -4,4 +4,5 @@ $(document).on "ready page:load", ->
   $('.datepicker').pickadate()
     selectMonths: true,
     selectYears: 15
+  $('ul.tabs').tabs();
 

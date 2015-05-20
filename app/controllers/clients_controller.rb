@@ -24,7 +24,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    @client.current_salesman = current_user
+    @client.salesman = current_user
     if @client.save
       redirect_to @client, notice: 'Client was successfully created.'
     else
@@ -52,8 +52,7 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender,
-                                      phones_attributes: [:number, :kind, :available_from, :available_to],
-                                      addresses_attributes: [:street, :colony, :external_number, :internal_number, :zip_code])
+                                      phones_attributes: [:number, :kind, :available_from, :available_to])
     end
 
     def sort_column
@@ -61,6 +60,6 @@ class ClientsController < ApplicationController
     end
 
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
 end

@@ -1,7 +1,7 @@
 .card.z-depth-3
   .card-content
     %span.card-title.black-text
-      =@client.fullname
+      = @client.fullname
     %p
       %b Spouse:
       = @client.spouse
@@ -19,9 +19,8 @@
       = @client.salesman.fullname
     %p
       = render 'show_phones'
-    %p
-      = render 'show_directions'
   .card-action
-    %p Nueva visita => nueva interacción
-    = link_to 'Appointment',new_appointment_path(client_id: @client.id)
+    = link_to 'Interaction', interactions_path(client_id: @client.id)
+    = link_to 'Appointment', new_appointment_path(client_id: @client.id)
     = link_to 'Edit', edit_client_path(@client)
+

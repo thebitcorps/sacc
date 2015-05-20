@@ -4,14 +4,9 @@ class MessageManager
 		ap_time = appointment.time
 		appointment_time = Time.new(ap_date.year, ap_date.month, ap_date.day, ap_time.hour, ap_time.min)
 		user = appointment.user
-		# For now until appointments get a client
-		#client = appointment.client
-		client = Client.first
+		client = appointment.client
 		#get best number--------------------------
-		if(client.phones.count == 0)
-			return
-		end
-		message = Message.credate(
+		message = Message.create(
 			phone_number: client.phones.first.number,
 			body: "Te recordamos #{client.name} que tienes una cita con #{user.name} a las #{ap_time.hour}:#{ap_time.min} saludos XOXOX",
 			to_date: ap_date,

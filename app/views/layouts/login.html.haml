@@ -6,7 +6,7 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(name="theme-color" content="#EE6E73")
     %link(href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css")
-    %title= content_for?(:title) ? yield(:title) : "Burdeos Residencial :: SACC"
+    %title= "SACC :: Burdeos Residencial"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
@@ -14,13 +14,11 @@
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.png', :rel => 'shortcut icon'
-    = javascript_include_tag "application"
-
 
   %body
-    %main
-      .container
-        = b_flash
-        .col.s12
-          = yield
+    .container
+      = b_flash
+      .col.s12
+        = yield
     = render partial: 'common/footer'
+  = javascript_include_tag "application"
