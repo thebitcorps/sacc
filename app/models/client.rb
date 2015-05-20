@@ -8,10 +8,8 @@ class Client < ActiveRecord::Base
   has_many :appointments, class_name: "Appointment",dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
-  has_many :addresses, dependent: :destroy
 
   accepts_nested_attributes_for :phones,reject_if: :all_blank, allow_destroy: true
-  accepts_nested_attributes_for :addresses,reject_if: :all_blank, allow_destroy: true
 
   def fullname
     [name, paternal_lastname, maternal_lastname].join(" ")
@@ -34,11 +32,10 @@ class Client < ActiveRecord::Base
 
   def self.search_by_name_or_lastname(search)
     if search and !search.empty?
-      search = "#{search.downcase}%"
+      search = "#{search.downcase}%" # is that % in the right place?
       where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
     else
       all
     end
   end
-
 end

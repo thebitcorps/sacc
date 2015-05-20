@@ -1,0 +1,2 @@
+class SpouseWorkRecord < EmploymentRecord
+end
