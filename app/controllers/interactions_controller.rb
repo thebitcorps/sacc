@@ -1,7 +1,7 @@
 class InteractionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_interaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_client
+  before_action :set_client,only: [:index,:edit,:update,:new]
 
   def index
     @interactions = @client.interactions

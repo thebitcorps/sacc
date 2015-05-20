@@ -4,7 +4,6 @@ class AppointmentsController < ApplicationController
   before_action :set_client,only: [:new,:edit]
 
   def index
-
     @appointments = class_eval %Q{Appointment.#{sanitize_type_list}_from(#{current_user.id.to_s})}
     respond_to do |format|
       format.html
