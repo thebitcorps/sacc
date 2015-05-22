@@ -1,0 +1,27 @@
+%aside.sidebar.fixed
+  .brand-logo
+    #logo
+      .foot1
+      .foot2
+      .foot3
+      .foot4
+    SACC
+  .user-logged-in
+    .content
+      .user-name
+        = current_user.name
+        %span.text-muted.f9 role
+      .user-email= current_user.email
+      .user-actions
+        %a.m-r-5{:href => ""} settings
+        = link_to 'Logout', destroy_user_session_path, :method => :delete
+  %ul
+    =link_to 'Dashboard', root_path, icon: "md md-blur-on"
+    =link_to 'Clients', clients_path
+    %li{:icon => "md md-camera", "menu-toggle" => "", name:  "CLIENTS", :path => "/clients"}
+      %a{:href => "#/apps/todo", "menu-link" => "", :name => "Todo"}
+        %span#todosCount.pull-right.badge.z-depth-0{"ng-bind" => "todosCount"}
+        Todo
+      %a{:href => "#/apps/crud", "menu-link" => "", :name => "Crud"}
+        %span.pull-right.badge.theme-primary-bg.z-depth-0 9
+        Crud
