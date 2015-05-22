@@ -1,13 +1,48 @@
-%header
-  %nav
-    %ul#slide-out.side-nav.fixed
-      %li.logo
-        %a{id: 'logo-container', href: '/', class: 'brand-logo'}
-          %object
-      %li.bold= link_to 'Home', root_path, class: 'waves-effect waves-teal'
-      %li.bold= link_to 'Clients', clients_path, class: 'waves-effect waves-teal'
-      %li.bold= link_to 'Appointments', appointments_path, class: 'waves-effect waves-teal'
-      %li.bold= link_to 'Logout', destroy_user_session_path, method: :delete
-
-    %a.button-collapse{"data-activates" => "slide-out",:href => "#"}
-      %i.mdi-navigation-menu
+%aside.sidebar.fixed
+  .brand-logo
+    #logo
+      .foot1
+      .foot2
+      .foot3
+      .foot4
+    SACC
+  .user-logged-in
+    .content
+      .user-name
+        = current_user.name
+        %span.text-muted.f9 role
+      .user-email= current_user.email
+      .user-actions
+        %a.m-r-5{:href => ""} settings
+        = link_to 'Logout', destroy_user_session_path, :method => :delete
+  %ul{"ng-cloak" => ""}
+    =link_to 'Dashboard', root_path, icon: "md md-blur-on", 'menu-link' => ""
+    %li{:icon => "md md-camera", "menu-toggle" => "", :name => "APPS", :path => "/apps"}
+      %a{:href => "#/apps/todo", "menu-link" => "", :name => "Todo"}
+        %span#todosCount.pull-right.badge.z-depth-0{"ng-bind" => "todosCount"}
+        Todo
+      %a{:href => "#/apps/crud", "menu-link" => "", :name => "Crud"}
+        %span.pull-right.badge.theme-primary-bg.z-depth-0 9
+        Crud
+    %li{:icon => "md md-photo", "menu-toggle" => "", :name => "UI elements", :path => "/ui-elements"}
+      %a{:href => "#/ui-elements/cards", "menu-link" => ""} Cards
+      %a{:href => "#/ui-elements/colors", "menu-link" => ""} Color
+      %a{:href => "#/ui-elements/grid", "menu-link" => ""} Grid
+      %a{:href => "#/ui-elements/icons", "menu-link" => ""} Icons material design
+      %a{:href => "#/ui-elements/weather-icons", "menu-link" => ""} Icons weather
+      %a{:href => "#/ui-elements/lists", "menu-link" => ""} Lists
+      %a{:href => "#/ui-elements/typography", "menu-link" => ""} Typography
+      %a{:href => "#/ui-elements/messages", "menu-link" => ""} Messages &amp; Notifications
+      %a{:href => "#/ui-elements/buttons", "menu-link" => ""} Buttons
+    %li{:icon => "md md-input", "menu-toggle" => "", :name => "Forms", :path => "/forms"}
+      %a{:href => "#/forms/basic", "menu-link" => ""} Basic forms
+      %a{:href => "#/forms/advanced", "menu-link" => ""} Advanced elements
+      %a{:href => "#/forms/validation", "menu-link" => ""} Validation
+    %li{:icon => "md md-list", "menu-toggle" => "", :name => "Tables", :path => "/tables"}
+      %a{:href => "#/tables/basic", "menu-link" => ""} Basic tables
+      %a{:href => "#/tables/data", "menu-link" => ""} Data tables
+    %li{:icon => "md md-place", "menu-toggle" => "", :name => "Maps", :path => "/maps"}
+      %a{:href => "#/maps/full-map", "menu-link" => ""} Full map
+      %a{:href => "#/maps/map-widgets", "menu-link" => ""} Map widgets
+      %a{:href => "#/maps/vector-map", "menu-link" => ""} Vector map
+    %a{:href => "#/charts", :icon => "md md-insert-chart", "menu-link" => ""} Charts

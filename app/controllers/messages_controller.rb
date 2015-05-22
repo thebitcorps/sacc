@@ -4,8 +4,8 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @sended_messages = Message.where(sended: true)
-    @unsended_messages = Message.where(sended: false)
+    @sent_messages = Message.where(sent: true)
+    @unsent_messages = Message.where(sent: false)
   end
 
   # GET /messages/1

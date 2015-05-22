@@ -1,14 +1,14 @@
 class AppointmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :set_client,only: [:new,:edit]
+  before_action :set_client,only: [ :new, :edit ]
 
   def index
     # I think this scoping goes into the model :\
     @appointments = class_eval %Q{Appointment.#{sanitize_type_list}_from(#{current_user.id.to_s})}
     respond_to do |format|
       format.html
-      format.js {@appointments}
+      format.js { @appointments }
     end
   end
 

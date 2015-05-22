@@ -1,10 +1,10 @@
-.row
-  .col.s12
-    %h2 Log in
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .form-inputs.col.s6
-        = f.input :email, required: true, autofocus: true
-        = f.input :password, required: true
-        = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
-        = f.submit "Log in", class: 'btn'
-    / = render "devise/shared/links"
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-floating') do |f|
+  .form-group
+    = f.input :email, required: true, autofocus: true
+  .form-group
+    = f.input :password, required: true
+  .form-group
+    = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
+  .card-action.clearfix
+    .pull-right
+      = f.submit "Log in", class: 'btn btn-link black-text'

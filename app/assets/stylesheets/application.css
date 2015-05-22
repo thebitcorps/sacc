@@ -1,29 +1,9 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-header, main, footer {
-  padding-left: 200px;
-}
-
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    padding-left: 0;
-  }
-}
-
-
-.close,.close:active{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;
-    outline:none;
-}
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require materialism.min
+ *= require vendors.min
+ *= require_tree .
+*/

@@ -13,19 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
+//= #require materialism.min
+//= #require vendors.min
 //= require_tree .
 
-function keyUpFunction()
-{
-    $('#submit-search').click();
-    return true;
-}
+// function keyUpFunction()
+// {
+//     $('#submit-search').click();
+//     return true;
+// }
 
 
-function dismiss(){
-    $('#notice').remove();
-    return false;
-}
+// function dismiss(){
+//     $('#notice').remove();
+//     return false;
+// }
 
 $(document).on("page:load",function(){
     $('#phones').on("cocoon:after-insert", function() {

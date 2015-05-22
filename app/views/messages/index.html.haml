@@ -1,5 +1,5 @@
 %h1 Listing messages
-%h2 Sended Messages
+%h2 Sent Messages
 %table
   %thead
     %tr
@@ -12,7 +12,7 @@
       %th
 
   %tbody
-    - @sended_messages.each do |message|
+    - @sent_messages.each do |message|
       %tr
         %td= message.phone_number
         %td= message.body
@@ -37,7 +37,7 @@
       %th
 
   %tbody
-    - @unsended_messages.each do |message|
+    - @unsent_messages.each do |message|
       %tr
         %td= message.phone_number
         %td= message.body

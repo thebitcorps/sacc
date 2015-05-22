@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :name, :maternal_lastname, :paternal_lastname,
             :email, :cellphone, :gender, presence: true
 
-  royce_roles %w[ Admin GuyWhoFollowTheSale SaleManager Salesman]
+  royce_roles %w[ Admin GuyWhoFollowsTheSale SaleManager Salesman ]
 
   def gender_displayname
     gender == ApplicationHelper::MALE[:value] ? ApplicationHelper::MALE[:display_name] : ApplicationHelper::FEMALE[:display_name]
