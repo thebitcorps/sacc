@@ -1,7 +1,8 @@
 .card.z-depth-3
-  .card-content
-    %span.card-title.black-text
+  .card-header
+    %span.card-title
       = @client.fullname
+  .card-content
     %p
       %b Spouse:
       = @client.spouse
@@ -19,8 +20,10 @@
       = @client.salesman.fullname
     %p
       = render 'show_phones'
-  .card-action
-    = link_to 'Interaction', interactions_path(client_id: @client.id)
-    = link_to 'Appointment', new_appointment_path(client_id: @client.id)
-    = link_to 'Edit', edit_client_path(@client)
+  .card-action.clearfix
+    = link_to 'New Interaction', new_interaction_path(client_id: @client.id),class: 'btn btn-link black-text'
+    = link_to 'New Appointment', new_appointment_path(client_id: @client.id),class: 'btn btn-link black-text'
+    = link_to 'Edit', edit_client_path(@client),class: 'btn btn-link black-text'
 
+
+= render partial: 'interactions/interactions',locals:{interactions: @client.interactions}

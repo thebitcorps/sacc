@@ -17,11 +17,11 @@
 //= #require vendors.min
 //= require_tree .
 
-// function keyUpFunction()
-// {
-//     $('#submit-search').click();
-//     return true;
-// }
+function keyUpFunction()
+{
+     $('#clients_search').submit();
+     return true;
+}
 
 
 // function dismiss(){

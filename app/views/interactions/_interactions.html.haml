@@ -1,0 +1,44 @@
+.card.z-depth-3
+  .row
+    .col-md-6
+      %h3.table-title.p-20  Interactions
+
+
+  .table-responsive.white
+    %table.table.table-full.table-full-small{"ng-table" => "tableParams", "template-pagination" => "assets/tpl/partials/data-table-pager.html"}
+      %thead
+        %tr
+        %th
+        %th Kind
+        %th Date
+        %th Time
+        %th Mood
+        %th Interest
+        %th User
+        %th Client
+        %th Notes
+        %th
+        %th
+        %th
+
+      %tbody
+        - interactions.each do |interaction|
+          %tr
+            %td.f20
+              -#still not working the icon maybe is not inported yet
+              %i{class: 'md md-bluetooth-audio light-blue darken-1 icon-color'}
+            %td= interaction.kind
+            %td= interaction.date
+            %td= interaction.time.to_s :time
+            %td= interaction.mood
+            %td= interaction.interest
+            %td= interaction.user.fullname
+            %td= interaction.client.fullname
+            %td= interaction.notes
+            %td= link_to 'Show', interaction
+            %td= link_to 'Edit', edit_interaction_path(interaction,client_id: interaction.client_id)
+            %td= link_to 'Destroy', interaction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Interaction', new_interaction_path(client_id: @client.id)
