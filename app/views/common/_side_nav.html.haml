@@ -15,7 +15,7 @@
       .user-actions
         %a.m-r-5{:href => ""} settings
         = link_to 'Logout', destroy_user_session_path, :method => :delete
-  %ul
+  %ul.menu-links
     =link_to 'Dashboard', root_path, icon: "md md-blur-on"
     =link_to 'Clients', clients_path
     %li{:icon => "md md-camera", "menu-toggle" => "", name:  "CLIENTS", :path => "/clients"}

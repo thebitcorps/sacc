@@ -17,9 +17,10 @@
     = javascript_include_tag "application"
 
 
-  %body
+  %body.theme-template-blue.theme-cyan
     = render partial: 'common/side_nav'
     = render partial: 'common/top_bar'
-    %div{class: "col-sm-12 col-md-12 col-lg-9", style: "background:#F9F9F9;margin-left:260px;margin-top:63px;"}
-      = b_flash
-      = yield
+    %main
+      .main-content.ng-scope
+        = b_flash
+        = yield
