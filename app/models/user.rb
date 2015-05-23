@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   validates :name, :maternal_lastname, :paternal_lastname,
             :email, :cellphone, :gender, presence: true
 
-  royce_roles %w[ Admin GuyWhoFollowsTheSale SaleManager Salesman ]
+  royce_roles %w[ admin director manager salesmanager salesman ]
+
+  scope :date_today, -> (date) { where "date = ?", date}
 
   def gender_displayname
     gender == ApplicationHelper::MALE[:value] ? ApplicationHelper::MALE[:display_name] : ApplicationHelper::FEMALE[:display_name]
@@ -20,8 +22,6 @@ class User < ActiveRecord::Base
   end
 
   def today_appointments
-    appointments.where(date: Date.today)
+    appointments.date_today(Date.today)
   end
-
-
 end
