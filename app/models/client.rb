@@ -17,7 +17,7 @@ class Client < ActiveRecord::Base
     [name, paternal_lastname, maternal_lastname].join(" ")
   end
 
-  def self.columns_names
+  def self.columns_names #not a big fan of this name, maybe something like searcheable_fields ?
     %w[name paternal_lastname maternal_lastname imss spouse mail]
   end
 

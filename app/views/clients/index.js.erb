@@ -1,1 +1,1 @@
-$("#clients").html("<%= j(render("clients")) %>");
+$("#clients").html("<%= escape_javascript(render partial: 'clients/clients', collection: @clients, as: :client ) %>");
