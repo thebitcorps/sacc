@@ -54,6 +54,9 @@ group :development, :test do
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
+  gem "awesome_print", require:"ap"
+  gem "pry-rails"
+  gem "quiet_assets"
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

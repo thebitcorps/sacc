@@ -1,7 +1,30 @@
 %h1 Clients
+.card
+  .row
+    .col-md-6
+      = link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'
+      %h3.table-title.p-20 Clients
+    .col-md-6
+      .table-search
+        / correct the on key up funtion focus
+        = form_tag clients_path, method: 'get', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control' do
+          = search_field_tag :search, params[:search], autofocus: true, onkeyup: 'keyUpFunction()',class: 'form-control',placeholder: 'Search'
 
-#clients
-  = render 'clients'
+  .table-responsive.white
+    %table.table.table-full.table-full-small
+      %thead
+        %tr
+          %th= sortable "name"
+          %th= sortable "birthdate"
+          %th= sortable "mail"
+          %th Notes
+          %th
+          %th
+      %tbody
+        = render partial: 'clients', collection: @clients, as: :client
+    = paginate @clients
+    - if @clients.empty?
+      %p.flow-text No result found
 
-%br
-= link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'
+    = hidden_field_tag :direction, params[:direction]
+    = hidden_field_tag :sort, params[:sort]
