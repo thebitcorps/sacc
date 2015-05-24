@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
 
   royce_roles %w[ admin director manager salesmanager salesman ]
 
-  scope :date_today, -> (date) { where "date = ?", date}
-
   def gender_displayname
     gender == ApplicationHelper::MALE[:value] ? ApplicationHelper::MALE[:display_name] : ApplicationHelper::FEMALE[:display_name]
   end
@@ -22,6 +20,6 @@ class User < ActiveRecord::Base
   end
 
   def today_appointments
-    appointments.date_today(Date.today)
+    appointments.for_today
   end
 end
