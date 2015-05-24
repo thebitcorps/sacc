@@ -8,7 +8,7 @@
       .table-search
         / correct the on key up funtion focus
         = form_tag clients_path, method: 'get', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control' do
-          = search_field_tag :search, params[:search], autofocus: true, onkeyup: 'keyUpFunction()',class: 'form-control',placeholder: 'Search'
+          = search_field_tag :search, params[:search], autofocus: true, onkeyup: 'keyUpFunction()', class: 'form-control', placeholder: 'Search'
 
   .table-responsive.white
     %table.table.table-full.table-full-small
@@ -20,7 +20,7 @@
           %th Notes
           %th
           %th
-      %tbody
+      %tbody#clients
         = render partial: 'clients', collection: @clients, as: :client
     = paginate @clients
     - if @clients.empty?
