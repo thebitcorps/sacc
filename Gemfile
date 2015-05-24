@@ -10,8 +10,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'devise'
-gem 'cancan'
+# gem 'cancan' # not rails4 friendly
 gem 'royce'
+gem 'pundit'
 gem 'therubyracer'
 gem 'cocoon'
 gem 'kaminari'
@@ -50,9 +51,13 @@ gem 'slim'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'faker'
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
+  gem "awesome_print", require:"ap"
+  gem "pry-rails"
+  gem "quiet_assets"
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

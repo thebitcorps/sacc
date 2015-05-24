@@ -5,17 +5,19 @@ class Client < ActiveRecord::Base
   # marital_status, gender, appointments_count
   MARITAL_STATUS = %w(single married widowed divorced)
   belongs_to :salesman, class_name: "User", foreign_key: "current_salesman_id"
-  has_many :appointments, class_name: "Appointment",dependent: :destroy
+  has_many :appointments, class_name: "Appointment", dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
 
-  accepts_nested_attributes_for :phones,reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
+
+  before_save :titleize_fields
 
   def fullname
     [name, paternal_lastname, maternal_lastname].join(" ")
   end
 
-  def self.columns_names
+  def self.columns_names #not a big fan of this name, maybe something like searcheable_fields ?
     %w[name paternal_lastname maternal_lastname imss spouse mail]
   end
 
@@ -36,6 +38,13 @@ class Client < ActiveRecord::Base
       where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
     else
       all
+    end
+  end
+
+private
+  def titleize_fields
+    ['name', 'paternal_lastname', 'maternal_lastname', 'spouse'].each do |m|
+      self.send("#{m}=", instance_eval(%Q{#{m}.titleize unless #{m}.nil?}))
     end
   end
 end

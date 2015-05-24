@@ -5,8 +5,9 @@ class Appointment < ActiveRecord::Base
   belongs_to :user #, counter_cache: true
   validates :date,:time, presence: true
 
-  scope :future_date, ->(date) { where("date >= ?", date)}
-  scope :past_date, ->(date) { where("date < ?", date)}
+  scope :for_today, -> () { where( "date = ?", Date.today) }
+  scope :future_date, ->(date) { where("date >= ?", date) }
+  scope :past_date, ->(date) { where("date < ?", date) }
 
   # Just an idea Jams
   def self.upcoming_from(user_id, date)
