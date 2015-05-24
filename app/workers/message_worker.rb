@@ -12,6 +12,6 @@ class MessageWorker
 		message.save
 		twilio_number = TWILIO_NUMBER
     	client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
-    	client.account.messages.create(from: @twilio_number, to: message.phone_number, body: message.body)
+    	client.account.messages.create(from: twilio_number, to: message.phone_number, body: message.body)
 	end
 end
