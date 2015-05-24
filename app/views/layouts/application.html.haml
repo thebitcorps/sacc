@@ -18,9 +18,10 @@
 
 
   %body.theme-template-blue.theme-cyan
-    = render partial: 'common/side_nav'
-    = render partial: 'common/top_bar'
     %main
-      .main-content.ng-scope
-        = b_flash
-        = yield
+      = render partial: 'common/side_nav'
+      .main-container
+        = render partial: 'common/top_bar'
+        .main-content.ng-scope
+          = b_flash
+          = yield

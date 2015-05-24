@@ -44,7 +44,6 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
-    cancan (1.6.10)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     cocoon (1.2.6)
@@ -119,6 +118,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    pundit (1.0.0)
+      activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.1)
@@ -229,7 +230,6 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   byebug
-  cancan
   cocoon
   coffee-rails (~> 4.1.0)
   devise
@@ -240,6 +240,7 @@ DEPENDENCIES
   kaminari
   pg
   pry-rails
+  pundit
   quiet_assets
   rails (= 4.2.1)
   royce

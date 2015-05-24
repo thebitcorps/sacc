@@ -1,4 +1,4 @@
-= simple_form_for(@client)  do |f|
+= simple_form_for((@client), html: {class: "floating-form ng-pristine ng-valid"}) do |f|
   = f.error_notification
 
   .form-inputs
