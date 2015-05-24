@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150521020055) do
+ActiveRecord::Schema.define(version: 20150524173206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,24 @@ ActiveRecord::Schema.define(version: 20150521020055) do
   add_index "interactions", ["client_id"], name: "index_interactions_on_client_id", using: :btree
   add_index "interactions", ["user_id"], name: "index_interactions_on_user_id", using: :btree
 
+  create_table "location_informations", force: :cascade do |t|
+    t.string   "pattern"
+    t.string   "interior"
+    t.string   "sale_price"
+    t.string   "land"
+    t.string   "construction_size"
+    t.string   "lot"
+    t.boolean  "excess"
+    t.string   "over_cost"
+    t.string   "promo"
+    t.string   "final_sale_price"
+    t.integer  "dossier_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "location_informations", ["dossier_id"], name: "index_location_informations_on_dossier_id", using: :btree
+
   create_table "messages", force: :cascade do |t|
     t.string   "phone_number"
     t.string   "body"
@@ -157,5 +175,6 @@ ActiveRecord::Schema.define(version: 20150521020055) do
   add_foreign_key "employment_records", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
+  add_foreign_key "location_informations", "dossiers"
   add_foreign_key "phones", "clients"
 end

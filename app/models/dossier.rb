@@ -3,4 +3,5 @@ class Dossier < ActiveRecord::Base
   has_one :nominal_work_record
   has_one :spouse_work_record
   has_one :object
+  has_one :location_information
 end
