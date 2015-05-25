@@ -1,0 +1,27 @@
+%h1 Listing natural_person_check_lists
+
+%table
+  %thead
+    %tr
+      %th Fiscal statements
+      %th Finance registration
+      %th Rfc
+      %th Annual return
+      %th
+      %th
+      %th
+
+  %tbody
+    - @natural_person_check_lists.each do |natural_person_check_list|
+      %tr
+        %td= natural_person_check_list.fiscal_statements
+        %td= natural_person_check_list.finance_registration
+        %td= natural_person_check_list.rfc
+        %td= natural_person_check_list.annual_return
+        %td= link_to 'Show', natural_person_check_list
+        %td= link_to 'Edit', edit_natural_person_check_list_path(natural_person_check_list)
+        %td= link_to 'Destroy', natural_person_check_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Natural person check list', new_natural_person_check_list_path

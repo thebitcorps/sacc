@@ -1,0 +1,27 @@
+%h1 Listing general_check_lists
+
+%table
+  %thead
+    %tr
+      %th Bank request
+      %th Ife
+      %th Address proof
+      %th Birth certificate
+      %th
+      %th
+      %th
+
+  %tbody
+    - @general_check_lists.each do |general_check_list|
+      %tr
+        %td= general_check_list.bank_request
+        %td= general_check_list.ife
+        %td= general_check_list.address_proof
+        %td= general_check_list.birth_certificate
+        %td= link_to 'Show', general_check_list
+        %td= link_to 'Edit', edit_general_check_list_path(general_check_list)
+        %td= link_to 'Destroy', general_check_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New General check list', new_general_check_list_path

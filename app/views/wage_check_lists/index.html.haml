@@ -1,0 +1,25 @@
+%h1 Listing wage_check_lists
+
+%table
+  %thead
+    %tr
+      %th Payroll statements
+      %th Payslips
+      %th Labor letter
+      %th
+      %th
+      %th
+
+  %tbody
+    - @wage_check_lists.each do |wage_check_list|
+      %tr
+        %td= wage_check_list.payroll_statements
+        %td= wage_check_list.payslips
+        %td= wage_check_list.labor_letter
+        %td= link_to 'Show', wage_check_list
+        %td= link_to 'Edit', edit_wage_check_list_path(wage_check_list)
+        %td= link_to 'Destroy', wage_check_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Wage check list', new_wage_check_list_path

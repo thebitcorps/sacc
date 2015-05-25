@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Bank request:
+  = @general_check_list.bank_request
+%p
+  %b Ife:
+  = @general_check_list.ife
+%p
+  %b Address proof:
+  = @general_check_list.address_proof
+%p
+  %b Birth certificate:
+  = @general_check_list.birth_certificate
+
+= link_to 'Edit', edit_general_check_list_path(@general_check_list)
+\|
+= link_to 'Back', general_check_lists_path

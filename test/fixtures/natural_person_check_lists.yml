@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fiscal_statements: false
+  finance_registration: false
+  rfc: false
+  annual_return: false
+
+two:
+  fiscal_statements: false
+  finance_registration: false
+  rfc: false
+  annual_return: false

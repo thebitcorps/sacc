@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Marriage certificate:
+  = @general_spouse_check_list.marriage_certificate
+%p
+  %b Ife:
+  = @general_spouse_check_list.ife
+%p
+  %b Birth certificate:
+  = @general_spouse_check_list.birth_certificate
+
+= link_to 'Edit', edit_general_spouse_check_list_path(@general_spouse_check_list)
+\|
+= link_to 'Back', general_spouse_check_lists_path

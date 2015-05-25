@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Fiscal statements:
+  = @natural_person_check_list.fiscal_statements
+%p
+  %b Finance registration:
+  = @natural_person_check_list.finance_registration
+%p
+  %b Rfc:
+  = @natural_person_check_list.rfc
+%p
+  %b Annual return:
+  = @natural_person_check_list.annual_return
+
+= link_to 'Edit', edit_natural_person_check_list_path(@natural_person_check_list)
+\|
+= link_to 'Back', natural_person_check_lists_path

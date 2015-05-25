@@ -1,0 +1,1 @@
+json.extract! @legal_person_check_list, :id, :business_statements, :personal_statements, :charter, :personal_rfc, :business_rfc, :business_finance_registration_boolean, :personal_finance_registration, :annual_return, :financial_statements, :created_at, :updated_at

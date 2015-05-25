@@ -1,0 +1,37 @@
+%h1 Listing legal_person_check_lists
+
+%table
+  %thead
+    %tr
+      %th Business statements
+      %th Personal statements
+      %th Charter
+      %th Personal rfc
+      %th Business rfc
+      %th Business finance registration boolean
+      %th Personal finance registration
+      %th Annual return
+      %th Financial statements
+      %th
+      %th
+      %th
+
+  %tbody
+    - @legal_person_check_lists.each do |legal_person_check_list|
+      %tr
+        %td= legal_person_check_list.business_statements
+        %td= legal_person_check_list.personal_statements
+        %td= legal_person_check_list.charter
+        %td= legal_person_check_list.personal_rfc
+        %td= legal_person_check_list.business_rfc
+        %td= legal_person_check_list.business_finance_registration
+        %td= legal_person_check_list.personal_finance_registration
+        %td= legal_person_check_list.annual_return
+        %td= legal_person_check_list.financial_statements
+        %td= link_to 'Show', legal_person_check_list
+        %td= link_to 'Edit', edit_legal_person_check_list_path(legal_person_check_list)
+        %td= link_to 'Destroy', legal_person_check_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Legal person check list', new_legal_person_check_list_path

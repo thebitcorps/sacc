@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524173206) do
+ActiveRecord::Schema.define(version: 20150525002232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,23 @@ ActiveRecord::Schema.define(version: 20150524173206) do
 
   add_index "employment_records", ["dossier_id"], name: "index_employment_records_on_dossier_id", using: :btree
 
+  create_table "general_check_lists", force: :cascade do |t|
+    t.boolean  "bank_request"
+    t.boolean  "ife"
+    t.boolean  "address_proof"
+    t.boolean  "birth_certificate"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "general_spouse_check_lists", force: :cascade do |t|
+    t.boolean  "marriage_certificate"
+    t.boolean  "ife"
+    t.boolean  "birth_certificate"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
     t.date     "date"
@@ -86,6 +103,20 @@ ActiveRecord::Schema.define(version: 20150524173206) do
 
   add_index "interactions", ["client_id"], name: "index_interactions_on_client_id", using: :btree
   add_index "interactions", ["user_id"], name: "index_interactions_on_user_id", using: :btree
+
+  create_table "legal_person_check_lists", force: :cascade do |t|
+    t.boolean  "business_statements"
+    t.boolean  "personal_statements"
+    t.boolean  "charter"
+    t.boolean  "personal_rfc"
+    t.boolean  "business_rfc"
+    t.boolean  "business_finance_registration"
+    t.boolean  "personal_finance_registration"
+    t.boolean  "annual_return"
+    t.boolean  "financial_statements"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
   create_table "location_informations", force: :cascade do |t|
     t.string   "pattern"
@@ -113,6 +144,15 @@ ActiveRecord::Schema.define(version: 20150524173206) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.boolean  "sent",         default: false
+  end
+
+  create_table "natural_person_check_lists", force: :cascade do |t|
+    t.boolean  "fiscal_statements"
+    t.boolean  "finance_registration"
+    t.boolean  "rfc"
+    t.boolean  "annual_return"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "phones", force: :cascade do |t|
@@ -168,6 +208,14 @@ ActiveRecord::Schema.define(version: 20150524173206) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wage_check_lists", force: :cascade do |t|
+    t.boolean  "payroll_statements"
+    t.boolean  "payslips"
+    t.boolean  "labor_letter"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   add_foreign_key "appointments", "clients"
   add_foreign_key "appointments", "users"
