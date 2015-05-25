@@ -76,17 +76,23 @@ ActiveRecord::Schema.define(version: 20150525002232) do
     t.boolean  "ife"
     t.boolean  "address_proof"
     t.boolean  "birth_certificate"
+    t.integer  "dossier_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  add_index "general_check_lists", ["dossier_id"], name: "index_general_check_lists_on_dossier_id", using: :btree
 
   create_table "general_spouse_check_lists", force: :cascade do |t|
     t.boolean  "marriage_certificate"
     t.boolean  "ife"
     t.boolean  "birth_certificate"
+    t.integer  "dossier_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "general_spouse_check_lists", ["dossier_id"], name: "index_general_spouse_check_lists_on_dossier_id", using: :btree
 
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
@@ -114,9 +120,12 @@ ActiveRecord::Schema.define(version: 20150525002232) do
     t.boolean  "personal_finance_registration"
     t.boolean  "annual_return"
     t.boolean  "financial_statements"
+    t.integer  "dossier_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
+
+  add_index "legal_person_check_lists", ["dossier_id"], name: "index_legal_person_check_lists_on_dossier_id", using: :btree
 
   create_table "location_informations", force: :cascade do |t|
     t.string   "pattern"
@@ -151,9 +160,12 @@ ActiveRecord::Schema.define(version: 20150525002232) do
     t.boolean  "finance_registration"
     t.boolean  "rfc"
     t.boolean  "annual_return"
+    t.integer  "dossier_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "natural_person_check_lists", ["dossier_id"], name: "index_natural_person_check_lists_on_dossier_id", using: :btree
 
   create_table "phones", force: :cascade do |t|
     t.string   "number"
@@ -213,16 +225,24 @@ ActiveRecord::Schema.define(version: 20150525002232) do
     t.boolean  "payroll_statements"
     t.boolean  "payslips"
     t.boolean  "labor_letter"
+    t.integer  "dossier_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
+
+  add_index "wage_check_lists", ["dossier_id"], name: "index_wage_check_lists_on_dossier_id", using: :btree
 
   add_foreign_key "appointments", "clients"
   add_foreign_key "appointments", "users"
   add_foreign_key "dossiers", "clients"
   add_foreign_key "employment_records", "dossiers"
+  add_foreign_key "general_check_lists", "dossiers"
+  add_foreign_key "general_spouse_check_lists", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
+  add_foreign_key "legal_person_check_lists", "dossiers"
   add_foreign_key "location_informations", "dossiers"
+  add_foreign_key "natural_person_check_lists", "dossiers"
   add_foreign_key "phones", "clients"
+  add_foreign_key "wage_check_lists", "dossiers"
 end

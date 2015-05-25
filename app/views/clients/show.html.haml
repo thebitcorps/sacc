@@ -20,10 +20,10 @@
       = @client.salesman.fullname
     %p
       = render 'show_phones'
+
   .card-action.clearfix
     = link_to 'New Interaction', new_interaction_path(client_id: @client.id),class: 'btn btn-link black-text'
     = link_to 'New Appointment', new_appointment_path(client_id: @client.id),class: 'btn btn-link black-text'
     = link_to 'Edit', edit_client_path(@client),class: 'btn btn-link black-text'
-
 
 = render partial: 'interactions/interactions',locals:{interactions: @client.interactions}
