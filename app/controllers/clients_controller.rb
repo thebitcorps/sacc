@@ -56,7 +56,7 @@ class ClientsController < ApplicationController
     end
 
     def sort_column
-      Client.columns_names.include?(params[:sort]) ? params[:sort] : 'name'
+      Client.searcheable_fields.include?(params[:sort]) ? params[:sort] : 'name'
     end
 
     def sort_direction
