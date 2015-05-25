@@ -72,24 +72,24 @@ ActiveRecord::Schema.define(version: 20150525002232) do
   add_index "employment_records", ["dossier_id"], name: "index_employment_records_on_dossier_id", using: :btree
 
   create_table "general_check_lists", force: :cascade do |t|
-    t.boolean  "bank_request"
-    t.boolean  "ife"
-    t.boolean  "address_proof"
-    t.boolean  "birth_certificate"
+    t.boolean  "bank_request",      default: false
+    t.boolean  "ife",               default: false
+    t.boolean  "address_proof",     default: false
+    t.boolean  "birth_certificate", default: false
     t.integer  "dossier_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "general_check_lists", ["dossier_id"], name: "index_general_check_lists_on_dossier_id", using: :btree
 
   create_table "general_spouse_check_lists", force: :cascade do |t|
-    t.boolean  "marriage_certificate"
-    t.boolean  "ife"
-    t.boolean  "birth_certificate"
+    t.boolean  "marriage_certificate", default: false
+    t.boolean  "ife",                  default: false
+    t.boolean  "birth_certificate",    default: false
     t.integer  "dossier_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "general_spouse_check_lists", ["dossier_id"], name: "index_general_spouse_check_lists_on_dossier_id", using: :btree
@@ -111,18 +111,18 @@ ActiveRecord::Schema.define(version: 20150525002232) do
   add_index "interactions", ["user_id"], name: "index_interactions_on_user_id", using: :btree
 
   create_table "legal_person_check_lists", force: :cascade do |t|
-    t.boolean  "business_statements"
-    t.boolean  "personal_statements"
-    t.boolean  "charter"
-    t.boolean  "personal_rfc"
-    t.boolean  "business_rfc"
-    t.boolean  "business_finance_registration"
-    t.boolean  "personal_finance_registration"
-    t.boolean  "annual_return"
-    t.boolean  "financial_statements"
+    t.boolean  "business_statements",           default: false
+    t.boolean  "personal_statements",           default: false
+    t.boolean  "charter",                       default: false
+    t.boolean  "personal_rfc",                  default: false
+    t.boolean  "business_rfc",                  default: false
+    t.boolean  "business_finance_registration", default: false
+    t.boolean  "personal_finance_registration", default: false
+    t.boolean  "annual_return",                 default: false
+    t.boolean  "financial_statements",          default: false
     t.integer  "dossier_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   add_index "legal_person_check_lists", ["dossier_id"], name: "index_legal_person_check_lists_on_dossier_id", using: :btree
@@ -156,13 +156,13 @@ ActiveRecord::Schema.define(version: 20150525002232) do
   end
 
   create_table "natural_person_check_lists", force: :cascade do |t|
-    t.boolean  "fiscal_statements"
-    t.boolean  "finance_registration"
-    t.boolean  "rfc"
-    t.boolean  "annual_return"
+    t.boolean  "fiscal_statements",    default: false
+    t.boolean  "finance_registration", default: false
+    t.boolean  "rfc",                  default: false
+    t.boolean  "annual_return",        default: false
     t.integer  "dossier_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "natural_person_check_lists", ["dossier_id"], name: "index_natural_person_check_lists_on_dossier_id", using: :btree
@@ -222,12 +222,12 @@ ActiveRecord::Schema.define(version: 20150525002232) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "wage_check_lists", force: :cascade do |t|
-    t.boolean  "payroll_statements"
-    t.boolean  "payslips"
-    t.boolean  "labor_letter"
+    t.boolean  "payroll_statements", default: false
+    t.boolean  "payslips",           default: false
+    t.boolean  "labor_letter",       default: false
     t.integer  "dossier_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "wage_check_lists", ["dossier_id"], name: "index_wage_check_lists_on_dossier_id", using: :btree
