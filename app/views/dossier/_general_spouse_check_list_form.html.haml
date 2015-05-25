@@ -1,0 +1,10 @@
+= simple_form_for(@general_spouse_check_list) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :marriage_certificate
+    = f.input :ife
+    = f.input :birth_certificate
+
+  .form-actions
+    = f.button :submit

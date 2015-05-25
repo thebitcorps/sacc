@@ -8,10 +8,13 @@ class Client < ActiveRecord::Base
   has_many :appointments, class_name: "Appointment", dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
+  has_one :dossier, dependent: :destroy
 
   accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
 
   before_save :titleize_fields
+
+  after_create :documentize
 
   def fullname
     [name, paternal_lastname, maternal_lastname].join(" ")
@@ -45,6 +48,14 @@ private
   def titleize_fields
     ['name', 'paternal_lastname', 'maternal_lastname', 'spouse'].each do |m|
       self.send("#{m}=", instance_eval(%Q{#{m}.titleize unless #{m}.nil?}))
+    end
+  end
+
+  def documentize
+    self.build_dossier
+    self.dossier.build_general_check_list
+    if(self.marital_status == 'married')
+      self.dossier.build_general_spouse_check_list
     end
   end
 end
