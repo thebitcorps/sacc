@@ -1,22 +1,38 @@
-= simple_form_for((@client), html: {class: "floating-form ng-pristine ng-valid"}) do |f|
+= simple_form_for((@client), html: {class: "form-floating ng-pristine ng-valid"}) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :name
-    = f.input :paternal_lastname
-    = f.input :maternal_lastname
-    = f.input :gender, as: :select, collection: ApplicationHelper.get_gender_dropdown
-    = f.input :marital_status, collection: Client::MARITAL_STATUS
-    = f.input :spouse
-    = f.input :birthdate,order: [:day,:month, :year]
-    = f.input :mail
-    = f.input :notes, input_html: {class: 'materialize-textarea'}
+  .form-group
+    = f.label :name, class: 'control-label'
+    = f.input :name, label: false, class: 'form-control'
+  .form-group
+    = f.label :paternal_lastname, class: 'control-label'
+    = f.input :paternal_lastname, label: false, class: 'form-control'
+  .form-group
+    = f.label :maternal_lastname, class: 'control-label'
+    = f.input :maternal_lastname, label: false, class: 'form-control'
+  .form-group
+    = f.label :gender, class: 'control-label'
+    = f.input :gender, as: :select, label: false, collection: ApplicationHelper.get_gender_dropdown
+  .form-group
+    = f.label :marital_status, class: 'control-label'
+    = f.input :marital_status, label: false, collection: Client::MARITAL_STATUS
+  .form-group
+    = f.label :spouse, class: 'control-label'
+    = f.input :spouse, label: false, class: 'form-control'
+  .form-group
+    = f.label :birthdate, class: 'control-label'
+    = f.input :birthdate, label: false,order: [:day,:month, :year]
+  .form-group
+    = f.label :mail, class: 'control-label'
+    = f.input :mail, label: false, class: 'form-control'
+  .form-group
+    = f.label :notes, class: 'control-label'
+    = f.input :notes, label: false, class: 'form-control vertical'
     #phones
-      %b Phones
+      %h4 Phones
       =  f.simple_fields_for :phones do |phone|
         = render 'phone_fields', f: phone
       .links{style: 'display: inline;'}
         = link_to_add_association 'Add phone', f, :phones, class: 'btn'
-
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn'

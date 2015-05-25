@@ -1,3 +1,5 @@
 %h1= "Listing interactions for #{@client.fullname}"
-
-= render partial: 'interactions',locals:{interactions: @interactions}
+.card
+  .row
+    .col-md-6
+      = render @interactions
