@@ -1,0 +1,12 @@
+.card.z-depth-3
+  .card-header
+    %span.card-title
+      = link_to @client.fullname, client_path(@client)
+      = " / Dossier"
+
+
+= render 'general_check_list'
+= render 'general_spouse_check_list'
+= render 'legal_person_check_list'
+= render 'natural_person_check_list'
+= render 'wage_check_list'
