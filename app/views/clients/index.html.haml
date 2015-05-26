@@ -22,9 +22,10 @@
           %th
       %tbody#clients
         = render partial: 'clients', collection: @clients, as: :client
-    = paginate @clients
+    #paginator
+      = paginate @clients,remote: true
     - if @clients.empty?
       %p.flow-text No result found
 
-    = hidden_field_tag :direction, params[:direction]
-    = hidden_field_tag :sort, params[:sort]
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]

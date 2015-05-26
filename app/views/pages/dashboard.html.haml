@@ -9,6 +9,7 @@
           %th Appointments
           %th Actions
         = render partial: 'clients/client', collection: @my_clients, client: :client
+      = paginate @my_clients
       .appointments
         %ul.tabs
           %li.tab
@@ -20,4 +21,3 @@
         #test2
           - current_user.appointments.each do |appointment| # this scope can be done elsewhere
             = render 'appointments/appointment', appointment: appointment
-    .col-lg-3.col-md-12

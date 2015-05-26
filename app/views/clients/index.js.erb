@@ -1,1 +1,2 @@
 $("#clients").html("<%= escape_javascript(render partial: 'clients/clients', collection: @clients, as: :client ) %>");
+$("#paginator").html("<%= escape_javascript(paginate(@clients, remote: true)) %>");

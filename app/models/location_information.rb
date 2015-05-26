@@ -5,7 +5,6 @@ class LocationInformation < ActiveRecord::Base
 
   belongs_to :dossier
 
-
   validates :pattern, inclusion: PATTERN_TYPES
   validates :promo, inclusion: PROMO_TYPES
 

@@ -20,8 +20,8 @@ class Client < ActiveRecord::Base
     [name, paternal_lastname, maternal_lastname].join(" ")
   end
 
-  def self.columns_names #not a big fan of this name, maybe something like searcheable_fields ?
-    %w[name paternal_lastname maternal_lastname imss spouse mail]
+  def self.searcheable_fields #not a big fan of this name, maybe something like searcheable_fields ?
+    %w[name paternal_lastname maternal_lastname spouse mail]
   end
 
   def self.my_clients(salesman)
@@ -29,7 +29,7 @@ class Client < ActiveRecord::Base
   end
 
   def self.search(search, column)
-    column = 'name' unless columns_names.include?(column)
+    column = 'name' unless searcheable_fields.include?(column)
     if search
       where("#{column} LIKE ?","%#{search}%")
     end
@@ -37,7 +37,7 @@ class Client < ActiveRecord::Base
 
   def self.search_by_name_or_lastname(search)
     if search and !search.empty?
-      search = "#{search.downcase}%" # is that % in the right place?
+      search = "%#{search.downcase}%" # is that % in the right place?
       where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
     else
       all
