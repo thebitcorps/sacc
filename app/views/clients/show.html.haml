@@ -25,5 +25,10 @@
     = link_to 'New Interaction', new_interaction_path(client_id: @client.id),class: 'btn btn-link black-text'
     = link_to 'New Appointment', new_appointment_path(client_id: @client.id),class: 'btn btn-link black-text'
     = link_to 'Edit', edit_client_path(@client),class: 'btn btn-link black-text'
+    -if(@client.dossier)
+      = link_to 'Dossier', dossier_path(@client.dossier),class: 'btn btn-info ng-valid ng-dirty ng-valid-parse'
+    -else
+      = link_to 'Create Dossier', documentize_client_path(client_id: @client.id),class: 'btn btn-info ng-valid ng-dirty ng-valid-parse', method: :post
+
 
 = render partial: 'interactions/interactions',locals:{interactions: @client.interactions}
