@@ -14,8 +14,6 @@ class Client < ActiveRecord::Base
 
   before_save :titleize_fields
 
-  after_create :documentize
-
   def fullname
     [name, paternal_lastname, maternal_lastname].join(" ")
   end
@@ -37,25 +35,32 @@ class Client < ActiveRecord::Base
 
   def self.search_by_name_or_lastname(search)
     if search and !search.empty?
-      search = "%#{search.downcase}%" # is that % in the right place?
+      search = "%#{search.downcase}%"
       where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
     else
       all
     end
   end
 
-private
-  def titleize_fields
-    ['name', 'paternal_lastname', 'maternal_lastname', 'spouse'].each do |m|
-      self.send("#{m}=", instance_eval(%Q{#{m}.titleize unless #{m}.nil?}))
-    end
+  def married?
+    marital_status == 'married'
   end
 
   def documentize
-    self.build_dossier
-    self.dossier.build_general_check_list
-    if(self.marital_status == 'married')
-      self.dossier.build_general_spouse_check_list
+    if dossier.nil?
+      create_dossier
+      dossier.create_general_check_list
+      dossier.create_general_spouse_check_list if married?
+    else
+      raise "Already has Dossier" # incomplete error, this has to be catched on the controller
+    end
+  end
+
+private
+
+  def titleize_fields
+    ['name', 'paternal_lastname', 'maternal_lastname', 'spouse'].each do |m|
+      self.send("#{m}=", instance_eval(%Q{#{m}.titleize unless #{m}.nil?}))
     end
   end
 end

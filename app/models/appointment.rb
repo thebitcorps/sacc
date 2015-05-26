@@ -5,7 +5,7 @@ class Appointment < ActiveRecord::Base
   belongs_to :user #, counter_cache: true
   validates :date,:time, presence: true
 
-  scope :for_today, -> () { where( "date = ?", Date.today) }
+  scope :for_today, -> { where( "date = ?", Date.today) }
   scope :future_date, ->(date) { where("date >= ?", date) }
   scope :past_date, ->(date) { where("date < ?", date) }
 
