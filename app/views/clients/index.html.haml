@@ -22,7 +22,8 @@
           %th
       %tbody#clients
         = render partial: 'clients', collection: @clients, as: :client
-    = paginate @clients
+    #paginator
+      = paginate @clients,remote: true
     - if @clients.empty?
       %p.flow-text No result found
 
