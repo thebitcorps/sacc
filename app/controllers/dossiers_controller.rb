@@ -11,8 +11,4 @@ class DossiersController < ApplicationController
     @client = @dossier.client
   end
 
-  private
-      def set_client
-         
-      end
 end
