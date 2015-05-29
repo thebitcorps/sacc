@@ -15,6 +15,12 @@
       React.createElement LocationInfoForm, location: @state.locationInfo,handleCancel: @handleToggle,handleUpdate: @updateLocation
     else
       @showInfo()
+  locationInfoDiv: (value,label) ->
+
+      React.DOM.li {className: 'list-group-item'},
+        React.DOM.div
+          label
+        value
   showInfo: ->
     React.DOM.div
       className: 'locationInfo'
@@ -24,50 +30,20 @@
           className: 'title'
           'Location info'
         React.DOM.ul {className: 'list-group'},
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Pattern: '
-            @state.locationInfo.pattern
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Interior: '
-            @state.locationInfo.interior
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'SalePrice: '
-            @state.locationInfo.sale_price
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Land: '
-            @state.locationInfo.land
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Construction Size: '
-            @state.locationInfo.construction_size
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Lot: '
-            @state.locationInfo.lot
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Excess: '
-            @state.locationInfo.excess
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Over Price: '
-            @state.locationInfo.over_cost
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Promo: '
-            @state.locationInfo.promo
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-              'Final Price: '
-            @state.locationInfo.final_sale_price
-          React.DOM.a
-            className: 'btn btn-warning'
-            onClick: @handleToggle
-            'Edit'
+          @locationInfoDiv(@state.locationInfo.pattern,'Pattern: ')
+          @locationInfoDiv(@state.locationInfo.interior,'Interior: ')
+          @locationInfoDiv(@state.locationInfo.sale_price,'Saleprice: ')
+          @locationInfoDiv(@state.locationInfo.land,'Land: ')
+          @locationInfoDiv(@state.locationInfo.construction_size,'Contruccion size: ')
+          @locationInfoDiv(@state.locationInfo.lot,'lot: ')
+          @locationInfoDiv(@state.locationInfo.excess,'Excess: ')
+          @locationInfoDiv(@state.locationInfo.over_cost,'Over cost: ')
+          @locationInfoDiv(@state.locationInfo.promo,'Promo: ')
+          @locationInfoDiv(@state.locationInfo.final_sale_price,'FInal price: ')
+        React.DOM.a
+          className: 'btn btn-warning'
+          onClick: @handleToggle
+          'Edit'
 
 
 

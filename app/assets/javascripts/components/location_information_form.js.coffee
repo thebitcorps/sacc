@@ -23,6 +23,17 @@
       success: (data) =>
         @props.handleUpdate data
 
+
+
+  locationInput: (defaultV,reference,label) ->
+    React.DOM.li {className: 'list-group-item'},
+      React.DOM.div
+      label
+      React.DOM.input
+        className: 'form-control f-inline'
+        type: 'text'
+        defaultValue: defaultV
+        ref: reference
   render: ->
     React.DOM.div
       className: 'locationInfo'
@@ -32,93 +43,22 @@
           className: 'title'
           'Location info'
         React.DOM.ul {className: 'list-group'},
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'Pattern: '
-            React.DOM.input
-              className: 'form-control f-inline'
-              type: 'text'
-              defaultValue: @props.location.pattern
-              ref: 'pattern'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'Interior: '
-            React.DOM.input
-              className: 'form-control f-inline'
-              type: 'text'
-              defaultValue: @props.location.interior
-              ref: 'interior'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'sale_price: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.sale_price
-              ref: 'sale_price'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'land: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.land
-              ref: 'land'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'construction_size: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.construction_size
-              ref: 'construction_size'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'lot: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.lot
-              ref: 'lot'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'excess: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.excess
-              ref: 'excess'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'over_cost: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.over_cost
-              ref: 'over_cost'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'promo: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.promo
-              ref: 'promo'
-          React.DOM.li {className: 'list-group-item'},
-            React.DOM.div
-            'final_sale_price: '
-            React.DOM.input
-              className: 'form-control'
-              type: 'text'
-              defaultValue: @props.location.final_sale_price
-              ref: 'final_sale_price'
-
-          React.DOM.a
-            className: 'btn btn-warning'
-            onClick: @handleSubmit
-            'Update'
-          React.DOM.a
-            className: 'btn btn-default'
-            onClick: @props.handleCancel
-            'Cancel'
+          @locationInput(@props.location.pattern,'pattern','Pattern: ')
+          @locationInput(@props.location.interior,'interior','Interior: ')
+          @locationInput(@props.location.sale_price,'sale_price','Sale price: ')
+          @locationInput(@props.location.land,'land','Land: ')
+          @locationInput(@props.location.construction_size,'construction_size','Construction size: ')
+          @locationInput(@props.location.lot,'lot','Lot: ')
+          @locationInput(@props.location.excess,'excess','Excess: ')
+          @locationInput(@props.location.over_cost,'over_cost','Over cost: ')
+          @locationInput(@props.location.promo,'promo','Promo: ')
+          @locationInput(@props.location.final_sale_price,'final_sale_price','final_sale_price: ')
+        React.DOM.a
+          className: 'btn btn-warning'
+          onClick: @handleSubmit
+          'Update'
+        React.DOM.a
+          className: 'btn btn-default'
+          onClick: @props.handleCancel
+          'Cancel'
 
