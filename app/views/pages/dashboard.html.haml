@@ -2,14 +2,15 @@
   .row.no-gutter
     .col-sm-12.col-md-12.col-lg-9
       %h2 My Dashboard
-      %table.table.striped.clients
-        %tr
-          %th Client
-          %th Interactions
-          %th Appointments
-          %th Actions
-        = render partial: 'clients/client', collection: @my_clients, client: :client
-      = paginate @my_clients
+      .card.z-depth-3
+        %table.table.striped.clients
+          %tr
+            %th Client
+            %th Interactions
+            %th Appointments
+            %th Actions
+          = render partial: 'clients/client', collection: @my_clients, client: :client
+        = paginate @my_clients
       .appointments
         %ul.tabs
           %li.tab
@@ -21,3 +22,7 @@
         #test2
           - current_user.appointments.each do |appointment| # this scope can be done elsewhere
             = render 'appointments/appointment', appointment: appointment
+
+
+
+

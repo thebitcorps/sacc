@@ -13,8 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
-//= #require materialism.min
-//= #require vendors.min
+//= require materialism.min
+//= require vendors.min
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 
 function keyUpFunction()

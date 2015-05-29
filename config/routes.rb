@@ -1,7 +1,9 @@
 # require 'sidekiq/web'
 Rails.application.routes.draw do
 
-  resources :dossiers, only: [:show]
+
+  resources :dossiers
+  resources :location_information
   match "dossier" => "dossiers#documentize", as: :documentize_client, via: :post
 
   resources :interactions

@@ -1,25 +1,21 @@
 class DossiersController < ApplicationController
+  before_filter :authenticate_user!
+  skip_before_filter  :verify_authenticity_token
 
   def documentize
     @client = Client.find(params[:client_id])
-    @client.build_dossier
-    @client.save
-    @client.dossier.build_general_check_list
-    if(@client.married?)
-      @client.dossier.build_general_spouse_check_list
-    end
-    @client.dossier.save
+    @client.documentize
     redirect_to @client.dossier, notice: 'Dossier was successfully created.'
   end
 
   def show
-    @dossier = Dossier.find(params[:id])
-    @client = @dossier.client
-    @general_check_list = @dossier.general_check_list
+    @dossier = JSON.parse Dossier.find(params[:id]).to_json include: :location_information
+
   end
 
-  private
-      def set_client
-         
-      end
+
+private
+
+
+
 end
