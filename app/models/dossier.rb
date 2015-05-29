@@ -3,6 +3,8 @@ class Dossier < ActiveRecord::Base
   has_one :nominal_work_record, dependent: :destroy
   has_one :spouse_work_record, dependent: :destroy
   has_one :location_information, dependent: :destroy
+
+
   accepts_nested_attributes_for :location_information
   has_one :general_check_list, dependent: :destroy
   has_one :general_spouse_check_list, dependent: :destroy

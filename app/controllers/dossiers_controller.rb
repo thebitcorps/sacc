@@ -9,8 +9,7 @@ class DossiersController < ApplicationController
   end
 
   def show
-    @dossier = JSON.parse Dossier.find(params[:id]).to_json include: :location_information
-
+    @dossier = JSON.parse Dossier.find(params[:id]).to_json include: [:location_information,:nominal_work_record]
   end
 
 

@@ -16,7 +16,6 @@
     else
       @showInfo()
   locationInfoDiv: (value,label) ->
-
       React.DOM.li {className: 'list-group-item'},
         React.DOM.div
           label

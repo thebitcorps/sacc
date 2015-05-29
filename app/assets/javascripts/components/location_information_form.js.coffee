@@ -23,8 +23,6 @@
       success: (data) =>
         @props.handleUpdate data
 
-
-
   locationInput: (defaultV,reference,label) ->
     React.DOM.li {className: 'list-group-item'},
       React.DOM.div

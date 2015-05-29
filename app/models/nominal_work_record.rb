@@ -1,2 +1,3 @@
 class NominalWorkRecord < EmploymentRecord
+
 end
