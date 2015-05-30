@@ -52,7 +52,7 @@ class Client < ActiveRecord::Base
       dossier.create_location_information
       dossier.create_nominal_work_record
     end
-    if married?
+    if married? && spouse_works
       dossier.create_spouse_work_record
     else
       dossier.spouse_work_record.destroy if dossier.spouse_work_record
