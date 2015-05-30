@@ -52,7 +52,7 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender, :marital_status,
+      params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender, :marital_status, :spouse_works,
                                       phones_attributes: [:id, :number, :kind, :available_from, :available_to])
     end
 

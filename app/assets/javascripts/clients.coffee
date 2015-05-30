@@ -1,8 +1,11 @@
-# $(document).on "ready page:load", ->
-#   $('select').material_select()
-#   $(".button-collapse").sideNav()
-#   $('.datepicker').pickadate()
-#     selectMonths: true,
-#     selectYears: 15
-#   $('ul.tabs').tabs();
+$(document).on "ready page:load", ->
+  selected = $('#client_marital_status option').filter(':selected').text()
+  if selected != 'married'
+    $('#spuse-group').hide()
 
+  $('#client_marital_status').change ->
+    selected = $('#client_marital_status option').filter(':selected').text()
+    if selected == 'married'
+      $('#spuse-group').show()
+    else
+      $('#spuse-group').hide()
