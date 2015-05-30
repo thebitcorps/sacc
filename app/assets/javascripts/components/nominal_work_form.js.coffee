@@ -1,6 +1,13 @@
 @NominalWorkForm = React.createClass
   getDefaultProps: ->
     locationInfo: []
+
+  chooseURL: (recordType)->
+    if recordType == 'SpouseWorkRecord'
+      'spouse_work_record'
+    else
+      'nominal_work_record'
+
   nominalInput: (defaultV,reference,label) ->
     React.DOM.li {className: 'list-group-item'},
       React.DOM.div
@@ -26,10 +33,13 @@
 
     $.ajax
       method: 'PUT'
-      url: "/nominal_work_record/#{ @props.nominalWork.id }"
+      url: "/" + @chooseURL(@props.nominalWork.type) + "/#{ @props.nominalWork.id }"
       dataType: 'JSON'
       data:
-        nominal_work_record: data
+        if @props.nominalWork.type == 'SpouseWorkRecord'
+          spouse_work_record: data
+        else
+          nominal_work_record: data
       success: (data) =>
         @props.handleUpdate data
   render: ->

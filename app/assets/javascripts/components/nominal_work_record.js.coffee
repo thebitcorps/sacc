@@ -1,6 +1,6 @@
 @NominalWorkRecord = React.createClass
   getInitialState: ->
-    nominalWork: @props.data.nominal_work_record
+    nominalWork: @props.data
     edit: false
   getDefaultProps: ->
     nominalWork: []
@@ -9,6 +9,11 @@
     e.preventDefault()
     @setState edit: !@state.edit
 
+  titleSelect: (typeV) ->
+    if typeV == 'SpouseWorkRecord'
+      'Spouse Work Record'
+    else
+      'Nominal Work record'
   updateNominalWork: (nominal)->
     @setState edit: false
     @setState nominalWork: nominal
@@ -26,7 +31,7 @@
       className: 'card'
       React.DOM.h2
         className: 'title'
-        'Nominal Work'
+        @titleSelect(@state.nominalWork.type)
       React.DOM.ul {className: 'list-group'},
         @nomimalWorkElement(@state.nominalWork.name,'Name: ')
         @nomimalWorkElement(@state.nominalWork.address,'Address: ')
