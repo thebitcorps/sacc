@@ -42,23 +42,20 @@
       React.DOM.div
         className: 'card z-depth-3'
         React.DOM.h2
-          className: 'table-title p-20 '
+          className: 'table-title p-20'
           'Location info'
         React.DOM.div
-          className: 'table-responsive white'
-          React.DOM.table
-            className: 'table table-full table-full-small'
-            React.DOM.tbody null,
-              @locationInput(@props.location.pattern,'pattern','Pattern: ')
-              @locationInput(@props.location.interior,'interior','Interior: ')
-              @locationInput(@props.location.sale_price,'sale_price','Sale price: ')
-              @locationInput(@props.location.land,'land','Land: ')
-              @locationInput(@props.location.construction_size,'construction_size','Construction size: ')
-              @locationInput(@props.location.lot,'lot','Lot: ')
-              @locationInput(@props.location.excess,'excess','Excess: ')
-              @locationInput(@props.location.over_cost,'over_cost','Over cost: ')
-              @locationInput(@props.location.promo,'promo','Promo: ')
-              @locationInput(@props.location.final_sale_price,'final_sale_price','final_sale_price: ')
+          className: 'yaya white'
+          @locationInput(@props.location.pattern,'pattern','Pattern: ')
+          @locationInput(@props.location.interior,'interior','Interior: ')
+          @locationInput(@props.location.sale_price,'sale_price','Sale price: ')
+          @locationInput(@props.location.land,'land','Land: ')
+          @locationInput(@props.location.construction_size,'construction_size','Construction size: ')
+          @locationInput(@props.location.lot,'lot','Lot: ')
+          @locationInput(@props.location.excess,'excess','Excess: ')
+          @locationInput(@props.location.over_cost,'over_cost','Over cost: ')
+          @locationInput(@props.location.promo,'promo','Promo: ')
+          @locationInput(@props.location.final_sale_price,'final_sale_price','final_sale_price: ')
         React.DOM.div
           className: 'card-action clearfix'
           React.DOM.a
@@ -69,4 +66,3 @@
             className: 'btn btn-default'
             onClick: @props.handleCancel
             'Cancel'
-

@@ -18,10 +18,9 @@
     @setState edit: false
     @setState nominalWork: nominal
   nomimalWorkElement: (value,label) ->
-    React.DOM.tr null,
-      React.DOM.td null,
-        label
-        value
+    React.DOM.div null,
+      label
+      value
 
   handleUpdate: (nominal) ->
     @setState edit: false
@@ -35,19 +34,16 @@
           className: 'table-title p-20 '
           @titleSelect(@state.nominalWork.type)
         React.DOM.div
-          className: 'table-responsive white'
-          React.DOM.table
-            className: 'table table-full table-full-small'
-            React.DOM.tbody null,
-              @nomimalWorkElement(@state.nominalWork.name,'Name: ')
-              @nomimalWorkElement(@state.nominalWork.address,'Address: ')
-              @nomimalWorkElement(@state.nominalWork.phone,'phone: ')
-              @nomimalWorkElement(@state.nominalWork.extension,'Extension: ')
-              @nomimalWorkElement(@state.nominalWork.zip_code,'Zip code: ')
-              @nomimalWorkElement(@state.nominalWork.position,'Position: ')
-              @nomimalWorkElement(@state.nominalWork.email,'Email: ')
-              @nomimalWorkElement(@state.nominalWork.seniority,'Seniority: ')
-              @nomimalWorkElement(@state.nominalWork.income,'Income: ')
+          className: 'datos white'
+          @nomimalWorkElement(@state.nominalWork.name,'Name: ')
+          @nomimalWorkElement(@state.nominalWork.address,'Address: ')
+          @nomimalWorkElement(@state.nominalWork.phone,'phone: ')
+          @nomimalWorkElement(@state.nominalWork.extension,'Extension: ')
+          @nomimalWorkElement(@state.nominalWork.zip_code,'Zip code: ')
+          @nomimalWorkElement(@state.nominalWork.position,'Position: ')
+          @nomimalWorkElement(@state.nominalWork.email,'Email: ')
+          @nomimalWorkElement(@state.nominalWork.seniority,'Seniority: ')
+          @nomimalWorkElement(@state.nominalWork.income,'Income: ')
         React.DOM.div
           className: 'card-action clearfix'
           React.DOM.a

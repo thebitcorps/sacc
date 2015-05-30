@@ -20,12 +20,6 @@
 //= require components
 //= require_tree .
 
-function keyUpFunction()
-{
-     $('#clients_search').submit();
-     return true;
-}
-
 
 // function dismiss(){
 //     $('#notice').remove();
