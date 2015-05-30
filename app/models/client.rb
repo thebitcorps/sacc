@@ -49,6 +49,9 @@ class Client < ActiveRecord::Base
   def documentize
     if dossier.nil?
       create_dossier
+      dossier.create_general_check_list
+      dossier.create_location_information
+      dossier.create_general_spouse_check_list if married?
     else
       raise "Already has Dossier" # incomplete error, this has to be catched on the controller
     end

@@ -1,0 +1,2 @@
+module LocationInformationHelper
+end

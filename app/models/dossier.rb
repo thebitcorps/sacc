@@ -4,4 +4,5 @@ class Dossier < ActiveRecord::Base
   has_one :spouse_work_record, dependent: :destroy
   has_one :location_information, dependent: :destroy
   has_many :documents
+
 end
