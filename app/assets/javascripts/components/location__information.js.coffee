@@ -16,33 +16,39 @@
     else
       @showInfo()
   locationInfoDiv: (value,label) ->
-      React.DOM.li {className: 'list-group-item'},
-        React.DOM.div
+      React.DOM.tr null,
+        React.DOM.td null,
           label
-        value
+          value
   showInfo: ->
     React.DOM.div
       className: 'locationInfo'
       React.DOM.div
-        className: 'card'
+        className: 'card z-depth-3'
         React.DOM.h2
-          className: 'title'
+          className: 'table-title p-20 '
           'Location info'
-        React.DOM.ul {className: 'list-group'},
-          @locationInfoDiv(@state.locationInfo.pattern,'Pattern: ')
-          @locationInfoDiv(@state.locationInfo.interior,'Interior: ')
-          @locationInfoDiv(@state.locationInfo.sale_price,'Saleprice: ')
-          @locationInfoDiv(@state.locationInfo.land,'Land: ')
-          @locationInfoDiv(@state.locationInfo.construction_size,'Contruccion size: ')
-          @locationInfoDiv(@state.locationInfo.lot,'lot: ')
-          @locationInfoDiv(@state.locationInfo.excess,'Excess: ')
-          @locationInfoDiv(@state.locationInfo.over_cost,'Over cost: ')
-          @locationInfoDiv(@state.locationInfo.promo,'Promo: ')
-          @locationInfoDiv(@state.locationInfo.final_sale_price,'FInal price: ')
-        React.DOM.a
-          className: 'btn btn-warning'
-          onClick: @handleToggle
-          'Edit'
+        React.DOM.div
+          className: 'table-responsive white'
+          React.DOM.table
+            className: 'table table-full table-full-small'
+            React.DOM.tbody null,
+              @locationInfoDiv(@state.locationInfo.pattern,'Pattern: ')
+              @locationInfoDiv(@state.locationInfo.interior,'Interior: ')
+              @locationInfoDiv(@state.locationInfo.sale_price,'Saleprice: ')
+              @locationInfoDiv(@state.locationInfo.land,'Land: ')
+              @locationInfoDiv(@state.locationInfo.construction_size,'Contruccion size: ')
+              @locationInfoDiv(@state.locationInfo.lot,'lot: ')
+              @locationInfoDiv(@state.locationInfo.excess,'Excess: ')
+              @locationInfoDiv(@state.locationInfo.over_cost,'Over cost: ')
+              @locationInfoDiv(@state.locationInfo.promo,'Promo: ')
+              @locationInfoDiv(@state.locationInfo.final_sale_price,'FInal price: ')
+        React.DOM.div
+          className: 'card-action clearfix'
+          React.DOM.a
+            className: 'btn btn-warning'
+            onClick: @handleToggle
+            'Edit'
 
 
 
