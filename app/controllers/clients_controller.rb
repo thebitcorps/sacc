@@ -34,6 +34,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
+      @client.documentize
       redirect_to @client, notice: 'Client was successfully updated.'
     else
       render :edit
@@ -52,7 +53,7 @@ class ClientsController < ApplicationController
 
     def client_params
       params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender, :marital_status,
-                                      phones_attributes: [:number, :kind, :available_from, :available_to])
+                                      phones_attributes: [:id, :number, :kind, :available_from, :available_to])
     end
 
     def sort_column

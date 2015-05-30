@@ -50,11 +50,14 @@ class Client < ActiveRecord::Base
     if dossier.nil?
       create_dossier
       dossier.create_location_information
-      dossier.create_spouse_work_record if married?
       dossier.create_nominal_work_record
-    else
-      raise "Already has Dossier" # incomplete error, this has to be catched on the controller
     end
+    if married?
+      dossier.create_spouse_work_record
+    else
+      dossier.spouse_work_record.destroy if dossier.spouse_work_record
+    end
+      
   end
 
 private
