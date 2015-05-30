@@ -26,12 +26,16 @@
   locationInput: (defaultV,reference,label) ->
     React.DOM.tr null,
       React.DOM.td
-        label
-        React.DOM.input
-          className: 'form-control f-inline'
-          type: 'text'
-          defaultValue: defaultV
-          ref: reference
+        React.DOM.div
+          className: 'input-group'
+          React.DOM.span
+            className: 'input-group-addon'
+            label
+          React.DOM.input
+            className: 'form-control'
+            type: 'text'
+            defaultValue: defaultV
+            ref: reference
   render: ->
     React.DOM.div
       className: 'locationInfo'
