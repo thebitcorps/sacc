@@ -10,6 +10,8 @@ class Appointment < ActiveRecord::Base
   scope :past_date, ->(date) { where("date < ?", date) }
 
   # Just an idea Jams
+  # here we need to catch and exception in there or
+  # somthing is wrong return 500 when there are no upcoming
   def self.upcoming_from(user_id, date)
     where(user_id: user_id).future_date(date).order(:date)
   end

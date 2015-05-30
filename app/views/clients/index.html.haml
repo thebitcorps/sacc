@@ -7,7 +7,7 @@
     .col-md-6
       .table-search
         / correct the on key up funtion focus
-        = form_tag clients_path, method: 'get', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control' do
+        = form_tag clients_path, method: 'get', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control'   do
           = search_field_tag :search, params[:search], autofocus: true, onkeyup: 'keyUpFunction()', class: 'form-control', placeholder: 'Search'
 
   .table-responsive.white

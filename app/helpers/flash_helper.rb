@@ -13,14 +13,13 @@ module FlashHelper
       type = :danger  if type == :error
       next unless ALERT_TYPES.include?(type)
 
-      color = type == :success ? 'green' : 'red'
       tag_class = options.extract!(:class)[:class]
 
       tag_options = {
-        class: "alert fade in alert-#{type} #{tag_class} card-panel #{color} lighten-5 z-depth-1 #{color}-text  text-lighten-2"
+        class: "alert alert-dismissible alert-#{type}"
       }.merge(options)
 
-      close_button = content_tag(:button, raw("&times;"), class: "close right", onclick: "dismiss()")
+      close_button = content_tag(:button, raw("&times;"),type: 'button', class: "close", "data-dismiss" => 'alert')
 
 
       Array(message).each do |msg|

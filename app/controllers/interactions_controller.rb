@@ -38,7 +38,7 @@ class InteractionsController < ApplicationController
 
   def destroy
     @interaction.destroy
-    redirect_to @client, notice: 'Interaction was successfully destroyed.'
+    redirect_to :back, notice: 'Interaction was successfully destroyed.'
   end
 
   private

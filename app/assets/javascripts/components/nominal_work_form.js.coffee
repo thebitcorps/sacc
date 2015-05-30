@@ -15,16 +15,13 @@
   nominalInput: (defaultV,reference,label) ->
     React.DOM.tr null,
       React.DOM.td
-        React.DOM.div
-          className: 'input-group'
-          React.DOM.span
-            className: 'input-group-addon'
-            label
-          React.DOM.input
-            className: 'form-control'
-            type: 'text'
-            defaultValue: defaultV
-            ref: reference
+        label
+      React.DOM.td
+        React.DOM.input
+          className: 'form-control'
+          type: 'text'
+          defaultValue: defaultV
+          ref: reference
 
   handleSubmit: (e) ->
     e.preventDefault()
