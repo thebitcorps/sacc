@@ -20,6 +20,6 @@ private
   end
 
   def location_params
-    params.require(:location_information).permit(:pattern, :interior, :sale_price, :land, :final_sale_price, :lot, :excess, :over_cost, :promo, :final_sale_price)
+    params.require(:location_information).permit(:pattern, :interior, :sale_price,:construction_size, :land, :final_sale_price, :lot, :excess, :over_cost, :promo, :final_sale_price)
   end
 end
