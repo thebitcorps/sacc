@@ -11,18 +11,3 @@
             %th Actions
           = render partial: 'clients/client', collection: @my_clients, client: :client
         = paginate @my_clients
-      .appointments
-        %ul.tabs
-          %li.tab
-            %a{:href => "#test1",class: 'active'} Today
-          %li.tab
-            %a{:href => "#test2"} All
-        #test1
-          = render partial: 'appointments/appointment', collection: @today_appointments, as: :appointment
-        #test2
-          - current_user.appointments.each do |appointment| # this scope can be done elsewhere
-            = render 'appointments/appointment', appointment: appointment
-
-
-
-

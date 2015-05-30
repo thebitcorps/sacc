@@ -16,9 +16,15 @@
   .form-group
     = f.label :marital_status, class: 'control-label'
     = f.input :marital_status, label: false, collection: Client::MARITAL_STATUS
-  .form-group
-    = f.label :spouse, class: 'control-label'
-    = f.input :spouse, label: false, class: 'form-control'
+  #spuse-group
+    .form-group
+      = f.label :spouse, class: 'control-label'
+      = f.input :spouse, label: false, class: 'form-control'
+    .form-group
+      = f.label :spouse_works, class: 'control-label'
+      .checkbox
+        = f.input :spouse_works, label: false
+      
   .form-group
     = f.label :birthdate, class: 'control-label'
     = f.input :birthdate, label: false,order: [:day,:month, :year]
