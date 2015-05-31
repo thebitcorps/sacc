@@ -12,8 +12,8 @@ class Appointment < ActiveRecord::Base
   # Just an idea Jams
   # here we need to catch and exception in there or
   # somthing is wrong return 500 when there are no upcoming
-  def self.upcoming_from(user_id, date)
-    where(user_id: user_id).future_date(date).order(:date)
+  def self.upcoming_from(user_id, date=Date.today)
+    where( "date > ? and user_id = ?" ,Date.today, user_id ).order('date')
   end
 
   def self.type_list

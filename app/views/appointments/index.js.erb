@@ -1,1 +1,1 @@
-$("#appointments").html("<%= j(render("appointments")) %>");
+$("#appointments").html("<%= j((render partial: 'appointments',locals: { appointments: @appointments})) %>");
