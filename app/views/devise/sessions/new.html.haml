@@ -1,6 +1,6 @@
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-floating ng-pristine ng-valid'}) do |f|
-  = f.input :email, required: true, autofocus: true, wrapper: 'anim_input', required: false
-  = f.input :password, required: true, wrapper: 'anim_input', required: false
+  = f.input :email, required: true, autofocus: true, wrapper: :material_input, required: false
+  = f.input :password, required: true, wrapper: :material_input, required: false
   = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
   .card-action.clearfix
     .pull-right
