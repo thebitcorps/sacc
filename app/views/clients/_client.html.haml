@@ -1,5 +1,5 @@
 %tr
   %td= link_to client.fullname, client
-  %td= link_to (1..6).to_a.sample, nil # faking interactions and appointments
-  %td= link_to (1..6).to_a.sample, nil
+  %td= link_to client.interactions.length, nil # faking interactions and appointments
+  %td= link_to client.appointments.length, nil
   %td= link_to 'message', nil, class: 'btn'

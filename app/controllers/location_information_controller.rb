@@ -1,4 +1,5 @@
 class LocationInformationController < ApplicationController
+  before_filter :authenticate_user!
   skip_before_filter  :verify_authenticity_token
   before_filter :set_location, only: [:update]
 
