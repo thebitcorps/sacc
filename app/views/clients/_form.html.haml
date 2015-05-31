@@ -12,7 +12,7 @@
     = f.input :maternal_lastname, label: false, class: 'form-control'
   .form-group
     = f.label :gender, class: 'control-label'
-    = f.input :gender, as: :select, label: false, collection: ApplicationHelper.get_gender_dropdown
+    = f.input :gender, as: :radio_buttons, label: false, collection: Client::GENDER
   .form-group
     = f.label :marital_status, class: 'control-label'
     = f.input :marital_status, label: false, collection: Client::MARITAL_STATUS
@@ -24,7 +24,13 @@
       = f.label :spouse_works, class: 'control-label'
       .checkbox
         = f.input :spouse_works, label: false
-      
+  .form-group
+    = f.label :credit_type, class: 'control-label'
+    = f.input :credit_type, label: false, collection: Client::CREDIT_TYPE
+  #credit-group
+    .form-group
+      = f.label :fiscal_entity, class: 'control-label'
+      = f.input :fiscal_entity, label: false, collection: Client::FISCAL_ENTITY
   .form-group
     = f.label :birthdate, class: 'control-label'
     = f.input :birthdate, label: false,order: [:day,:month, :year]
