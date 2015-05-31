@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require cocoon
+//= require angular.min
 //= require materialism.min
 //= require vendors.min
+//= require cocoon
 //= require react
 //= require react_ujs
 //= require components

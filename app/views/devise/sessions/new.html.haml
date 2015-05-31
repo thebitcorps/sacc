@@ -1,11 +1,7 @@
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-floating'}) do |f|
-  .form-group
-    / # = f.label :email, class: 'control-label'
-    = f.input :email, required: true, autofocus: true, input_html: {class: 'form-control'}
-  .form-group
-    = f.input :password, required: true, input_html: {class: 'form-control'}
-  .form-group
-    = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-floating ng-pristine ng-valid'}) do |f|
+  = f.input :email, required: true, autofocus: true, wrapper: 'anim_input', required: false
+  = f.input :password, required: true, wrapper: 'anim_input', required: false
+  = f.input :remember_me, as: :boolean, wrapper: :checkbox if devise_mapping.rememberable?
   .card-action.clearfix
     .pull-right
       = f.submit "Log in", class: 'btn btn-link black-text'

@@ -45,10 +45,10 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :checkbox, tag: :div, class: "checkbox", error_class: "has-error" do |b|
+  config.wrappers :checkbox, tag: :div, class: "form-group", error_class: "has-error" do |b|
     b.use :html5
-    b.wrapper tag: :p do |ba|
-      ba.use :input, class: :checkbox
+    b.wrapper tag: :div, class: 'checkbox' do |ba|
+      ba.use :input
       ba.use :label_text
     end
 
@@ -60,6 +60,16 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.use :label_input
+  end
+
+  config.wrappers :anim_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.optional :maxlength
+    b.optional :readonly
+    b.use :label, class: 'control-label', for: 'inputEmail'
+    b.use :input, class: 'form-control'
+    b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
+    b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end
 
 end
