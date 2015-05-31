@@ -1,11 +1,4 @@
 %h1 My appointments
-.bs-component.btn-block
-  .btn-group
-    = link_to 'Today', appointments_path( type_list: 'today'),class: ' btn btn-default  btn-lg',remote: true
-    = link_to 'upcoming', appointments_path(type_list: 'upcoming'),class: 'btn btn-default btn-lg',remote: true
-    = link_to 'previous', appointments_path(type_list: 'previous'),class: 'btn btn-default btn-lg',remote: true
-    = link_to 'All', appointments_path(type_list: 'all'),class: 'btn btn-default btn-lg',remote: true
-.card.z-depth-3
-  #appointments
-    = render 'appointments',appointments: @appointments
+= render partial: 'appointments',locals: { appointments: @appointments}
+
 %br

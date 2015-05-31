@@ -86,6 +86,17 @@ ActiveRecord::Schema.define(version: 20150530212034) do
 
   add_index "employment_records", ["dossier_id"], name: "index_employment_records_on_dossier_id", using: :btree
 
+  create_table "general_spouse_check_lists", force: :cascade do |t|
+    t.boolean  "marriage_certificate", default: false
+    t.boolean  "ife",                  default: false
+    t.boolean  "birth_certificate",    default: false
+    t.integer  "dossier_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "general_spouse_check_lists", ["dossier_id"], name: "index_general_spouse_check_lists_on_dossier_id", using: :btree
+
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
     t.date     "date"
@@ -189,6 +200,7 @@ ActiveRecord::Schema.define(version: 20150530212034) do
   add_foreign_key "documents", "dossiers"
   add_foreign_key "dossiers", "clients"
   add_foreign_key "employment_records", "dossiers"
+  add_foreign_key "general_spouse_check_lists", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
   add_foreign_key "location_informations", "dossiers"
