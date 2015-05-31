@@ -1,6 +1,6 @@
 .dashboard.gray.lighten-3.ng-scope
   .row.no-gutter
-    .col-sm-12.col-md-12.col-lg-9
+    .col-md-8
       %h2 My Dashboard
       .card.z-depth-3
         %table.table.striped.clients
@@ -11,3 +11,6 @@
             %th Actions
           = render partial: 'clients/client', collection: @my_clients, client: :client
         = paginate @my_clients
+    .col-md-4
+      %h2 My Appointments
+      = render partial: 'appointments/appointments',locals: { appointments: current_user.appointments}

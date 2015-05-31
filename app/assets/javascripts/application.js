@@ -21,12 +21,6 @@
 //= require components
 //= require_tree .
 
-
-// function dismiss(){
-//     $('#notice').remove();
-//     return false;
-// }
-
 $(document).on("page:load",function(){
     $('#phones').on("cocoon:after-insert", function() {
         $('select').material_select();
