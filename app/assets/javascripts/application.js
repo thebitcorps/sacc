@@ -20,12 +20,6 @@
 //= require components
 //= require_tree .
 
-function keyUpFunction()
-{
-     $('#clients_search').submit();
-     return true;
-}
-
 $(document).on("page:load",function(){
     $('#phones').on("cocoon:after-insert", function() {
         $('select').material_select();

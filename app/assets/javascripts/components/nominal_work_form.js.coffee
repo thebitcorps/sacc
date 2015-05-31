@@ -13,15 +13,16 @@
     else
       'Nominal Work record'
   nominalInput: (defaultV,reference,label) ->
-    React.DOM.tr null,
-      React.DOM.td
+    React.DOM.div
+      className: 'input-group'
+      React.DOM.span
+        className: 'input-group-addon'
         label
-      React.DOM.td
-        React.DOM.input
-          className: 'form-control'
-          type: 'text'
-          defaultValue: defaultV
-          ref: reference
+      React.DOM.input
+        className: 'form-control'
+        type: 'text'
+        defaultValue: defaultV
+        ref: reference
 
   handleSubmit: (e) ->
     e.preventDefault()
@@ -56,19 +57,16 @@
           className: 'table-title p-20 '
           @titleSelect(@props.nominalWork.type)
         React.DOM.div
-          className: 'table-responsive white'
-          React.DOM.table
-            className: 'table table-full table-full-small'
-            React.DOM.tbody null,
-              @nominalInput(@props.nominalWork.name,'name','Name: ')
-              @nominalInput(@props.nominalWork.address,'address','Address: ')
-              @nominalInput(@props.nominalWork.phone,'phone','Phone: ')
-              @nominalInput(@props.nominalWork.extension,'extension','Extension: ')
-              @nominalInput(@props.nominalWork.zip_code,'zip_code','Zipcode: ')
-              @nominalInput(@props.nominalWork.position,'position','Position: ')
-              @nominalInput(@props.nominalWork.email,'email','Email: ')
-              @nominalInput(@props.nominalWork.seniority,'seniority','Senority: ')
-              @nominalInput(@props.nominalWork.income,'income','Income: ')
+          className: 'campos white'
+          @nominalInput(@props.nominalWork.name,'name','Name: ')
+          @nominalInput(@props.nominalWork.address,'address','Address: ')
+          @nominalInput(@props.nominalWork.phone,'phone','Phone: ')
+          @nominalInput(@props.nominalWork.extension,'extension','Extension: ')
+          @nominalInput(@props.nominalWork.zip_code,'zip_code','Zipcode: ')
+          @nominalInput(@props.nominalWork.position,'position','Position: ')
+          @nominalInput(@props.nominalWork.email,'email','Email: ')
+          @nominalInput(@props.nominalWork.seniority,'seniority','Senority: ')
+          @nominalInput(@props.nominalWork.income,'income','Income: ')
         React.DOM.div
           className: 'card-action clearfix'
           React.DOM.a

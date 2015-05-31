@@ -3,8 +3,11 @@ class Client < ActiveRecord::Base
   # spouse, birthdate, mail, income, notes, workplace, 
   # current_salesman_id, created_at, updated_at, 
   # marital_status, gender, appointments_count
-  MARITAL_STATUS = %w(single married widowed divorced)
-  belongs_to :salesman, class_name: "User", foreign_key: "current_salesman_id"
+  GENDER = [['Hombre', true], ['Mujer', false]]
+  MARITAL_STATUS = [['Soltero', 'single'], ['Casado', 'married'], ['Viudo', 'widowed'], ['Divorciado', 'divorced']]
+  CREDIT_TYPE = [['Credito Bancaro', 'bank'], ['Credito Infonavit', 'infonavit'], ['Credito FOVISSSTE', 'fovissste']]
+  FISCAL_ENTITY = [['Persona Asalariada', 'wage'], ['Persona Fisica', 'naural'], ['Persona Moral', 'legal']]
+  belongs_to :salesman, class_name: "User",   foreign_key: "current_salesman_id"
   has_many :appointments, class_name: "Appointment", dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
