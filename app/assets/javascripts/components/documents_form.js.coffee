@@ -17,6 +17,7 @@
       React.DOM.label
         React.DOM.input
           type: 'checkbox'
+          ref: 'doc' + documentCheck.id
           defaultChecked: @getCheck(documentCheck.check, documentCheck.id)
         documentCheck.title
 
@@ -27,7 +28,7 @@
     React.DOM.div
       className: 'locationInfo'
       React.DOM.div
-        className: 'card z-depth-3'
+        className: 'card z-depth-3 well white'
         React.DOM.h2
           className: 'table-title p-20'
           'Documents'
@@ -45,7 +46,6 @@
             className: 'btn btn-default'
             onClick: @props.handleCancel
             'Cancel'
-
 
   render: ->
     React.DOM.div

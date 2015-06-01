@@ -23,8 +23,10 @@ class InteractionsController < ApplicationController
     if @interaction.save
       redirect_to @interaction, notice: 'Interaction was successfully created.'
     else
+      @client = Client.find params[:interaction][:client_id]
       render :new
     end
+
   end
 
   def update
@@ -32,6 +34,7 @@ class InteractionsController < ApplicationController
       @interaction.user = current_user
       redirect_to @client, notice: 'Interaction was successfully updated.'
     else
+      @client = Client.find params[:interaction][:client_id]
       render :edit
     end
   end

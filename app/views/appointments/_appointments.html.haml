@@ -1,7 +1,7 @@
 
 #appointments
   .bs-component.btn-block
-    .btn-group
+    .btn-group.z-depth-3
       = link_to 'Today', appointments_path( type_list: 'today'),class: ' btn btn-default',remote: true
       = link_to 'upcoming', appointments_path(type_list: 'upcoming'),class: 'btn btn-default',remote: true
       = link_to 'previous', appointments_path(type_list: 'previous'),class: 'btn btn-default ',remote: true

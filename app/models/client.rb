@@ -85,6 +85,10 @@ class Client < ActiveRecord::Base
     end
   end
 
+  def notes
+    notes  = appointments.each
+  end
+
 private
 
   def titleize_fields
