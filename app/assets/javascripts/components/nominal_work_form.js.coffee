@@ -54,7 +54,7 @@
       React.DOM.div
         className: 'card z-depth-3'
         React.DOM.h2
-          className: 'table-title p-20 '
+          className: 'table-title p-20'
           @titleSelect(@props.nominalWork.type)
         React.DOM.div
           className: 'campos white'

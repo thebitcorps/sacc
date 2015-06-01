@@ -7,7 +7,6 @@ class NominalWorkRecordController < ApplicationController
     else
       render json: @nominalWork.errors , status: :unprocessable_entity
     end
-
   end
 
   private
