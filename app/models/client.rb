@@ -12,6 +12,7 @@ class Client < ActiveRecord::Base
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_one :dossier, dependent: :destroy
+  scope :today, -> { where("created_at = ?", Date.today) }
 
   #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']
   #validates :credit_type, inclusion: ['bank', 'infonavit', 'fovissste']
@@ -25,12 +26,16 @@ class Client < ActiveRecord::Base
     [name, paternal_lastname, maternal_lastname].join(" ")
   end
 
-  def self.searcheable_fields #not a big fan of this name, maybe something like searcheable_fields ?
+  def self.searcheable_fields
     %w[name paternal_lastname maternal_lastname spouse mail]
   end
 
   def self.my_clients(salesman)
-    where(salesman: salesman)
+    where(salesman: salesman).order('created_at DESC')
+  end
+
+  def self.created_today(salesman)
+    my_clients(salesman).today
   end
 
   def self.search(search, column)

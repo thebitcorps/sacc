@@ -1,9 +1,9 @@
 class Appointment < ActiveRecord::Base
   STATUS = %w(Next Successful Rescheduled Cancelled)
 
-  belongs_to :client
+  belongs_to :client, counter_cache: true
   belongs_to :user #, counter_cache: true
-  validates :date,:time, presence: true
+  validates :date, :time, presence: true
 
   scope :for_today, -> { where("date = ?", Date.today) }
   scope :future_date, ->(date) { where("date >= ?", date) }

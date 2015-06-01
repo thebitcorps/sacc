@@ -1,4 +1,5 @@
 class SpouseWorkRecordController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_nominal_work, only: [:update]
   skip_before_filter  :verify_authenticity_token
   def update
