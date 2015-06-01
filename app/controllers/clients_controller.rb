@@ -34,6 +34,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
+      jghjgh
       @client.update_documents
       redirect_to @client, notice: 'Client was successfully updated.'
     else

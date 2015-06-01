@@ -2,6 +2,7 @@
   getInitialState: ->
     documents: @props.data
     edit: false
+    selected: 'nu'
   getDefaultProps: ->
     documents: []
 
@@ -11,13 +12,19 @@
       React.DOM.label
         React.DOM.input
           type: 'checkbox'
+          id: 'doc' + documentCheck.id
           defaultChecked: documentCheck.check
-          onClick: @handleToggle
+          onClick: @handleToggle.bind(this, documentCheck.id)
         documentCheck.title
 
-  handleToggle: (e) ->
+  handleToggle: (d_id, e) ->
     e.preventDefault()
-    @setState edit: !@state.edit
+    @state.selected = d_id
+    @setState edit: true
+
+  handleCancel: (e) ->
+    e.preventDefault()
+    @setState edit: false
 
   showDocuments: ->
     React.DOM.div
@@ -31,6 +38,7 @@
           className: 'card-content'
           for doc in @state.documents
             @documentCheck(doc)
+          @state.selected
 
   render: ->
     React.DOM.div
@@ -38,6 +46,6 @@
       React.DOM.div
         className: 'card'
         if @state.edit
-          React.createElement DocumentsForm, documents: @state.documents, handleCancel: @handleToggle, handleUpdate: @handleUpdate
+          React.createElement DocumentsForm, selected: @state.selected, documents: @state.documents, handleCancel: @handleCancel, handleUpdate: @handleUpdate
         else
           @showDocuments()

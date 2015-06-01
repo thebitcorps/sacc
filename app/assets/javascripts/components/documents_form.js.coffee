@@ -5,13 +5,19 @@
   getDefaultProps: ->
     locationInfo: []
 
+  getCheck: (original, d_id) ->
+    if d_id == @props.selected
+      !original
+    else
+      original
+
   documentCheck: (documentCheck) ->
     React.DOM.div
       className: 'checkbox'
       React.DOM.label
         React.DOM.input
           type: 'checkbox'
-          defaultChecked: documentCheck.check
+          defaultChecked: @getCheck(documentCheck.check, documentCheck.id)
         documentCheck.title
 
   handleSubmit: (e) ->
@@ -29,13 +35,6 @@
           className: 'card-content'
           for doc in @state.documents
             @documentCheck(doc)
-
-  render: ->
-    React.DOM.div
-      className: 'documents'
-      React.DOM.div
-        className: 'card'
-        @showDocuments()
         React.DOM.div
           className: 'card-action clearfix'
           React.DOM.a
@@ -46,3 +45,11 @@
             className: 'btn btn-default'
             onClick: @props.handleCancel
             'Cancel'
+
+
+  render: ->
+    React.DOM.div
+      className: 'documents'
+      React.DOM.div
+        className: 'card'
+        @showDocuments()
