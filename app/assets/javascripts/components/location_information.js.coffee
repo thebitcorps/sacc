@@ -1,6 +1,6 @@
 @LocationInfo = React.createClass
   getInitialState: ->
-    locationInfo: @props.data.location_information
+    locationInfo: @props.data
     edit: false
   getDefaultProps: ->
     locationInfo: []

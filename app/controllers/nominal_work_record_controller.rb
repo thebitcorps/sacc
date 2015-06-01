@@ -2,6 +2,7 @@ class NominalWorkRecordController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_nominal_work, only: [:update]
   skip_before_filter  :verify_authenticity_token
+
   def update
     if @nominalWork.update nominal_work_record_params
       render json: @nominalWork.to_json
@@ -16,6 +17,6 @@ class NominalWorkRecordController < ApplicationController
   end
 
   def nominal_work_record_params
-    params.require(:nominal_work_record).permit(:name,:phone,:address,:extension,:zip_code,:position,:email,:seniority,:income,)
+    params.require(:nominal_work_record).permit(:name, :phone, :address, :extension, :zip_code, :position, :email, :seniority, :income)
   end
 end

@@ -77,3 +77,4 @@
             className: 'btn btn-default'
             onClick: @props.handleCancel
             'Cancel'
+       @refs.name

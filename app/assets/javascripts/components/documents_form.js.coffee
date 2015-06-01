@@ -17,6 +17,7 @@
       React.DOM.label
         React.DOM.input
           type: 'checkbox'
+          ref: 'doc' + documentCheck.id
           defaultChecked: @getCheck(documentCheck.check, documentCheck.id)
         documentCheck.title
 
@@ -45,7 +46,6 @@
             className: 'btn btn-default'
             onClick: @props.handleCancel
             'Cancel'
-
 
   render: ->
     React.DOM.div
