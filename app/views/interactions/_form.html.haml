@@ -9,7 +9,7 @@
     = f.input :mood
     = f.input :interest
     %ui-select{ng: {model: "person.selected"}, theme: "select2", title: true} # yikes! bug found, need to fix ASAP
-    = f.input :notes, input_html: { class: 'materialize-textarea' }
+    = f.input :notes, wrapper: :material_text
 
     = f.input :client_id,as: :hidden, input_html: { value: params[:client_id] }
   .form-actions

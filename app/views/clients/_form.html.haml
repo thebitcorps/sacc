@@ -1,50 +1,24 @@
 = simple_form_for((@client), html: {class: "form-floating ng-pristine ng-valid"}) do |f|
   = f.error_notification
 
-  .form-group
-    = f.label :name, class: 'control-label'
-    = f.input :name, label: false, class: 'form-control'
-  .form-group
-    = f.label :paternal_lastname, class: 'control-label'
-    = f.input :paternal_lastname, label: false, class: 'form-control'
-  .form-group
-    = f.label :maternal_lastname, class: 'control-label'
-    = f.input :maternal_lastname, label: false, class: 'form-control'
-  .form-group
-    = f.label :gender, class: 'control-label'
-    = f.input :gender, as: :radio_buttons, label: false, collection: Client::GENDER
-  .form-group
-    = f.label :marital_status, class: 'control-label'
-    = f.input :marital_status, label: false, collection: Client::MARITAL_STATUS
-  #spuse-group
-    .form-group
-      = f.label :spouse, class: 'control-label'
-      = f.input :spouse, label: false, class: 'form-control'
-    .form-group
-      = f.label :spouse_works, class: 'control-label'
-      .checkbox
-        = f.input :spouse_works, label: false
-  .form-group
-    = f.label :credit_type, class: 'control-label'
-    = f.input :credit_type, label: false, collection: Client::CREDIT_TYPE
+  = f.input :name, wrapper: :material_input
+  = f.input :paternal_lastname, wrapper: :material_input
+  = f.input :maternal_lastname, wrapper: :material_input
+  = f.input :gender, as: :radio_buttons, collection: Client::GENDER
+  = f.input :marital_status, collection: Client::MARITAL_STATUS
+  #spouse-group
+    = f.input :spouse, wrapper: :material_input
+    = f.input :spouse_works, as: :boolean, wrapper: :checkbox
+    = f.input :credit_type, collection: Client::CREDIT_TYPE
   #credit-group
-    .form-group
-      = f.label :fiscal_entity, class: 'control-label'
-      = f.input :fiscal_entity, label: false, collection: Client::FISCAL_ENTITY
-  .form-group
-    = f.label :birthdate, class: 'control-label'
-    = f.input :birthdate, label: false,order: [:day,:month, :year]
-  .form-group
-    = f.label :mail, class: 'control-label'
-    = f.input :mail, label: false, class: 'form-control'
-  .form-group
-    = f.label :notes, class: 'control-label'
-    = f.input :notes, label: false, class: 'form-control vertical'
-    #phones
-      %h4 Phones
-      =  f.simple_fields_for :phones do |phone|
-        = render 'phone_fields', f: phone
-      .links{style: 'display: inline;'}
-        = link_to_add_association 'Add phone', f, :phones, class: 'btn'
-  .form-actions
-    = f.button :submit, class: 'btn'
+    = f.input :fiscal_entity, collection: Client::FISCAL_ENTITY
+    = f.input :birthdate, order: [:day, :month, :year]
+    = f.input :mail, wrapper: :material_input
+    = f.input :notes, wrapper: :material_text
+  #phones
+    %h4 Phones
+    =  f.simple_fields_for :phones do |phone|
+      = render 'phone_fields', f: phone
+    .links{style: 'display: inline;'}
+      = link_to_add_association 'Add phone', f, :phones, class: 'btn'
+  = f.button :submit, class: 'btn'

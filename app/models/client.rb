@@ -5,14 +5,16 @@ class Client < ActiveRecord::Base
   # marital_status, gender, appointments_count
   GENDER = [['Hombre', true], ['Mujer', false]]
   MARITAL_STATUS = [['Soltero', 'single'], ['Casado', 'married'], ['Viudo', 'widowed'], ['Divorciado', 'divorced']]
-  CREDIT_TYPE = [['Credito Bancaro', 'bank'], ['Credito Infonavit', 'infonavit'], ['Credito FOVISSSTE', 'fovissste']]
+  CREDIT_TYPE = [['Credito Bancario', 'bank'], ['Credito Infonavit', 'infonavit'], ['Credito FOVISSSTE', 'fovissste']]
   FISCAL_ENTITY = [['Persona Asalariada', 'wage'], ['Persona Fisica', 'natural'], ['Persona Moral', 'legal']]
-  belongs_to :salesman, class_name: "User",   foreign_key: "current_salesman_id"
+  belongs_to :salesman, class_name: "User", foreign_key: "current_salesman_id"
   has_many :appointments, class_name: "Appointment", dependent: :destroy
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_one :dossier, dependent: :destroy
   scope :today, -> { where("created_at::date = ?", Date.today) }
+
+  validates :name, :paternal_lastname, :gender, presence: true
 
   #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']
   #validates :credit_type, inclusion: ['bank', 'infonavit', 'fovissste']
@@ -20,7 +22,7 @@ class Client < ActiveRecord::Base
 
   accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
 
-  before_save :titleize_fields
+  before_save :titleize_fields # before_validation?
 
   def fullname
     [name, paternal_lastname, maternal_lastname].join(" ")

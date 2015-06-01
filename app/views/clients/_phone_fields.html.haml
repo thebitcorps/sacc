@@ -1,7 +1,6 @@
-.nested-fields{style: 'display: inline;', class: 'floating-form'}
-  = f.label :number, class: 'control-label'
-  = f.input :number, label: false, class: 'form-control'
+.nested-fields
+  = f.input :number, wrapper: :material_input
   = f.input :kind, label: false, collection: Phone::KINDS
-  = f.input :available_from, label: false
-  = f.input :available_to, label: false
+  = f.input :available_from
+  = f.input :available_to
   = link_to_remove_association "Delete phone", f, {class: 'btn red darken-4'}

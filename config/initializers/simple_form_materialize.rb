@@ -72,4 +72,13 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end
 
+  config.wrappers :material_text, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.optional :maxlength
+    b.optional :readonly
+    b.use :label, class: 'control-label'
+    b.use :input, class: 'form-control vertical'
+    b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
+    b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
+  end
 end
