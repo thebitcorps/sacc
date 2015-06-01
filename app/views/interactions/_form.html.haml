@@ -8,7 +8,7 @@
     = f.input :time
     = f.input :mood
     = f.input :interest
-    %ui-select{ng: {model: "person.selected"}, theme: "select2", title: true}
+    %ui-select{ng: {model: "person.selected"}, theme: "select2", title: true} # yikes! bug found, need to fix ASAP
     = f.input :notes, input_html: { class: 'materialize-textarea' }
 
     = f.input :client_id,as: :hidden, input_html: { value: params[:client_id] }

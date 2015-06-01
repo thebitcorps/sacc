@@ -12,7 +12,7 @@ class Client < ActiveRecord::Base
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_one :dossier, dependent: :destroy
-  scope :today, -> { where("created_at = ?", Date.today) }
+  scope :today, -> { where("created_at::date = ?", Date.today) }
 
   #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']
   #validates :credit_type, inclusion: ['bank', 'infonavit', 'fovissste']

@@ -6,14 +6,14 @@ class Interaction < ActiveRecord::Base
   belongs_to :client, counter_cache: true
   validates :kind, presence: true, inclusion: KINDS
   validates :date, :time, :date, presence: true
-  scope :from_today, -> { where("created_at = ?", Date.today) }
+  scope :from_today, -> { where("created_at::date = ?", Date.today) }
 
   def self.my_interactions(salesman)
     where(user: salesman)
   end
 
   def self.created_today(salesman)
-    where(user: salesman).from_today
+    my_interactions(salesman).from_today
   end
 
   def kind_icon

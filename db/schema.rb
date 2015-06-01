@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150531231616) do
     t.integer  "appointments_count",  default: 0
   end
 
+  add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree
+
   create_table "documents", force: :cascade do |t|
     t.string   "title"
     t.string   "attatchment"
@@ -88,17 +90,6 @@ ActiveRecord::Schema.define(version: 20150531231616) do
 
   add_index "employment_records", ["dossier_id"], name: "index_employment_records_on_dossier_id", using: :btree
 
-  create_table "general_spouse_check_lists", force: :cascade do |t|
-    t.boolean  "marriage_certificate", default: false
-    t.boolean  "ife",                  default: false
-    t.boolean  "birth_certificate",    default: false
-    t.integer  "dossier_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-  end
-
-  add_index "general_spouse_check_lists", ["dossier_id"], name: "index_general_spouse_check_lists_on_dossier_id", using: :btree
-
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
     t.date     "date"
@@ -115,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150531231616) do
   end
 
   add_index "interactions", ["client_id"], name: "index_interactions_on_client_id", using: :btree
+  add_index "interactions", ["created_at"], name: "index_interactions_on_created_at", using: :btree
   add_index "interactions", ["user_id"], name: "index_interactions_on_user_id", using: :btree
 
   create_table "location_informations", force: :cascade do |t|
@@ -204,7 +196,6 @@ ActiveRecord::Schema.define(version: 20150531231616) do
   add_foreign_key "documents", "dossiers"
   add_foreign_key "dossiers", "clients"
   add_foreign_key "employment_records", "dossiers"
-  add_foreign_key "general_spouse_check_lists", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
   add_foreign_key "location_informations", "dossiers"

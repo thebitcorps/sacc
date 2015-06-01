@@ -16,5 +16,6 @@ class CreateClients < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :clients, :created_at
   end
 end
