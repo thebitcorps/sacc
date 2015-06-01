@@ -24,15 +24,16 @@
         @props.handleUpdate data
 
   locationInput: (defaultV,reference,label) ->
-    React.DOM.tr null,
-      React.DOM.td
+    React.DOM.div
+      className: 'input-group'
+      React.DOM.span
+        className: 'input-group-addon'
         label
-      React.DOM.td
-        React.DOM.input
-            className: 'form-control'
-            type: 'text'
-            defaultValue: defaultV
-            ref: reference
+      React.DOM.input
+        className: 'form-control'
+        type: 'text'
+        defaultValue: defaultV
+        ref: reference
 
   render: ->
     React.DOM.div
@@ -43,7 +44,7 @@
           className: 'table-title p-20'
           'Location info'
         React.DOM.div
-          className: 'yaya white'
+          className: 'well white'
           @locationInput(@props.location.pattern,'pattern','Pattern: ')
           @locationInput(@props.location.interior,'interior','Interior: ')
           @locationInput(@props.location.sale_price,'sale_price','Sale price: ')

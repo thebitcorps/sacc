@@ -28,7 +28,7 @@
           className: 'table-title p-20 '
           'Location info'
         React.DOM.div
-          className: 'campos white'
+          className: 'well white'
           @locationInfoDiv(@state.locationInfo.pattern,'Pattern: ')
           @locationInfoDiv(@state.locationInfo.interior,'Interior: ')
           @locationInfoDiv(@state.locationInfo.sale_price,'Saleprice: ')

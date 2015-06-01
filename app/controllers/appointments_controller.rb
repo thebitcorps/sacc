@@ -50,7 +50,7 @@ class AppointmentsController < ApplicationController
   private
     # validate that the params is one that matches the method in the model
     def sanitize_type_list
-      Appointment.type_list.include?(params[:type_list]) ? params[:type_list] : 'all'
+      Appointment.type_list.include?(params[:type_list]) ? params[:type_list] : 'today'
     end
 
     def set_appointment

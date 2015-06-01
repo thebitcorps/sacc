@@ -34,7 +34,7 @@
           className: 'table-title p-20 '
           @titleSelect(@state.nominalWork.type)
         React.DOM.div
-          className: 'datos white'
+          className: 'well white'
           @nomimalWorkElement(@state.nominalWork.name,'Name: ')
           @nomimalWorkElement(@state.nominalWork.address,'Address: ')
           @nomimalWorkElement(@state.nominalWork.phone,'phone: ')

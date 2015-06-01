@@ -57,7 +57,7 @@
           className: 'table-title p-20'
           @titleSelect(@props.nominalWork.type)
         React.DOM.div
-          className: 'campos white'
+          className: 'well white'
           @nominalInput(@props.nominalWork.name,'name','Name: ')
           @nominalInput(@props.nominalWork.address,'address','Address: ')
           @nominalInput(@props.nominalWork.phone,'phone','Phone: ')
