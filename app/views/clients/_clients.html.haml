@@ -1,7 +1,9 @@
 %tr
   %td= link_to salutation(client), client
-  %td= client.birthdate
+  %td= client.has_dossier? ? 'oui' : 'no'
   %td= client.mail
-  %td= client.notes
+  %td
+    - interactions_notes(client).each do |note|
+      %p= note
   %td= link_to 'Edit', edit_client_path(client), class: 'btn'
   %td= link_to 'Unprofile', nil, class: 'btn' # TODO, create method to change status

@@ -64,6 +64,10 @@ class Client < ActiveRecord::Base
     married? && spouse_works && credit_type == 'bank'
   end
 
+  def has_dossier?
+    !dossier.nil?
+  end
+
   def documentize
     if dossier.nil?
       create_dossier
@@ -85,9 +89,11 @@ class Client < ActiveRecord::Base
     end
   end
 
-  def notes
-    notes  = appointments.each
-  end
+  # a ver a ver, que pasa aqui? como que un metodo que se llama igual que un atributo?
+  # Llamaaaaaas, (con voz de Skineeeeeer)
+  # def notes
+  #   notes  = appointments.each
+  # end
 
 private
 
