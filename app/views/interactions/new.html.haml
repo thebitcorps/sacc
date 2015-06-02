@@ -1,5 +1,12 @@
-%h1="New interaction with #{@client.fullname}"
 
-= render 'form'
+%section.forms-basic
+  .page-header
+    %h1="New interaction with #{@client.fullname}"
+    %p.lead Please fill all the possible fields
+.row.m-b-40
+  .col-md-8
+    .well.white
+
+      = render 'form'
 
 = link_to 'Back', @client

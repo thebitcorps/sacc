@@ -89,12 +89,6 @@ class Client < ActiveRecord::Base
     end
   end
 
-  # a ver a ver, que pasa aqui? como que un metodo que se llama igual que un atributo?
-  # Llamaaaaaas, (con voz de Skineeeeeer)
-  # def notes
-  #   notes  = appointments.each
-  # end
-
 private
 
   def titleize_fields

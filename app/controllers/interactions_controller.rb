@@ -1,7 +1,7 @@
 class InteractionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_interaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_client, only: [:index, :edit, :update, :new]
+  before_action :set_client, only: [:index, :edit, :new]
 
   def index
     @interactions = @client.interactions
@@ -32,6 +32,7 @@ class InteractionsController < ApplicationController
   def update
     if @interaction.update(interaction_params)
       @interaction.user = current_user
+      @client = Client.find params[:interaction][:client_id]
       redirect_to @client, notice: 'Interaction was successfully updated.'
     else
       @client = Client.find params[:interaction][:client_id]

@@ -21,3 +21,13 @@ $(document).on "ready page:load", ->
     else
       $('#credit-group').hide()
 
+$(document).on "ready", ->
+  $('#clients_search').keyup (e) ->
+    params = $('#serch_input').val()
+    $.ajax
+      url: '/clients?search=' + params
+      dataType: 'script'
+
+
+
+
