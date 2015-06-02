@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :set_client,only: [ :new, :edit ]
+  before_action :set_client,only: [ :new, :edit , :client]
 
   def index
     # I think this scoping goes into the model :\
@@ -10,6 +10,10 @@ class AppointmentsController < ApplicationController
       format.html
       format.js { @appointments }
     end
+  end
+
+  def client
+    @appointments = @client.appointments
   end
 
   def show

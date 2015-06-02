@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :interactions
   resources :messages
-  resources :appointments
+  resources :appointments do
+    get 'client', on: :collection
+  end
   devise_for :users
   resources :users
   resources :clients
