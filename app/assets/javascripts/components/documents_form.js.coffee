@@ -1,6 +1,6 @@
 @DocumentsForm = React.createClass
   getInitialState: ->
-    documents: @props.documents
+    dossier: @props.dossier
 
   getDefaultProps: ->
     locationInfo: []
@@ -23,6 +23,23 @@
 
   handleSubmit: (e) ->
     e.preventDefault()
+    dossier_data = {}
+    dossier_data['documents_attributes'] = []
+    i = 0
+    for doc in @state.dossier.documents
+      dossier_data['documents_attributes'][i] = {}
+      dossier_data['documents_attributes'][i]['id'] = doc.id
+      dossier_data['documents_attributes'][i]['check'] = React.findDOMNode(@refs['doc' + doc.id]).checked
+      i++
+
+    $.ajax
+      method: 'PUT'
+      url: "/dossiers/#{ @props.dossier.id }"
+      dataType: 'JSON'
+      data:
+          dossier: dossier_data
+      success: (data) =>
+        @props.handleUpdate data
 
   showDocuments: ->
     React.DOM.div
@@ -34,7 +51,7 @@
           'Documents'
         React.DOM.div
           className: 'card-content'
-          for doc in @state.documents
+          for doc in @state.dossier.documents
             @documentCheck(doc)
         React.DOM.div
           className: 'card-action clearfix'
