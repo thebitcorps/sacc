@@ -1,10 +1,10 @@
 @Documents = React.createClass
   getInitialState: ->
-    documents: @props.data.documents
+    dossier: @props.data
     edit: false
     selected: 'nu'
   getDefaultProps: ->
-    documents: []
+    dossier: []
 
   documentCheck: (documentCheck) ->
     React.DOM.div
@@ -25,6 +25,10 @@
     e.preventDefault()
     @setState edit: false
 
+  handleUpdate: (data) ->
+    @state.dossier = data
+    @setState edit: false
+
   showDocuments: ->
     React.DOM.div
       className: 'locationInfo'
@@ -35,7 +39,7 @@
           'Documents'
         React.DOM.div
           className: 'card-content'
-          for doc in @state.documents
+          for doc in @state.dossier.documents
             @documentCheck(doc)
 
   render: ->
@@ -44,6 +48,6 @@
       React.DOM.div
         className: 'card'
         if @state.edit
-          React.createElement DocumentsForm, selected: @state.selected, documents: @state.documents, dossierID: @props.data.id, handleCancel: @handleCancel, handleUpdate: @handleUpdate
+          React.createElement DocumentsForm, selected: @state.selected, dossier: @state.dossier, handleCancel: @handleCancel, handleUpdate: @handleUpdate
         else
           @showDocuments()
