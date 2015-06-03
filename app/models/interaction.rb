@@ -1,7 +1,9 @@
 class Interaction < ActiveRecord::Base
   #we need to define the interaction types
+  # FOO = { phone: 'md-phone', module: 'md-business', house: 'md-people', other: 'md-phone' }
+
   KINDS = %w[Phone Module House Other]
-  KIND_ICON = {KINDS[0] => ' md-phone', KINDS[1]=> ' md-business',KINDS[2]=> ' md-people', KINDS[3] => ' md-phone' }
+  KIND_ICON = { KINDS[0] => 'md-phone', KINDS[1]=> ' md-business',KINDS[2]=> ' md-people', KINDS[3] => ' md-phone' }
   belongs_to :user
   belongs_to :client, counter_cache: true
   validates :kind, presence: true, inclusion: KINDS

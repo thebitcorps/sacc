@@ -1,0 +1,17 @@
+.card.z-depth-3
+  .card-content
+    %span.card-title.black-text
+      = @user.fullname
+    %p
+      %b Email:
+      = @user.email
+    %p
+      %b Cellphone:
+      = @user.cellphone
+    %p
+      %b Gender:
+      = @user.gender_displayname
+  .card-action
+    = link_to 'Edit', edit_user_path(@user)
+
+    = link_to 'Back', users_path

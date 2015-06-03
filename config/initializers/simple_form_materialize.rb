@@ -66,6 +66,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :maxlength
     b.optional :readonly
+    b.optional :size
     b.use :label, class: 'control-label'
     b.use :input, class: 'form-control'
     b.use :error, wrap_with: { tag: 'span', class: 'error-block' }

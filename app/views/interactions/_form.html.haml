@@ -1,16 +1,17 @@
 = simple_form_for(@interaction, html: {class: "form-floating ng-pristine ng-valid"}) do |f|
   = f.error_notification
-
   .form-inputs
-
-    = f.input :kind, wrapper: :material_input , collection: Interaction::KINDS
+    / = f.input :kind, wrapper: :material_input , collection: Interaction::KINDS
     = f.input :date, wrapper: :material_input, as: :string, input_html: { class: :datepicker }
     = f.input :time, wrapper: :material_input
     = f.input :mood, wrapper: :material_input
     = f.input :interest, wrapper: :material_input
-    %ui-select{ng: {model: "person.selected"}, theme: "select2", title: true} # yikes! bug found, need to fix ASAP
+    .form-group
+      %ui-select{ng: { model: 'selected_kind.selected' }, theme: "select2", title: "Kind", 'search-enabled' => 'false'}
+        %ui-select-match{placeholder: "Select kind"} {{$select.selected.name}}
+        %ui-select-choices{ repeat: "item in people"}
+          %div{"ng-bind-html" => "item.name" }
     = f.input :notes, wrapper: :material_text
-
     = f.input :client_id, wrapper: :material_input,as: :hidden, input_html: { value: params[:client_id] }
   .form-actions
     = f.button :submit
