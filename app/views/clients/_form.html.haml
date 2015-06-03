@@ -1,27 +1,48 @@
 = simple_form_for((@client), html: {class: "form-floating ng-pristine ng-valid"}) do |f|
   = f.error_notification
 
-  .general
-    = f.input :name, wrapper: :material_input
-    = f.input :paternal_lastname, wrapper: :material_input
-    = f.input :maternal_lastname, wrapper: :material_input
-    = f.input :gender, as: :radio_buttons, collection: Client::GENDER
-    = f.input :birthdate #, order: [:day, :month, :year]
-    = f.input :marital_status, collection: Client::MARITAL_STATUS
-    #spouse-group
-      = f.input :spouse, wrapper: :material_input
-      = f.input :spouse_works, as: :boolean, wrapper: :checkbox
-    = f.input :credit_type, collection: Client::CREDIT_TYPE
-    #credit-group
-      = f.input :fiscal_entity, collection: Client::FISCAL_ENTITY
-    = f.input :mail, wrapper: :material_input
-    = f.input :notes, wrapper: :material_text
+  .row.m-b-40
+    .col-md-8
+      .well.white
+        .general
+          .page-header
+            %h1 General info
+          = f.input :name, wrapper: :material_input
+          = f.input :paternal_lastname, wrapper: :material_input
+          = f.input :maternal_lastname, wrapper: :material_input
+          = f.input :gender, as: :radio_buttons, collection: Client::GENDER
+          = f.input :birthdate #, order: [:day, :month, :year]
+          = f.input :mail, wrapper: :material_input
+          = f.input :notes, wrapper: :material_text
+    .col-md-4
+      .well.white
+        #phones
+          .page-header
+            %h1 Phones
+          =  f.simple_fields_for :phones do |phone|
+            = render 'phone_fields', f: phone
+          .links{style: 'display: inline;'}
+            = link_to_add_association 'Add phone', f, :phones, class: 'btn'
 
 
-  #phones
-    %h4 Phones
-    =  f.simple_fields_for :phones do |phone|
-      = render 'phone_fields', f: phone
-    .links{style: 'display: inline;'}
-      = link_to_add_association 'Add phone', f, :phones, class: 'btn'
+    .col-md-8
+      .well.white
+        .page-header
+          %h1 Marital Info
+        = f.input :marital_status, collection: Client::MARITAL_STATUS
+        #spouse-group
+          = f.input :spouse, wrapper: :material_input
+          = f.input :spouse_works, as: :boolean, wrapper: :checkbox
+
+
+    .col-md-8
+      .well.white
+        .page-header
+          %h1 Credit Info
+        = f.input :credit_type, collection: Client::CREDIT_TYPE
+        #credit-group
+          = f.input :fiscal_entity, collection: Client::FISCAL_ENTITY
+
+
+
   = f.button :submit, class: 'btn'

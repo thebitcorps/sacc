@@ -5,10 +5,7 @@
       = @client.fullname
     %p.lead Please fill all the possible fields
 
-  .row.m-b-40
-    .col-md-8
-      .well.white
-        = render 'form'
 
-  = link_to 'Show', @client, class: 'btn button'
+  = render 'form'
+
   = link_to 'Cancel', clients_path, class: "btn button"
