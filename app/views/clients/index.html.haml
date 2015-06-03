@@ -2,11 +2,10 @@
 .card.z-depth-3
   .row
     .col-md-6
-      = link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'
-      %h3.table-title.p-20 Clients
+      %h2
+        = link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'
     .col-md-6
       .table-search
-        / correct the on key up funtion focus
         = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control'   do
           = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search',id: 'serch_input',remote: true
 

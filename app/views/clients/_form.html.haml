@@ -8,14 +8,16 @@
     = f.input :gender, as: :radio_buttons, collection: Client::GENDER
     = f.input :birthdate #, order: [:day, :month, :year]
     = f.input :marital_status, collection: Client::MARITAL_STATUS
+    #spouse-group
+      = f.input :spouse, wrapper: :material_input
+      = f.input :spouse_works, as: :boolean, wrapper: :checkbox
     = f.input :credit_type, collection: Client::CREDIT_TYPE
+    #credit-group
+      = f.input :fiscal_entity, collection: Client::FISCAL_ENTITY
     = f.input :mail, wrapper: :material_input
     = f.input :notes, wrapper: :material_text
-  #spouse-group
-    = f.input :spouse, wrapper: :material_input
-    = f.input :spouse_works, as: :boolean, wrapper: :checkbox
-  #credit-group
-    = f.input :fiscal_entity, collection: Client::FISCAL_ENTITY
+
+
   #phones
     %h4 Phones
     =  f.simple_fields_for :phones do |phone|

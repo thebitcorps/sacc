@@ -21,4 +21,4 @@
         = paginate @my_clients
     .col-md-4
       %h2 My Appointments
-      = render partial: 'appointments/appointments', locals: { appointments: current_user.appointments }
+      = render partial: 'appointments/appointments', locals: { appointments: ( Appointment.today_from current_user) }

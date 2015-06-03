@@ -1,25 +1,49 @@
-.card.z-depth-3
+.card.ordered.z-depth-3
   .card-header
     %span.card-title
       = @client.fullname
   .card-content
-    %p
-      %b Spouse:
-      = @client.spouse
-    %p
-      %b Birthdate:
-      = @client.birthdate
-    %p
-      %b Mail:
-      = @client.mail
-    %p
-      %b Notes:
-      = @client.notes
-    %p
-      %b Current salesman:
-      = @client.salesman.fullname
-    %p
-      = render 'show_phones'
+    .row
+      .col-md-7
+        %p
+          %b Spouse:
+          = @client.marital_status == 'married' ?  @client.spouse : @client.marital_status
+        %p
+          %b Birthdate:
+          = @client.birthdate
+        %p
+          %b Mail:
+          = @client.mail
+
+
+        -#es una idea para que le agrege el tipo de credito
+        -#hay que checar porque se puede dar string vacios en el tipo de credito
+        %p
+          %b Credit type:
+          - unless @client.credit_type.empty? or @client.credit_type.nil?
+            = @client.credit_type
+          - else
+            = link_to 'Agregar tipo de credito', edit_client_path(@client),class: 'btn btn-default black-text'
+
+        %p
+          = render 'show_phones'
+      .col-md-5
+        %p
+          %b Client notes:
+          %ul
+            %li
+              = @client.notes
+        -#maybe move this scope to a method?
+        -#check blank atributes
+        %p
+          %b Interaction notes:
+          %ul
+            - @client.interactions.each do |interaction|
+              - unless interaction.notes.blank?
+                %li
+                  %i{class: interaction.kind_icon}
+                  =  interaction.notes
+
 
   .card-action.clearfix
     = link_to 'New Interaction', new_interaction_path(client_id: @client.id),class: 'btn btn-link black-text'
