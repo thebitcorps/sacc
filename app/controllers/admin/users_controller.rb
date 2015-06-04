@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :get_user, :only => [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -9,44 +10,44 @@ class Admin::UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+  end
+
   def create
-      if @user.create(user_params)
-        redirect_to @user, notice: 'User was successfully created.'
-      else
-        render :new
-      end
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to admin_users_path
+    else
+      render 'new'
+    end
   end
 
   def edit
-    @user = User.find(params[:user])
   end
 
   def update
-    @user = current_user
-      if @user.update(user_params)
-        redirect_to @user, notice: 'User was successfully updated.'
-      else
-        render :edit
-      end
-  end
-
-  def update_password
-    @user = User.find(current_user.id)
-    if @user.update_attributes(params[:user])
-      # Sign in the user by passing validation in case his password changed
-      sign_in @user, :bypass => true
-      redirect_to root_path
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+    if @user.update_attributes(user_params)
+      redirect_to admin_users_path, notice: 'User updated.'
     else
       render "edit"
     end
   end
 
   def destroy
-    
+    @user.destroy
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :paternal_lastname, :maternal_lastname, :email, :cellphone, :gender, :password)
-    end
+
+  def get_user
+    @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :paternal_lastname, :maternal_lastname, :email, :cellphone, :gender, :password, :role_ids)
+  end
 end

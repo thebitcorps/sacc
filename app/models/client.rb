@@ -14,7 +14,8 @@ class Client < ActiveRecord::Base
   has_one :dossier, dependent: :destroy
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
-  validates :name, :paternal_lastname, :gender, presence: true
+  validates :name, :paternal_lastname, presence: true
+  validates_inclusion_of :gender, in: [true, false]
   validates :fullname, uniqueness: true
 
   #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']

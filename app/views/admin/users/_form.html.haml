@@ -9,5 +9,7 @@
     = f.input :cellphone, wrapper: :material_input
     = f.input :gender, as: :select, collection: [['Male', true],['Female', false]]
     = f.association :roles #pass a restricted collection
+    = f.input :password, wrapper: :material_input
+    = f.input :password_confirmation, wrapper: :material_input
   .form-actions
     = f.button :submit
