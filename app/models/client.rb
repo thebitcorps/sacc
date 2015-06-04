@@ -60,14 +60,14 @@ class Client < ActiveRecord::Base
   end
 
   def spouse_active
-    married? && spouse_works && credit_type == 'bank'
+    married? && spouse_works && credit_type == 'bank' #porque la esposa activa si hay banco?
   end
 
   def has_dossier?
     !dossier.nil?
   end
 
-  def self.profiled?
+  def self.all_profiled
     where(profiled: true)
   end
 
