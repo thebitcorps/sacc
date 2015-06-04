@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  before_action :adminDashboard?, only: :dashboard
 
   def dashboard
     @my_clients = Client.my_clients(current_user).profiled?.page(params[:page]).per(10)
@@ -13,6 +14,11 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  private
+    def adminDashboard?
+      redirect_to admin_root_path if current_user.admin?
+    end
 
 
 end
