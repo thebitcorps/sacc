@@ -71,6 +71,14 @@ class Client < ActiveRecord::Base
     where(profiled: true)
   end
 
+  def profiled?
+    profiled
+  end
+
+  def main_phone(options: {})
+    phones.where(main: true).first.number
+  end
+
   def documentize
     if dossier.nil?
       create_dossier

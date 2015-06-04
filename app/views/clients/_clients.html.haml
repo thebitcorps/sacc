@@ -1,9 +1,16 @@
 %tr
-  %td= link_to name_decorator(client), client
-  %td= client.has_dossier? ? 'oui' : 'no'
-  %td= client.mail
   %td
-    - interactions_notes(client).each do |note|
-      %p= note
-  %td= link_to 'Edit', edit_client_path(client), class: 'btn'
-  %td= link_to 'Unprofile', nil, class: 'btn' # TODO, create method to change status
+    %i{class: "md #{status_helper(client)}"}
+  %td= link_to name_decorator(client), client
+  %td
+    %i{class: "md #{has_dossier_helper(client)}"}
+  %td= client.main_phone
+  %td= client.mail
+  %td= client.interactions.size
+  %td= client.appointments.size
+  %td
+    = link_to nil, class: 'btn btn-round-sm btn-link ng-scope' do
+      %i{class: "md md-message"}
+  %td
+    = link_to edit_client_path(client), class: 'btn btn-round-sm btn-link ng-scope' do
+      %i{class: "md md-mode-edit"}
