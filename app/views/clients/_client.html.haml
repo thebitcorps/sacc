@@ -1,5 +1,5 @@
 %tr
   %td= link_to client.fullname, client
-  %td= link_to client.interactions.size, interactions_path(client_id: client) # faking interactions and appointments
+  %td= link_to client.interactions.size, interactions_path(client_id: client)
   %td= link_to client.appointments.size, client_appointments_path(client_id: client)
   %td= link_to 'message', nil, class: 'btn'

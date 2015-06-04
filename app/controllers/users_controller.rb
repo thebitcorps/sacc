@@ -1,34 +1,12 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update] #, :destroy]
-
-  # def index
-  #   @users = User.all.order 'name'
-  # end
-
-  def show
-  end
-
-  # def new
-  #   @user = User.new
-  # end
 
   def edit
+    @user = current_user
   end
 
-  # def create
-  #   @user = User.new(user_params)
-  #   # talk later about password
-  #   @user.password = "CACACACACA"
-  #   @user.password_confirmation = "CACACACACA"
-  #   if @user.save
-  #     redirect_to @user, notice: 'User was successfully created.'
-  #   else
-  #     render :new
-  #   end
-  # end
-
   def update
+    @user = current_user
       if @user.update(user_params)
         redirect_to @user, notice: 'User was successfully updated.'
       else
@@ -36,17 +14,19 @@ class UsersController < ApplicationController
       end
   end
 
-  # def destroy
-  #   @user.destroy
-  #   redirect_to users_url, notice: 'User was successfully destroyed.'
-  # end
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update_attributes(params[:user])
+      # Sign in the user by passing validation in case his password changed
+      sign_in @user, :bypass => true
+      redirect_to root_path
+    else
+      render "edit"
+    end
+  end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     def user_params
-      params.require(:user).permit(:name, :paternal_lastname, :maternal_lastname, :email, :cellphone, :gender)
+      params.require(:user).permit(:name, :paternal_lastname, :maternal_lastname, :email, :cellphone, :gender, :password)
     end
 end

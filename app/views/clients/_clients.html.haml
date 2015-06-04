@@ -1,5 +1,5 @@
 %tr
-  %td= link_to salutation(client), client
+  %td= link_to name_decorator(client), client
   %td= client.has_dossier? ? 'oui' : 'no'
   %td= client.mail
   %td

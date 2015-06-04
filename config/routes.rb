@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'client', on: :collection
   end
   devise_for :users
-  resources :users, only: [:show, :edit, :create]
+  resources :users, only: [:edit, :update]
   resources :clients
 
   get 'pages/dashboard'

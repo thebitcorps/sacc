@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   royce_roles %w[ admin director manager salesmanager salesman ]
 
-  def gender_displayname
+  def gender_displayname # how does this works?! honest question
     gender == ApplicationHelper::MALE[:value] ? ApplicationHelper::MALE[:display_name] : ApplicationHelper::FEMALE[:display_name]
   end
 

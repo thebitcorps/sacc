@@ -1,13 +1,13 @@
 = simple_form_for(@user) do |f|
   = f.error_notification
-
   .form-inputs
-    = f.input :name
-    = f.input :paternal_lastname
-    = f.input :maternal_lastname
-    = f.input :email
-    = f.input :cellphone
-    = f.input :gender, as: :select, collection: ApplicationHelper.get_gender_dropdown
-
+    = f.input :name, wrapper: :material_input
+    = f.input :paternal_lastname, wrapper: :material_input
+    = f.input :maternal_lastname, wrapper: :material_input
+    = f.input :email, wrapper: :material_input
+    = f.input :cellphone, wrapper: :material_input
+    = f.input :gender, as: :select, collection: [['Male', true], ['Female', false]]
+    = f.input :password, wrapper: :material_input
+    = f.input :password_confirmation, wrapper: :material_input
   .form-actions
     = f.button :submit

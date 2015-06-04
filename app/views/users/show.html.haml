@@ -10,8 +10,6 @@
       = @user.cellphone
     %p
       %b Gender:
-      = @user.gender_displayname
+      = @user.gender ? 'Male' : 'Female'
   .card-action
     = link_to 'Edit', edit_user_path(@user)
-
-    = link_to 'Back', users_path

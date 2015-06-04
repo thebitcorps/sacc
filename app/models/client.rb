@@ -15,6 +15,7 @@ class Client < ActiveRecord::Base
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
   validates :name, :paternal_lastname, :gender, presence: true
+  validates :fullname, uniqueness: true
 
   #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']
   #validates :credit_type, inclusion: ['bank', 'infonavit', 'fovissste']
@@ -22,11 +23,7 @@ class Client < ActiveRecord::Base
 
   accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
 
-  before_save :titleize_fields # before_validation?
-
-  def fullname
-    [name, paternal_lastname, maternal_lastname].join(" ")
-  end
+  before_validation :titleize_fields, :join_fullname
 
   def self.searcheable_fields
     %w[name paternal_lastname maternal_lastname spouse mail]
@@ -47,10 +44,11 @@ class Client < ActiveRecord::Base
     end
   end
 
-  def self.search_by_name_or_lastname(search)
+  def self.search_by_fullname(search)
     if search and !search.empty?
       search = "%#{search.downcase}%"
-      where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
+      # where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
+      where('lower(fullname) LIKE ?',search)
     else
       all
     end
@@ -66,6 +64,10 @@ class Client < ActiveRecord::Base
 
   def has_dossier?
     !dossier.nil?
+  end
+
+  def self.profiled?
+    where(profiled: true)
   end
 
   def documentize
@@ -90,6 +92,10 @@ class Client < ActiveRecord::Base
   end
 
 private
+
+  def join_fullname
+    self.fullname = [name, paternal_lastname, maternal_lastname].join(" ")
+  end
 
   def titleize_fields
     ['name', 'paternal_lastname', 'maternal_lastname', 'spouse'].each do |m|

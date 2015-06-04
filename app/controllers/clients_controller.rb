@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
 
   def index
     my_clients = Client.my_clients(current_user)
-    @clients = my_clients.search_by_name_or_lastname(params[:search]).order("#{sort_column}  #{sort_direction}").page(params[:page]).per(10)
+    @clients = my_clients.search_by_fullname(params[:search]).order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
     respond_to do |format|
       format.html
       format.js{ @clients }
@@ -52,8 +52,13 @@ class ClientsController < ApplicationController
     end
 
     def client_params
-      params.require(:client).permit(:search, :sort, :direction, :page, :name, :paternal_lastname, :maternal_lastname, :spouse, :birthdate, :mail, :notes, :gender, :marital_status, :spouse_works, :credit_type, :fiscal_entity,
-                                      phones_attributes: [:id, :number, :kind, :available_from, :available_to])
+      params.require(:client).permit(:search, :sort, :direction, :page, :name,
+                                     :paternal_lastname, :maternal_lastname,
+                                     :spouse, :birthdate, :mail, :notes,
+                                     :gender, :marital_status, :spouse_works,
+                                     :credit_type, :fiscal_entity,
+                                     :profiled, :potencial,
+                                     phones_attributes: [:id, :number, :kind, :available_from, :available_to])
     end
 
     def sort_column

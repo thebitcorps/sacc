@@ -1,6 +1,6 @@
 module ClientsHelper
-  def salutation(client)
-    if client.spouse
+  def name_decorator(client)
+    if client.spouse && !client.spouse.blank?
       [client.fullname, client.spouse].join(" / ")
     else
       client.fullname
