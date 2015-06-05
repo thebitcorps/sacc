@@ -29,12 +29,12 @@
     React.DOM.div
       className: 'locationInfo'
       React.DOM.div
-        className: 'card z-depth-3'
+        className: 'col-sm-6 col-md-6 col-lg-6'
         React.DOM.h2
-          className: 'table-title p-20 '
+          className: ''
           @titleSelect(@state.nominalWork.type)
         React.DOM.div
-          className: 'well white'
+          className: 'form-horizontal'
           @nomimalWorkElement(@state.nominalWork.name,'Name: ')
           @nomimalWorkElement(@state.nominalWork.address,'Address: ')
           @nomimalWorkElement(@state.nominalWork.phone,'phone: ')
@@ -45,7 +45,7 @@
           @nomimalWorkElement(@state.nominalWork.seniority,'Seniority: ')
           @nomimalWorkElement(@state.nominalWork.income,'Income: ')
         React.DOM.div
-          className: 'card-action clearfix'
+          className: 'clearfix'
           React.DOM.a
             className: 'btn btn-warning'
             onClick: @handleToggle

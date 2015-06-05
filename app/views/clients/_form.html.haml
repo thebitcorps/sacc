@@ -8,12 +8,12 @@
           .page-header
             %h1 General info
           = f.input :profiled, as: :boolean, wrapper: :checkbox
-          = f.input :potencial, as: :boolean, wrapper: :checkbox
+          = f.input :potential, as: :boolean, wrapper: :checkbox
           = f.input :name, wrapper: :material_input
           = f.input :paternal_lastname, wrapper: :material_input
           = f.input :maternal_lastname, wrapper: :material_input
           = f.input :gender, as: :radio_buttons, collection: [['Male', true],['Female', false]]
-          = f.input :birthdate #, order: [:day, :month, :year]
+          = f.input :birthdate, as: :string, wrapper: :material_date, input_html: { "ng-model" => "birthdate", placeholder: placeholder_decorator(@client, "Birthdate") }
           = f.input :mail, wrapper: :material_input
           = f.input :notes, wrapper: :material_text
     .col-md-4

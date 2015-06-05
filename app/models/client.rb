@@ -48,8 +48,7 @@ class Client < ActiveRecord::Base
   def self.search_by_fullname(search)
     if search and !search.empty?
       search = "%#{search.downcase}%"
-      # where('lower(name) LIKE ? OR lower(paternal_lastname) LIKE ? OR lower(maternal_lastname) LIKE ? OR lower(spouse) LIKE ?',search,search,search,search)
-      where('lower(fullname) LIKE ?  OR lower(spouse) LIKE ?',search,search)
+      where('lower(fullname) LIKE ? OR lower(spouse) LIKE ?', search, search)
     else
       all
     end
@@ -76,7 +75,7 @@ class Client < ActiveRecord::Base
   end
 
   def main_phone(options: {})
-    phones.where(main: true).first.number
+    phones.where(main: true).first
   end
 
   def documentize

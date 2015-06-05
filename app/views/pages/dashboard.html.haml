@@ -22,9 +22,11 @@
           %thead
             %tr
               %th Client
-              %th Interactions
-              %th Appointments
-              %th Actions
+              %th
+                %i{class: "md-repeat"}
+              %th
+                %i{class: "md-access-time"}
+              %th
           %tbody#my_clients
             = render partial: 'clients/client', collection: @my_clients, client: :client,id: 'my_clients'
         #paginator

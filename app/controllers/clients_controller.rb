@@ -57,7 +57,7 @@ class ClientsController < ApplicationController
                                      :spouse, :birthdate, :mail, :notes,
                                      :gender, :marital_status, :spouse_works,
                                      :credit_type, :fiscal_entity,
-                                     :profiled, :potencial,
+                                     :profiled, :potential,
                                      phones_attributes: [:id, :number, :kind, :available_from, :available_to])
     end
 

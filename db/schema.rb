@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150604214336) do
     t.string   "fullname",                           null: false
     t.string   "salutation"
     t.boolean  "profiled",            default: true
-    t.boolean  "potencial",           default: true
+    t.boolean  "potential",           default: true
   end
 
   add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree

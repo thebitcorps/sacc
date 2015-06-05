@@ -2,4 +2,8 @@
   %td= link_to client.fullname, client
   %td= link_to client.interactions.size, interactions_path(client_id: client)
   %td= link_to client.appointments.size, client_appointments_path(client_id: client)
-  %td= link_to 'message', nil, class: 'btn'
+  %td
+    = link_to nil, class: 'btn btn-round-sm btn-link ng-scope' do
+      %i{class: "md md-message"}
+    = link_to edit_client_path(client), class: 'btn btn-round-sm btn-link ng-scope' do
+      %i{class: "md md-mode-edit"}
