@@ -5,7 +5,7 @@
   %td
     %i{class: "md #{has_dossier_helper(client)}"}
   %td
-    = [client.main_phone.kind, client.main_phone.number].join(", ")
+    -#= [client.main_phone.kind, client.main_phone.number].join(", ")
   %td= client.mail
   %td= client.interactions.size
   %td= client.appointments.size

@@ -3,7 +3,7 @@ class Interaction < ActiveRecord::Base
   # FOO = { phone: 'md-phone', module: 'md-business', house: 'md-people', other: 'md-phone' }
 
   KINDS = %w[Phone Module House Other]
-  KIND_ICON = { KINDS[0] => 'md-phone', KINDS[1]=> ' md-business',KINDS[2]=> ' md-people', KINDS[3] => ' md-phone' }
+  KIND_ICON = { KINDS[0] => 'md-phone', KINDS[1]=> ' md-business',KINDS[2]=> ' md-people', KINDS[3] => ' md-adjust' }
   KIND_COLOR = { KINDS[0] => 'green', KINDS[1]=> 'teal',KINDS[2]=> ' orange', KINDS[3] => ' red' }
 
   belongs_to :user

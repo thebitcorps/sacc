@@ -21,7 +21,7 @@ class InteractionsController < ApplicationController
     @interaction = Interaction.new(interaction_params)
     @interaction.user = current_user
     if @interaction.save
-      redirect_to @interaction, notice: 'Interaction was successfully created.'
+      redirect_to Client.find(params[:interaction][:client_id]), notice: 'Interaction was successfully created.'
     else
       @client = Client.find params[:interaction][:client_id]
       render :new
