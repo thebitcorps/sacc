@@ -2,8 +2,8 @@
   = f.error_notification
   .form-inputs
     / = f.input :kind, wrapper: :material_input , collection: Interaction::KINDS
-    = f.input :date, wrapper: :material_input, as: :string, input_html: { class: :datepicker }
-    = f.input :time, wrapper: :material_input
+    = f.input :date, as: :string, wrapper: :material_date, input_html: { "ng-model" => "date" }
+    = f.input :time, as: :string, wrapper: :material_time, input_html: { "ng-model" => "time" }
     = f.input :mood, wrapper: :material_input
     = f.input :interest, wrapper: :material_input
     .form-group
