@@ -2,8 +2,8 @@
   = f.error_notification
   .form-inputs
     / = f.input :kind, wrapper: :material_input , collection: Interaction::KINDS
-    = f.input :date, label: false, as: :string, wrapper: :material_date, input_html: { "ng-model" => "date" }
-    = f.input :time, label: false, as: :string, wrapper: :material_time, input_html: { "ng-model" => "time" }
+    = f.input :date, label: false, as: :string, wrapper: :material_date, input_html: { "ng-model" => "date", placeholder: placeholder_decorator(@appointment, "Date") }
+    = f.input :time, label: false, as: :string, wrapper: :material_time, input_html: { "ng-model" => "time", placeholder: placeholder_decorator(@appointment, "Time") }
     = f.input :mood, wrapper: :material_input
     = f.input :interest, wrapper: :material_input
     .form-group
