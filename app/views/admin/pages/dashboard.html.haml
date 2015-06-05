@@ -1,0 +1,42 @@
+%section
+  .page-header
+    %h1
+      %i{class: "md  md-settings"}
+      Administrator
+    %p.lead All salesmen and clients information and statistics.
+.col-md-6
+  .card.bordered
+    .card-content
+      %h4{class: "grey-text"}
+        %i{class: 'md md-account-box'}
+        %span.hidden-xs
+          Salesmen
+      .icon-holder
+        %i.md.md-account-child
+        Salesmen count:
+        = @salesmen.count
+    .card-action.clearfix
+      .pull-right
+        %a.waves-effect.waves-light.btn.btn-primary{:href => "#{admin_users_path}"} See users
+.col-md-6
+  .card.bordered
+    .card-content
+      %h4{class: "grey-text"}
+        %i{class: 'md md-quick-contacts-dialer'}
+        %span.hidden-xs
+          Clients
+      .icon-holder
+        %i.md.md-account-child
+        Clients count:
+        = @clients.count
+      .icon-holder
+        %i.md.md-account-child
+        Profiled clients count:
+        = @profiled_clients.count
+      .icon-holder
+        %i.md.md-account-child
+        Potential clients count:
+        = @potential_clients.count
+    .card-action.clearfix
+      .pull-right
+        %a.waves-effect.waves-light.btn.btn-primary{:href => "#{clients_path}"} See clients
