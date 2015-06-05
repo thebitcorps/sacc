@@ -6,6 +6,10 @@ class PagesController < ApplicationController
     @today_appointments = current_user.today_appointments
     @today_interactions = Interaction.created_today(current_user)
     @new_clients = Client.created_today(current_user)
+    respond_to do |format|
+      format.html
+      format.js{ @my_clients }
+    end
   end
 
   def help
