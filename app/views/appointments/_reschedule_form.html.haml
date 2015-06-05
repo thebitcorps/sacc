@@ -3,10 +3,12 @@
 
   .form-inputs
     = f.input :client_id, as: :hidden, input_html: { value: params[:client_id] }
+    = f.input :status, collection: %[cancel reschedule]
+
     = f.input :date, wrapper: :material_input, input_html: { class: :datepicker }
     = f.input :time, wrapper: :material_input
-    = f.input :place, wrapper: :material_input
-    -#= f.input :status, collection: Appointment::STATUS
+
+
 
   .form-actions
     = f.button :submit, class: 'btn-primary btn'

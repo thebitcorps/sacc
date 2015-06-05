@@ -28,6 +28,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.status = 'upcoming'
     @appointment.user = current_user
     if @appointment.save
       # MessageManager.reminder(0, @appointment)
