@@ -22,4 +22,8 @@ module ClientsHelper
       end
     end
   end
+
+  def phone_fields_decorator
+    
+  end
 end

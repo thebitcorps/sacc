@@ -12,6 +12,7 @@ class Client < ActiveRecord::Base
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_one :dossier, dependent: :destroy
+  belongs_to :main_phone, class_name: "Phone", foreign_key: "main_phone_id"
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
   validates :name, :paternal_lastname, presence: true
@@ -74,8 +75,8 @@ class Client < ActiveRecord::Base
     profiled
   end
 
-  def main_phone(options: {})
-    phones.where(main: true).first
+  def select_main_phone
+    main_phone || phones.first
   end
 
   def documentize
