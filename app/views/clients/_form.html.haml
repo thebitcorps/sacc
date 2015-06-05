@@ -13,7 +13,7 @@
           = f.input :paternal_lastname, wrapper: :material_input
           = f.input :maternal_lastname, wrapper: :material_input
           = f.input :gender, as: :radio_buttons, collection: [['Male', true],['Female', false]]
-          = f.input :birthdate #, order: [:day, :month, :year]
+          = f.input :birthdate, as: :string, wrapper: :material_date, input_html: { "ng-model" => "birthdate" }
           = f.input :mail, wrapper: :material_input
           = f.input :notes, wrapper: :material_text
     .col-md-4
@@ -26,7 +26,8 @@
           .links{style: 'display: inline;'}
             = link_to_add_association 'Add phone', f, :phones, class: 'btn'
 
-
+    -#when changing marital status it should destroy the #spouse-group and added a new one, no only hide it
+    -#so we can update the marital status
     .col-md-8
       .well.white
         .page-header
@@ -47,4 +48,4 @@
 
 
 
-  = f.button :submit, class: 'btn'
+  = f.button :submit, class: 'btn btn-primary'

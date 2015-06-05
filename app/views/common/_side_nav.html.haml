@@ -1,20 +1,21 @@
 %aside.sidebar.fixed
   .brand-logo
     #logo
-      .foot1
-      .foot2
-      .foot3
-      .foot4
+      = image_tag("logo-sw.png")
     SACC
   .user-logged-in
     .content
       .user-name
         = current_user.name
-        %span.text-muted.f9 role
+        %span.text-muted.f9 Role
       .user-email= current_user.email
       .user-actions
         = link_to 'settings', edit_user_path(current_user), class: 'm-r-5'
-        = link_to 'Logout', destroy_user_session_path, :method => :delete
+        = link_to 'Logout', destroy_user_session_path, method: :delete
   %ul
-    =link_to 'Dashboard', root_path, icon: "md md-blur-on"
-    =link_to 'Clients', clients_path
+    =link_to root_path do
+      %i{class: "md md-blur-on"}
+      Dashboard
+    =link_to clients_path do
+      %i{class: "md md-accessibility"}
+      Clients

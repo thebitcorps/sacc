@@ -1,0 +1,2 @@
+$("#my_clients").html("<%= j( render partial: 'clients/client', collection: @my_clients, client: :client) %>");
+$("#paginator").html("<%= j( (paginate @my_clients,remote: true)) %>");

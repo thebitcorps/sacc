@@ -19,20 +19,37 @@
             new interactions today
       .card
         %table.table.striped.clients
-          %tr
-            %th Client
-            %th Interactions
-            %th Appointments
-            %th Actions
-          = render partial: 'clients/client', collection: @my_clients, client: :client
-        = paginate @my_clients
+          %thead
+            %tr
+              %th Client
+              %th
+                %i{class: "md-repeat"}
+              %th
+                %i{class: "md-access-time"}
+              %th
+          %tbody#my_clients
+            = render partial: 'clients/client', collection: @my_clients, client: :client,id: 'my_clients'
+        #paginator
+          = paginate @my_clients,remote: true
     %div{class: "col-lg-3 col-md-12"}
       %div{class: 'p-20'}
         %h4{class: "grey-text m-b-30"} My Appointments
         %div{role: 'tabpanel'}
           %ul{class: "nav nav-tabs", role: "tablist", ng: {init: "actionTab=1"}}
-            %li= link_to 'Today', appointments_path(type_list: 'today'), "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", data: {toggle: "tab"}, "aria-expanded" => "false", remote: true
-            %li= link_to 'Upcoming', appointments_path(type_list: 'upcoming'),remote: true
-            %li= link_to 'Previous', appointments_path(type_list: 'previous'),remote: true
-            %li= link_to 'All', appointments_path(type_list: 'all'),remote: true
+            %li{role: "presentation"}
+              = link_to nil, remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+                Today
+                .ripple-wrapper
+            %li{role: "presentation"}
+              = link_to appointments_path(type_list: 'upcoming'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+                Upcoming
+                .ripple-wrapper
+            %li{role: "presentation"}
+              = link_to appointments_path(type_list: 'previous'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+                Previous
+                .ripple-wrapper
+            %li{role: "presentation"}
+              = link_to appointments_path(type_list: 'all'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+                All
+                .ripple-wrapper
         / = render partial: 'appointments/appointments', locals: { appointments: (Appointment.today_from current_user.appointments) }

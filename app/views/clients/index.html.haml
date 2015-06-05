@@ -1,31 +1,35 @@
 %section
-  %h1 Clients
-  .card.z-depth-3
-    .row
-      .col-md-6
-        %h2
-          = link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'
-      .col-md-6
-        .table-search
-          = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control'   do
-            = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search',id: 'serch_input',remote: true
+  .row.no-gutter
+    %div{class: "col-sm-12 col-md-12 col-lg-12", style: "background:#F9F9F9;"}
+      %div{class: "p-20 clearfix"}
+        %div{class: "col-sm-6 col-md-6 col-lg-6 pull-right"}
+          = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-group' do
+            = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search', id: 'search_input'
+        %h4{class: "grey-text"}
+          %i{class: 'md md-dashboard'}
+          %span.hidden-xs
+            Clients
 
-    .table-responsive.white
-      %table.table.table-full.table-full-small
-        %thead
-          %tr
-            %th= sortable "name"
-            %th Has dossier?
-            %th Status
-            %th Notes
-            %th
-            %th
-        %tbody#clients
-          = render partial: 'clients', collection: @clients, as: :client
-      #paginator
-        = paginate @clients,remote: true
-      - if @clients.empty?
-        %p.flow-text No result found
+  .table-responsive.white
+    %table.table.table-full.table-full-small
+      %thead
+        %tr
+          %th Status
+          %th= sortable "Name"
+          %th Dossier
+          %th Phone
+          %th e-Mail
+          %th
+            %i{class: "md-repeat"}
+          %th
+            %i{class: "md-access-time"}
+          %th
+      %tbody#clients
+        = render partial: 'clients', collection: @clients, as: :client
+    #paginator
+      = paginate @clients,remote: true
+    - if @clients.empty?
+      %p.flow-text No result found
 
-  = hidden_field_tag :direction, params[:direction]
-  = hidden_field_tag :sort, params[:sort]
+= hidden_field_tag :direction, params[:direction]
+= hidden_field_tag :sort, params[:sort]

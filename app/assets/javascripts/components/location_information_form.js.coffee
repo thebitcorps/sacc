@@ -44,7 +44,7 @@
           className: 'table-title p-20'
           'Location info'
         React.DOM.div
-          className: 'well white'
+          className: 'form-horizontal'
           @locationInput(@props.location.pattern,'pattern','Pattern: ')
           @locationInput(@props.location.interior,'interior','Interior: ')
           @locationInput(@props.location.sale_price,'sale_price','Sale price: ')
@@ -54,7 +54,7 @@
           @locationInput(@props.location.excess,'excess','Excess: ')
           @locationInput(@props.location.over_cost,'over_cost','Over cost: ')
           @locationInput(@props.location.promo,'promo','Promo: ')
-          @locationInput(@props.location.final_sale_price,'final_sale_price','final_sale_price: ')
+          @locationInput(@props.location.final_sale_price,'final_sale_price','Final sale price: ')
         React.DOM.div
           className: 'card-action clearfix'
           React.DOM.a
