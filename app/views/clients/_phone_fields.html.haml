@@ -1,6 +1,6 @@
 .nested-fields
   = f.input :number, wrapper: :material_input
   = f.input :kind, label: false, collection: Phone::KINDS
-  = f.input :available_from
-  = f.input :available_to
+  = f.input :available_from, wrapper: :material_time
+  = f.input :available_to, wrapper: :material_time
   = link_to_remove_association "Delete phone", f, {class: 'btn red darken-4'}

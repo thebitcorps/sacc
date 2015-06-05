@@ -82,4 +82,13 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end
+
+  config.wrappers :material_time, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.wrapper tag: :div, class: 'col-md-2' do |ba|
+      b.use :input, class: 'form-control', "bs-timepicker" => true, data: {autoclose: '1'}, "ng-model" => "sharedDate", placeholder: "Time"
+    end
+    b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
+    b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
+  end
 end

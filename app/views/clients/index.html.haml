@@ -19,8 +19,10 @@
           %th Dossier
           %th Phone
           %th e-Mail
-          %th Interactions
-          %th Appointments
+          %th
+            %i{class: "md-repeat"}
+          %th
+            %i{class: "md-access-time"}
           %th
       %tbody#clients
         = render partial: 'clients', collection: @clients, as: :client
