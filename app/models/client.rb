@@ -14,7 +14,8 @@ class Client < ActiveRecord::Base
   has_one :dossier, dependent: :destroy
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
-  validates :name, :paternal_lastname, :gender, presence: true
+  validates :name, :paternal_lastname, presence: true
+  validates_inclusion_of :gender, in: [true, false]
   validates :fullname, uniqueness: true
 
   #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']
@@ -59,15 +60,23 @@ class Client < ActiveRecord::Base
   end
 
   def spouse_active
-    married? && spouse_works && credit_type == 'bank'
+    married? && spouse_works && credit_type == 'bank' #porque la esposa activa si hay banco?
   end
 
   def has_dossier?
     !dossier.nil?
   end
 
-  def self.profiled?
+  def self.all_profiled
     where(profiled: true)
+  end
+
+  def profiled?
+    profiled
+  end
+
+  def main_phone(options: {})
+    phones.where(main: true).first.number
   end
 
   def documentize

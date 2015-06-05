@@ -1,32 +1,93 @@
-              Prefix Verb   URI Pattern                      Controller#Action
-        appointments GET    /appointments(.:format)          appointments#index
-                     POST   /appointments(.:format)          appointments#create
-     new_appointment GET    /appointments/new(.:format)      appointments#new
-    edit_appointment GET    /appointments/:id/edit(.:format) appointments#edit
-         appointment GET    /appointments/:id(.:format)      appointments#show
-                     PATCH  /appointments/:id(.:format)      appointments#update
-                     PUT    /appointments/:id(.:format)      appointments#update
-                     DELETE /appointments/:id(.:format)      appointments#destroy
-    new_user_session GET    /users/sign_in(.:format)         devise/sessions#new
-        user_session POST   /users/sign_in(.:format)         devise/sessions#create
-destroy_user_session DELETE /users/sign_out(.:format)        devise/sessions#destroy
-               users GET    /users(.:format)                 users#index
-                     POST   /users(.:format)                 users#create
-            new_user GET    /users/new(.:format)             users#new
-           edit_user GET    /users/:id/edit(.:format)        users#edit
-                user GET    /users/:id(.:format)             users#show
-                     PATCH  /users/:id(.:format)             users#update
-                     PUT    /users/:id(.:format)             users#update
-                     DELETE /users/:id(.:format)             users#destroy
-             clients GET    /clients(.:format)               clients#index
-                     POST   /clients(.:format)               clients#create
-          new_client GET    /clients/new(.:format)           clients#new
-         edit_client GET    /clients/:id/edit(.:format)      clients#edit
-              client GET    /clients/:id(.:format)           clients#show
-                     PATCH  /clients/:id(.:format)           clients#update
-                     PUT    /clients/:id(.:format)           clients#update
-                     DELETE /clients/:id(.:format)           clients#destroy
-         pages_index GET    /pages/index(.:format)           pages#index
-          pages_help GET    /pages/help(.:format)            pages#help
-         pages_about GET    /pages/about(.:format)           pages#about
-                root GET    /                                pages#index
+                    Prefix Verb   URI Pattern                              Controller#Action
+               admin_users GET    /admin/users(.:format)                   admin/users#index
+                           POST   /admin/users(.:format)                   admin/users#create
+            new_admin_user GET    /admin/users/new(.:format)               admin/users#new
+           edit_admin_user GET    /admin/users/:id/edit(.:format)          admin/users#edit
+                admin_user GET    /admin/users/:id(.:format)               admin/users#show
+                           PATCH  /admin/users/:id(.:format)               admin/users#update
+                           PUT    /admin/users/:id(.:format)               admin/users#update
+                           DELETE /admin/users/:id(.:format)               admin/users#destroy
+             admin_clients GET    /admin/clients(.:format)                 admin/clients#index
+                           POST   /admin/clients(.:format)                 admin/clients#create
+          new_admin_client GET    /admin/clients/new(.:format)             admin/clients#new
+         edit_admin_client GET    /admin/clients/:id/edit(.:format)        admin/clients#edit
+              admin_client GET    /admin/clients/:id(.:format)             admin/clients#show
+                           PATCH  /admin/clients/:id(.:format)             admin/clients#update
+                           PUT    /admin/clients/:id(.:format)             admin/clients#update
+                           DELETE /admin/clients/:id(.:format)             admin/clients#destroy
+                  dossiers GET    /dossiers(.:format)                      dossiers#index
+                           POST   /dossiers(.:format)                      dossiers#create
+               new_dossier GET    /dossiers/new(.:format)                  dossiers#new
+              edit_dossier GET    /dossiers/:id/edit(.:format)             dossiers#edit
+                   dossier GET    /dossiers/:id(.:format)                  dossiers#show
+                           PATCH  /dossiers/:id(.:format)                  dossiers#update
+                           PUT    /dossiers/:id(.:format)                  dossiers#update
+                           DELETE /dossiers/:id(.:format)                  dossiers#destroy
+location_information_index GET    /location_information(.:format)          location_information#index
+                           POST   /location_information(.:format)          location_information#create
+  new_location_information GET    /location_information/new(.:format)      location_information#new
+ edit_location_information GET    /location_information/:id/edit(.:format) location_information#edit
+      location_information GET    /location_information/:id(.:format)      location_information#show
+                           PATCH  /location_information/:id(.:format)      location_information#update
+                           PUT    /location_information/:id(.:format)      location_information#update
+                           DELETE /location_information/:id(.:format)      location_information#destroy
+ nominal_work_record_index GET    /nominal_work_record(.:format)           nominal_work_record#index
+                           POST   /nominal_work_record(.:format)           nominal_work_record#create
+   new_nominal_work_record GET    /nominal_work_record/new(.:format)       nominal_work_record#new
+  edit_nominal_work_record GET    /nominal_work_record/:id/edit(.:format)  nominal_work_record#edit
+       nominal_work_record GET    /nominal_work_record/:id(.:format)       nominal_work_record#show
+                           PATCH  /nominal_work_record/:id(.:format)       nominal_work_record#update
+                           PUT    /nominal_work_record/:id(.:format)       nominal_work_record#update
+                           DELETE /nominal_work_record/:id(.:format)       nominal_work_record#destroy
+  spouse_work_record_index GET    /spouse_work_record(.:format)            spouse_work_record#index
+                           POST   /spouse_work_record(.:format)            spouse_work_record#create
+    new_spouse_work_record GET    /spouse_work_record/new(.:format)        spouse_work_record#new
+   edit_spouse_work_record GET    /spouse_work_record/:id/edit(.:format)   spouse_work_record#edit
+        spouse_work_record GET    /spouse_work_record/:id(.:format)        spouse_work_record#show
+                           PATCH  /spouse_work_record/:id(.:format)        spouse_work_record#update
+                           PUT    /spouse_work_record/:id(.:format)        spouse_work_record#update
+                           DELETE /spouse_work_record/:id(.:format)        spouse_work_record#destroy
+        documentize_client POST   /dossier(.:format)                       dossiers#documentize
+              interactions GET    /interactions(.:format)                  interactions#index
+                           POST   /interactions(.:format)                  interactions#create
+           new_interaction GET    /interactions/new(.:format)              interactions#new
+          edit_interaction GET    /interactions/:id/edit(.:format)         interactions#edit
+               interaction GET    /interactions/:id(.:format)              interactions#show
+                           PATCH  /interactions/:id(.:format)              interactions#update
+                           PUT    /interactions/:id(.:format)              interactions#update
+                           DELETE /interactions/:id(.:format)              interactions#destroy
+                  messages GET    /messages(.:format)                      messages#index
+                           POST   /messages(.:format)                      messages#create
+               new_message GET    /messages/new(.:format)                  messages#new
+              edit_message GET    /messages/:id/edit(.:format)             messages#edit
+                   message GET    /messages/:id(.:format)                  messages#show
+                           PATCH  /messages/:id(.:format)                  messages#update
+                           PUT    /messages/:id(.:format)                  messages#update
+                           DELETE /messages/:id(.:format)                  messages#destroy
+       client_appointments GET    /appointments/client(.:format)           appointments#client
+              appointments GET    /appointments(.:format)                  appointments#index
+                           POST   /appointments(.:format)                  appointments#create
+           new_appointment GET    /appointments/new(.:format)              appointments#new
+          edit_appointment GET    /appointments/:id/edit(.:format)         appointments#edit
+               appointment GET    /appointments/:id(.:format)              appointments#show
+                           PATCH  /appointments/:id(.:format)              appointments#update
+                           PUT    /appointments/:id(.:format)              appointments#update
+                           DELETE /appointments/:id(.:format)              appointments#destroy
+          new_user_session GET    /users/sign_in(.:format)                 devise/sessions#new
+              user_session POST   /users/sign_in(.:format)                 devise/sessions#create
+      destroy_user_session DELETE /users/sign_out(.:format)                devise/sessions#destroy
+                 edit_user GET    /users/:id/edit(.:format)                users#edit
+                      user PATCH  /users/:id(.:format)                     users#update
+                           PUT    /users/:id(.:format)                     users#update
+                   clients GET    /clients(.:format)                       clients#index
+                           POST   /clients(.:format)                       clients#create
+                new_client GET    /clients/new(.:format)                   clients#new
+               edit_client GET    /clients/:id/edit(.:format)              clients#edit
+                    client GET    /clients/:id(.:format)                   clients#show
+                           PATCH  /clients/:id(.:format)                   clients#update
+                           PUT    /clients/:id(.:format)                   clients#update
+                           DELETE /clients/:id(.:format)                   clients#destroy
+           pages_dashboard GET    /pages/dashboard(.:format)               pages#dashboard
+                pages_help GET    /pages/help(.:format)                    pages#help
+               pages_about GET    /pages/about(.:format)                   pages#about
+                      root GET    /                                        pages#dashboard

@@ -1,23 +1,27 @@
-%h1 Clients
-.card.z-depth-3
-  .row
-    .col-md-6
-      %h2
-        = link_to 'New Client', new_client_path, class: 'btn waves-effect waves-light'
-    .col-md-6
-      .table-search
-        = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control'   do
-          = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search',id: 'serch_input',remote: true
+%section
+  .row.no-gutter
+    %div{class: "col-sm-12 col-md-12 col-lg-12", style: "background:#F9F9F9;"}
+      %div{class: "p-20 clearfix"}
+        %div{class: "pull-right"}
+          .table-search
+            = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-control'   do
+              = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search',id: 'serch_input',remote: true
+        %h4{class: "grey-text"}
+          %i{class: 'md md-dashboard'}
+          %span.hidden-xs
+            Clients
 
   .table-responsive.white
     %table.table.table-full.table-full-small
       %thead
         %tr
-          %th= sortable "name"
-          %th Has dossier?
           %th Status
-          %th Notes
-          %th
+          %th= sortable "name"
+          %th Dossier
+          %th Phone
+          %th e-Mail
+          %th Interactions
+          %th Appointments
           %th
       %tbody#clients
         = render partial: 'clients', collection: @clients, as: :client

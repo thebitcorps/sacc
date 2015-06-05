@@ -1,6 +1,10 @@
 # require 'sidekiq/web'
 Rails.application.routes.draw do
 
+  namespace :admin do 
+    resources :users
+    resources :clients
+  end
 
   resources :dossiers
   resources :location_information
