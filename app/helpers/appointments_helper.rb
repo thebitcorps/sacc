@@ -16,4 +16,14 @@ module AppointmentsHelper
   def today_lambda
     -> {Date.today}
   end
+
+  def placeholder_decorator(object, option)
+    o = option.downcase
+    if !object.new_record?
+      object.send(o).nil? ? o : object.send(o).to_s
+    else
+      o
+    end
+  end
+
 end
