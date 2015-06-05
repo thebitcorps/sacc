@@ -26,7 +26,7 @@
           %tr
             %td.f20
               -#still not working the icon maybe is not inported yet
-              %i{class: "md #{interaction.kind_icon} light-blue darken-1 icon-color"}
+              %i{class: "md #{interaction.kind_icon} #{interaction.kind_color} darken-1 icon-color"}
             %td= interaction.kind
             %td= interaction.date
             %td= interaction.time.to_s :time

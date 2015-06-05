@@ -4,6 +4,8 @@ class Interaction < ActiveRecord::Base
 
   KINDS = %w[Phone Module House Other]
   KIND_ICON = { KINDS[0] => 'md-phone', KINDS[1]=> ' md-business',KINDS[2]=> ' md-people', KINDS[3] => ' md-phone' }
+  KIND_COLOR = { KINDS[0] => 'green', KINDS[1]=> 'teal',KINDS[2]=> ' orange', KINDS[3] => ' red' }
+
   belongs_to :user
   belongs_to :client, counter_cache: true
   validates :kind, presence: true, inclusion: KINDS
@@ -16,6 +18,10 @@ class Interaction < ActiveRecord::Base
 
   def self.created_today(salesman)
     my_interactions(salesman).from_today
+  end
+
+  def kind_color
+   KIND_COLOR[kind]
   end
 
   def kind_icon
