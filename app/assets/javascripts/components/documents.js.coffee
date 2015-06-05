@@ -33,9 +33,9 @@
     React.DOM.div
       className: 'locationInfo'
       React.DOM.div
-        className: 'card z-depth-3  well white'
+        className: 'col-sm-6 col-md-6 col-lg-6'
         React.DOM.h2
-          className: 'table-title p-20'
+          className: ''
           'Documents'
         React.DOM.div
           className: 'card-content'

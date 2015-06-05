@@ -23,7 +23,7 @@ $(document).on "ready page:load", ->
 
 $(document).on "ready", ->
   $('#clients_search').keyup (e) ->
-    params = $('#serch_input').val()
+    params = $('#search_input').val()
     $.ajax
       url: '/clients?search=' + params
       dataType: 'script'

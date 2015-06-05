@@ -23,12 +23,12 @@
     React.DOM.div
       className: 'locationInfo'
       React.DOM.div
-        className: 'card z-depth-3'
+        className: 'col-sm-6 col-md-6 col-lg-6'
         React.DOM.h2
-          className: 'table-title p-20 '
+          className: ''
           'Location info'
         React.DOM.div
-          className: 'well white'
+          className: 'form-horizontal'
           @locationInfoDiv(@state.locationInfo.pattern,'Pattern: ')
           @locationInfoDiv(@state.locationInfo.interior,'Interior: ')
           @locationInfoDiv(@state.locationInfo.sale_price,'Saleprice: ')
@@ -38,9 +38,9 @@
           @locationInfoDiv(@state.locationInfo.excess,'Excess: ')
           @locationInfoDiv(@state.locationInfo.over_cost,'Over cost: ')
           @locationInfoDiv(@state.locationInfo.promo,'Promo: ')
-          @locationInfoDiv(@state.locationInfo.final_sale_price,'FInal price: ')
+          @locationInfoDiv(@state.locationInfo.final_sale_price,'Final sale price: ')
         React.DOM.div
-          className: 'card-action clearfix'
+          className: 'clearfix'
           React.DOM.a
             className: 'btn btn-warning'
             onClick: @handleToggle
