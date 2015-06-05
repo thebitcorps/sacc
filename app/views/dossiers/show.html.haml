@@ -1,5 +1,8 @@
-= react_component 'LocationInfo', {data: @locationInfo}
-= react_component 'NominalWorkRecord', {data: @nominal}
+.row
+  .col-md-6
+    = react_component 'LocationInfo', {data: @locationInfo}
+  .col-md-6
+    = react_component 'NominalWorkRecord', {data: @nominal}
 - if @spouse != nil
   = react_component 'NominalWorkRecord', {data: @spouse}
 = react_component 'Documents', {data: @documents}

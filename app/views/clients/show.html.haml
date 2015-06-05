@@ -21,7 +21,7 @@
         / negativo, como pasan strings vacíos? que no está sanitizado? es pregunta // Rob
         %p
           %b Credit type:
-          - if !@client.credit_type.blank? || !@client.credit_type.nil?
+          - unless @client.credit_type.blank? || @client.credit_type.nil?
             = @client.credit_type
           - else
             = link_to 'Agregar tipo de credito', edit_client_path(@client), class: 'btn btn-default black-text'

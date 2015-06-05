@@ -26,7 +26,8 @@
           .links{style: 'display: inline;'}
             = link_to_add_association 'Add phone', f, :phones, class: 'btn'
 
-
+    -#when changing marital status it should destroy the #spouse-group and added a new one, no only hide it
+    -#so we can update the marital status
     .col-md-8
       .well.white
         .page-header
@@ -47,4 +48,4 @@
 
 
 
-  = f.button :submit, class: 'btn'
+  = f.button :submit, class: 'btn btn-primary'

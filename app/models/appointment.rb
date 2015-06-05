@@ -6,7 +6,7 @@ class Appointment < ActiveRecord::Base
   validates :date, :time, presence: true
 
   scope :for_today, -> { where("date = ?", Date.today) }
-  scope :future_date, ->(date) { where("date >= ?", date) }
+  scope :future_date, ->(date) { where("date > ?", date) }
   scope :past_date, ->(date) { where("date < ?", date) }
 
   # Just an idea Jams

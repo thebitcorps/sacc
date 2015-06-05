@@ -19,13 +19,16 @@
             new interactions today
       .card
         %table.table.striped.clients
-          %tr
-            %th Client
-            %th Interactions
-            %th Appointments
-            %th Actions
-          = render partial: 'clients/client', collection: @my_clients, client: :client
-        = paginate @my_clients
+          %thead
+            %tr
+              %th Client
+              %th Interactions
+              %th Appointments
+              %th Actions
+          %tbody#my_clients
+            = render partial: 'clients/client', collection: @my_clients, client: :client,id: 'my_clients'
+        #paginator
+          = paginate @my_clients,remote: true
     %div{class: "col-lg-3 col-md-12"}
       %div{class: 'p-20'}
         %h4{class: "grey-text m-b-30"} My Appointments
