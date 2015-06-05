@@ -3,8 +3,8 @@
 
   .form-inputs
     = f.input :client_id, as: :hidden, input_html: { value: params[:client_id] }
-    = f.input :date, as: :string, wrapper: :material_date, input_html: { "ng-model" => "date" }
-    = f.input :time, as: :string, wrapper: :material_time, input_html: { "ng-model" => "time" }
+    = f.input :date, label: false, as: :string, wrapper: :material_date, input_html: { "ng-model" => "date" }
+    = f.input :time, label: false, as: :string, wrapper: :material_time, input_html: { "ng-model" => "time" }
     = f.input :place, wrapper: :material_input
     = f.input :status, collection: Appointment::STATUS
 
