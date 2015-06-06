@@ -7,6 +7,8 @@
 
   showCorrectMessage: (e) ->
     @setState message: @state.selectOptions[e.target.value]
+  handleCancel: (e) ->
+    window.location.replace('/appointments/')
   handleUpdate: (e) ->
     data =
       client_id: @props.data.client_id
@@ -52,3 +54,7 @@
           className: 'waves-effect waves-light btn btn-primary btn'
           onClick: @handleUpdate
           'complete'
+        React.DOM.a
+          className: 'waves-effect waves-light btn btn-primary btn'
+          onClick: @handleCancel
+          'Cancel'

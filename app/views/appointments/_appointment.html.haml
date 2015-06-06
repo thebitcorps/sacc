@@ -1,10 +1,10 @@
-.card.z-depth-3
+.card.ordered.z-depth-3
+  .card-header
+    %span.card-title
+      =  "Appoitment with #{appointment.client.fullname}"
+      %span.text-muted status
+      %span.text-danger=  appointment.status
   .card-content
-    -#%span.card-title.black-text
-    -#  = "Appointment with #{appointment.client.fullname}"
-    %p
-      %b Client:
-      = appointment.client.fullname
     %p
       %b Salesman:
       = appointment.user.fullname
