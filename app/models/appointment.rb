@@ -1,5 +1,20 @@
 class Appointment < ActiveRecord::Base
-  STATUS = %w(Next Successful Rescheduled Cancelled)
+  STATUS = %w(upcoming successful rescheduled cancelled)
+
+  COMPLETE_MESSAGES = {
+      'successful' => 'How the appoitment when?',
+      'did not show up' => 'Why didn\'t he show up?'
+  }
+  COMPLETE_STATUS = COMPLETE_MESSAGES.keys
+
+  NO_COMPLETE_MESSAGES = {
+      'cancel' => 'Whu did he cancel?',
+      'reschedule' => 'Add the date and time picker?'
+  }
+  NO_COMPLETE_STATUS = NO_COMPLETE_MESSAGES.keys
+
+
+
 
   belongs_to :client, counter_cache: true
   belongs_to :user #, counter_cache: true

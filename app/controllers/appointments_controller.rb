@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   before_filter :authenticate_user!
+  skip_before_filter  :verify_authenticity_token
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
   before_action :set_client,only: [ :new, :edit , :client]
 
@@ -21,9 +22,11 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+    @complete = complete_param
   end
 
   def edit
+    @complete = complete_param
   end
 
   def create
@@ -41,7 +44,11 @@ class AppointmentsController < ApplicationController
   def update
     if @appointment.update(appointment_params)
       @appointment.user = current_user
-      redirect_to @appointment, notice: 'Appointment was successfully updated.'
+      respond_to do |format|
+        format.html{redirect_to @appointment, notice: 'Appointment was successfully updated.'}
+        format.json{ render json: @appointment }
+      end
+
     else
       render :edit
     end
@@ -53,6 +60,10 @@ class AppointmentsController < ApplicationController
   end
 
   private
+    def complete_param
+      params[:complete] == 'true' ? true : false
+    end
+
     # validate that the params is one that matches the method in the model
     def sanitize_type_list
       Appointment.type_list.include?(params[:type_list]) ? params[:type_list] : 'today'
@@ -63,7 +74,7 @@ class AppointmentsController < ApplicationController
     end
 
     def appointment_params
-      params.require(:appointment).permit(:date, :place, :time, :status, :client_id)
+      params.require(:appointment).permit(:date, :place, :time, :status, :client_id,:notes)
     end
 
     def set_client

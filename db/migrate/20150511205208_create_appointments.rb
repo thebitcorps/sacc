@@ -6,6 +6,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.date :date
       t.string :place # en lugar de las notas, el lugar de la cita
       t.time :time
+      t.text :notes
       # t.text :notes
       # t.integer :mood
       # t.integer :interest

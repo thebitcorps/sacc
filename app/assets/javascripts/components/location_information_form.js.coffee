@@ -3,6 +3,7 @@
     locationInfo: []
   handleSubmit: (e) ->
     e.preventDefault()
+#   this could be change so when we change every element we update the state and pas
     data =
       pattern: React.findDOMNode(@refs.pattern).value
       interior: React.findDOMNode(@refs.interior).value
