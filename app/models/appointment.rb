@@ -1,5 +1,6 @@
 class Appointment < ActiveRecord::Base
   STATUS = %w(upcoming successful rescheduled cancelled)
+  STATUS_COLORS = %w[info success warning danger]
 
   COMPLETE_MESSAGES = {
       'successful' => 'How the appoitment when?',
@@ -8,13 +9,25 @@ class Appointment < ActiveRecord::Base
   COMPLETE_STATUS = COMPLETE_MESSAGES.keys
 
   NO_COMPLETE_MESSAGES = {
-      'cancel' => 'Whu did he cancel?',
-      'reschedule' => 'Add the date and time picker?'
+      'cancelled' => 'Whu did he cancel?',
+      'rescheduled' => 'Add the date and time picker?'
   }
   NO_COMPLETE_STATUS = NO_COMPLETE_MESSAGES.keys
 
+  after_update :status_change_action
 
+  def status_color
+    hash = Hash[STATUS.zip STATUS_COLORS]
+    hash[status]
+  end
 
+  def previous?
+    date < Date.today and status == 'upcoming'
+  end
+
+  def can_reshedule?
+    status == 'upcoming' and date > Date.today
+  end
 
   belongs_to :client, counter_cache: true
   belongs_to :user #, counter_cache: true
@@ -44,4 +57,37 @@ class Appointment < ActiveRecord::Base
   def self.previous_from(user_id)
     where( "date < ? and user_id = ?" ,Date.today, user_id ).order('date')
   end
+
+  # Params new_status= the new status to update
+  # if rescheduled will create a new appoitment with the date and time params
+  # if successful will create a new interaction
+  def status_change_action
+    if status == 'rescheduled'
+      Appointment.create(
+        client_id: self.client_id,
+        user_id: self.user_id,
+        date: date,
+        place: time,
+        time: self.time,
+        notes: self.notes,
+        status: 'upcoming'
+      )
+    elsif status == 'successful'
+      Interaction.create(
+          kind: 'Appoitment',
+          date: self.date,
+          time: self.time,
+          # should add mood and interest in the complted form in appoitment
+          mood: nil,
+          interest: nil,
+          user_id: self.user_id,
+          client_id: self.client_id,
+          notes: self.notes,
+          # dont know what are those for
+          completed: false,
+          position: 0
+      )
+    end
+  end
+
 end

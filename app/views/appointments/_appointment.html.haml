@@ -3,7 +3,7 @@
     %span.card-title
       =  "Appoitment with #{appointment.client.fullname}"
       %span.text-muted status
-      %span.text-danger=  appointment.status
+      %span{class: "text-#{appointment.status_color}"}=  appointment.status
   .card-content
     %p
       %b Salesman:
@@ -18,5 +18,5 @@
       %b Place:
       = appointment.place
   .card-action
-    = link_to 'Finish', edit_appointment_path(appointment,client_id: appointment.client.id,complete: 'true'),class: 'btn'
-    = link_to 'Cancel or Reschedule', edit_appointment_path(appointment,client_id: appointment.client.id,complete: 'false'),class: 'btn'
+    = link_to 'Finish', edit_appointment_path(appointment,client_id: appointment.client.id,complete: 'true'),class: 'btn' if appointment.previous?
+    = link_to 'Cancel or Reschedule', edit_appointment_path(appointment,client_id: appointment.client.id,complete: 'false'),class: 'btn' if appointment.can_reshedule?

@@ -45,7 +45,7 @@
           className: 'table-title p-20'
           'Location info'
         React.DOM.div
-          className: 'form-horizontal'
+          className: 'well white'
           @locationInput(@props.location.pattern,'pattern','Pattern: ')
           @locationInput(@props.location.interior,'interior','Interior: ')
           @locationInput(@props.location.sale_price,'sale_price','Sale price: ')

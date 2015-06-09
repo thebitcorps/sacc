@@ -3,6 +3,9 @@
     = react_component 'LocationInfo', {data: @locationInfo}
   .col-md-6
     = react_component 'NominalWorkRecord', {data: @nominal}
-- if @spouse != nil
-  = react_component 'NominalWorkRecord', {data: @spouse}
-= react_component 'Documents', {data: @documents}
+.row
+  - if @spouse != nil
+    .col-md-6
+      = react_component 'NominalWorkRecord', {data: @spouse}
+  .col-md-6
+    = react_component 'Documents', {data: @documents}

@@ -4,16 +4,36 @@
     options: @props.data.options
     selectOptions: @props.data.selectOptions
     message: @props.data.defaultMessage
-
+    dateTimeFields: false
   showCorrectMessage: (e) ->
     @setState message: @state.selectOptions[e.target.value]
+    if e.target.value == 'rescheduled'
+      @setState dateTimeFields: true
+  createTimeAndDate: ->
+      React.DOM.label
+        className: 'text optional control-label'
+        for: 'appoitment-notes'
+        'Date'
+
   handleCancel: (e) ->
     window.location.replace('/appointments/')
-  handleUpdate: (e) ->
+  dataWithOrWitoutDate: ->
     data =
       client_id: @props.data.client_id
       status:  React.findDOMNode(@refs.status).value
       notes: React.findDOMNode(@refs.notes).value
+#    could be better but i dont know how it works
+    if @state.dateTimeFields
+      data =
+        client_id: @props.data.client_id
+        status:  React.findDOMNode(@refs.status).value
+        notes: React.findDOMNode(@refs.notes).value
+        date: React.findDOMNode(@refs.date).value
+        time: React.findDOMNode(@refs.time).value
+    return data
+  handleUpdate: (e) ->
+    data = @dataWithOrWitoutDate()
+
     $.ajax
       method: 'PUT'
       url: "/appointments/#{ @props.data.appointment_id}"
@@ -21,10 +41,11 @@
       data:
         appointment: data
       success: (data) =>
-        window.location.replace('/clients/' + @props.data.client_id)
-
+        if @state.dateTimeFields
+          window.location.replace('/appointments?type_list=upcoming')
+        else
+          window.location.replace('/clients/' + @props.data.client_id)
   render: ->
-
     React.DOM.div
       className: 'form-inputs'
       React.DOM.label
@@ -41,6 +62,19 @@
 
         React.DOM.h4 null,
           @state.message
+#        make then work with materialize date pickers
+        if @state.dateTimeFields
+          React.DOM.div null,
+            React.DOM.input
+              className: 'string required form-control ng-pristine ng-valid ng-touched'
+              name: 'date'
+              type: 'text'
+              ref: 'date'
+            React.DOM.input
+              className: 'string required form-control ng-pristine ng-valid ng-touched'
+              name: 'time'
+              type: 'text'
+              ref: 'time'
         React.DOM.label
          className: 'text optional control-label'
          for: 'appoitment-notes'
