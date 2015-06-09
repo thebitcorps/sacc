@@ -37,19 +37,21 @@
         %div{role: 'tabpanel'}
           %ul{class: "nav nav-tabs", role: "tablist", ng: {init: "actionTab=1"}}
             %li{role: "presentation"}
-              = link_to nil, remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+              = link_to appointments_path(type_list: 'today'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
                 Today
                 .ripple-wrapper
             %li{role: "presentation"}
-              = link_to appointments_path(type_list: 'upcoming'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+              = link_to appointments_path(type_list: 'upcoming'), remote: true, "ng-click" => "actionTab=2", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
                 Upcoming
                 .ripple-wrapper
             %li{role: "presentation"}
-              = link_to appointments_path(type_list: 'previous'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+              = link_to appointments_path(type_list: 'previous'), remote: true, "ng-click" => "actionTab=3", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
                 Previous
                 .ripple-wrapper
             %li{role: "presentation"}
-              = link_to appointments_path(type_list: 'all'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+              = link_to appointments_path(type_list: 'all'), remote: true, "ng-click" => "actionTab=4", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
                 All
                 .ripple-wrapper
         / = render partial: 'appointments/appointments', locals: { appointments: (Appointment.today_from current_user.appointments) }
+        .tab-content#appointments
+          = render partial: 'appointments/appointments', locals: { appointments: (Appointment.today_from current_user.appointments) }

@@ -39,7 +39,7 @@ class Appointment < ActiveRecord::Base
 
   # Just an idea Jams
   def self.upcoming_from(user_id, date = Date.today)
-    where(user_id: user_id).future_date(date).order(:date)
+    where(user_id: user_id, status: 'upcoming').future_date(date).order(:date)
   end
 
   def self.type_list
@@ -55,7 +55,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.previous_from(user_id)
-    where( "date < ? and user_id = ?" ,Date.today, user_id ).order('date')
+    where( "date < ? and user_id = ? and status = ?" ,Date.today, user_id ,  'upcoming').order('date')
   end
 
   # Params new_status= the new status to update

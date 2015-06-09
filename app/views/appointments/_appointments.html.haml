@@ -1,10 +1,10 @@
 #appointments
-  .bs-component.btn-block
-    .btn-group.z-depth-3
-      = link_to 'Today', appointments_path( type_list: 'today'),class: ' btn btn-default',remote: true
-      = link_to 'upcoming', appointments_path(type_list: 'upcoming'),class: 'btn btn-default',remote: true
-      = link_to 'previous', appointments_path(type_list: 'previous'),class: 'btn btn-default ',remote: true
-      = link_to 'All', appointments_path(type_list: 'all'),class: 'btn btn-default',remote: true
+  -#.bs-component.btn-block
+  -#  .btn-group.z-depth-3
+  -#    = link_to 'Today', appointments_path( type_list: 'today'),class: ' btn btn-default',remote: true
+  -#    = link_to 'upcoming', appointments_path(type_list: 'upcoming'),class: 'btn btn-default',remote: true
+  -#    = link_to 'previous', appointments_path(type_list: 'previous'),class: 'btn btn-default ',remote: true
+  -#    = link_to 'All', appointments_path(type_list: 'all'),class: 'btn btn-default',remote: true
   - appointments.each do |appointment|
     = render 'appointments/appointment', appointment: appointment
   %h3= no_appoitments_messages params[:type_list] if appointments.empty?
