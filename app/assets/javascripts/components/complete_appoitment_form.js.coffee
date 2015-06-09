@@ -7,8 +7,11 @@
     dateTimeFields: false
   showCorrectMessage: (e) ->
     @setState message: @state.selectOptions[e.target.value]
+
     if e.target.value == 'rescheduled'
       @setState dateTimeFields: true
+    else
+      @setState dateTimeFields: false
   createTimeAndDate: ->
       React.DOM.label
         className: 'text optional control-label'
