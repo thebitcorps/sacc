@@ -13,6 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @phones = @client.phones
   end
 
   def new

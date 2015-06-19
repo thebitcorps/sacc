@@ -40,45 +40,84 @@
         leyend = "Married with " + client.spouse
     else
       leyend = maritals[client.marital_status]
-    React.DOM.div
-      className: 'icon-holder'
+    React.DOM.li
+      className: 'list-group-item'
       React.DOM.i
         className: 'md md-favorite'
         style:
           marginRight: '5px'
       leyend
 
+  handleEdit: (e) ->
+    e.preventDefault()
+    @setState edit: !@state.edit
+
   renderClientData: (client) ->
     React.DOM.div
       className: 'card'
       React.DOM.div
-        className: 'well white'
+        className: 'card-header'
         React.DOM.div
-          className: 'page-header'
+          className: 'card-title'
           React.DOM.h1
             className: ''
             client.fullname
             @renderStatus(client.profiled)
             @renderStatus(client.potential)
-          React.DOM.div
-              className: 'icon-holder'
+      React.DOM.div
+        className: 'card-content'
+        React.DOM.ul
+          className: 'list-group'
+          React.DOM.li
+              className: 'list-group-item'
               React.DOM.i
                 className: 'md md-cake'
                 style:
                   marginRight: '5px'
               @getBirthDateFormated(client.birthdate)
-          React.DOM.div
-              className: 'icon-holder'
+          React.DOM.li
+              className: 'list-group-item'
               React.DOM.i
                 className: 'md md-email'
                 style:
                   marginRight: '5px'
               @getEMail(client.mail)
           @renderMaritalStatus(client)
+      React.DOM.div
+        className: 'card-action clearfix'
+        React.DOM.a
+          onClick: @handleEdit
+          className: 'btn btn-warning pull-right'
+          'Edit Information'
 
+  renderClientForm: (client) ->
+    React.DOM.div
+      className: 'card'
+      React.DOM.div
+        className: 'card-header'
+        React.DOM.div
+          className: 'card-title'
+          React.DOM.h1
+            className: ''
+            client.fullname
+            @renderStatus(client.profiled)
+            @renderStatus(client.potential)
+      React.DOM.div
+        className: 'card-content'
+        React.DOM.div
+          className: 'form-group string required client_name filled'
+          React.DOM.label
+            className: 'string required control-label'
+            "Name"
+          React.DOM.input
+            className: 'string required form-control'
+            type: 'text'
+            defaultValue: client.name
+            ref: 'client_name'
 
   render: ->
     client = @state.client
-    React.DOM.section
-      className: 'forms-basic'
+    if @state.edit
+      @renderClientForm(client)
+    else
       @renderClientData(client)
