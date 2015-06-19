@@ -9,12 +9,12 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
+// require angular.min
+// require materialism.min
+// require vendors.min
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular.min
-//= require materialism.min
-//= require vendors.min
 //= require cocoon
 //= require react
 //= require react_ujs
