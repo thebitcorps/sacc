@@ -12,6 +12,7 @@ class CreateClients < ActiveRecord::Migration
       # t.decimal :income
       t.text :notes
       # t.string :workplace
+      t.integer :zipcode
       t.integer :current_salesman_id
 
       t.timestamps null: false

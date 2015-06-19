@@ -18,7 +18,7 @@ module AppointmentsHelper
   end
 
   def placeholder_decorator(object, option)
-    o = option.downcase
+    o = option.underscore
     if object && !object.new_record?
       object.send(o).nil? ? o : object.send(o).to_s
     else
@@ -26,4 +26,12 @@ module AppointmentsHelper
     end
   end
 
+  def placeholder_timepicker(object, option)
+    o = option.underscore
+    if object && !object.blank?
+      object.send(o).nil? ? o : object.send(o).to_s(:time)
+    else
+      o
+    end
+  end
 end
