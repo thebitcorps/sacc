@@ -36,9 +36,9 @@ class ClientsController < ApplicationController
   def update
     if @client.update(client_params)
       @client.update_documents
-      redirect_to @client, notice: 'Client was successfully updated.'
+      render json: @client.to_json(include: :phones)
     else
-      render :edit
+      render json: @dossier.errors , status: :unprocessable_entity
     end
   end
 

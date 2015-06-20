@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.date     "birthdate"
     t.string   "mail"
     t.text     "notes"
-    t.integer  "zipcode"
     t.integer  "current_salesman_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false

@@ -52,6 +52,29 @@
     e.preventDefault()
     @setState edit: !@state.edit
 
+  handleSubmit: (id, e) ->
+    e.preventDefault()
+    data =
+      name: React.findDOMNode(@refs.client_name).value
+      paternal_lastname: React.findDOMNode(@refs.client_paternal_lastname).value
+      maternal_lastname: React.findDOMNode(@refs.client_maternal_lastname).value
+      gender: React.findDOMNode(@refs.client_male).checked
+      birthdate: React.findDOMNode(@refs.client_birthdate).value
+      mail: React.findDOMNode(@refs.client_e_mail).value
+      profiled: React.findDOMNode(@refs.client_profiled).checked
+      potential: React.findDOMNode(@refs.client_potential).checked
+
+    $.ajax
+      method: 'PUT'
+      url: "/clients/#{ id }"
+      dataType: 'JSON'
+      data:
+        client:
+          data
+      success: (data) =>
+        @state.client = data
+        @setState edit: !@state.edit
+
   renderClientData: (client) ->
     React.DOM.div
       className: 'card'
@@ -90,6 +113,58 @@
           className: 'btn btn-warning pull-right'
           'Edit Information'
 
+  renderTextField: (label, value) ->
+    React.DOM.div
+      className: 'form-group string filled'
+      React.DOM.label
+        className: 'string control-label'
+        label
+      React.DOM.input
+        className: 'string form-control'
+        type: 'text'
+        defaultValue: value
+        ref:  'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+
+  renderCheckBoxField: (label, value) ->
+    React.DOM.div
+      className: 'form-group'
+      React.DOM.div
+        className: 'checkbox'
+        React.DOM.label
+          React.DOM.input
+            type: 'checkbox'
+            ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+            defaultChecked: value
+          label
+
+  renderSwitchField: (label, value) ->
+    React.DOM.div
+      className: 'form-group'
+      React.DOM.div
+        className: 'switch'
+        React.DOM.label
+          className: 'filled'
+          React.DOM.input
+            type: 'checkbox'
+            ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+            defaultChecked: value
+          React.DOM.span
+            className: 'lever'
+          label
+
+  renderRadioField: (label, value, name, inline) ->
+    React.DOM.div
+      className:  if inline then 'radio-inline' else 'radio'
+      React.DOM.label
+        className: ''
+        React.DOM.input
+          className: 'radio_buttons'
+          type: 'radio'
+          name: name
+          defaultChecked: value
+          ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+        label
+
   renderClientForm: (client) ->
     React.DOM.div
       className: 'card'
@@ -99,21 +174,36 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
+            "Editing "
             client.fullname
-            @renderStatus(client.profiled)
-            @renderStatus(client.potential)
       React.DOM.div
         className: 'card-content'
+        @renderSwitchField("Profiled", client.profiled)
+        @renderSwitchField("Potential", client.potential)
+        @renderTextField("Name", client.name)
+        @renderTextField("Paternal lastname", client.paternal_lastname)
+        @renderTextField("Maternal lastname", client.maternal_lastname)
         React.DOM.div
-          className: 'form-group string required client_name filled'
+          className: 'input radio_buttons'
           React.DOM.label
-            className: 'string required control-label'
-            "Name"
-          React.DOM.input
-            className: 'string required form-control'
-            type: 'text'
-            defaultValue: client.name
-            ref: 'client_name'
+            className: 'radio_buttons'
+            "Gender"
+          React.DOM.div
+            className: 'clearfix'
+            @renderRadioField("Male", client.gender, 'client_gender', true)
+            @renderRadioField("Female", !client.gender, 'client_gender', true)
+        @renderTextField("Birthdate", client.birthdate)
+        @renderTextField("E-Mail", client.mail)
+      React.DOM.div
+        className: 'card-action clearfix'
+        React.DOM.a
+          className: 'btn btn-warning pull-right'
+          onClick: @handleSubmit.bind(this, client.id)
+          'update'
+        React.DOM.a
+          className: 'btn btn-default'
+          onClick: @handleEdit
+          'Cancel'
 
   render: ->
     client = @state.client
