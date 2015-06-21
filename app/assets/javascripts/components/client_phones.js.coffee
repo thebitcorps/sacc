@@ -39,6 +39,12 @@
                   style:
                     marginRight: '5px'
                 phone.number
+      React.DOM.div
+        className: 'card-action clearfix'
+        React.DOM.a
+          onClick: @handleEdit
+          className: 'btn btn-warning pull-right'
+          'Edit Phones'
 
   render: ->
     @renderPhones(@state.phones, @state.mainPhone)

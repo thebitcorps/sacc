@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.date     "date"
     t.string   "place"
     t.time     "time"
-    t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "status"
@@ -150,8 +149,9 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.time     "available_from"
     t.time     "available_to"
     t.integer  "client_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "main",           default: true
   end
 
   add_index "phones", ["client_id"], name: "index_phones_on_client_id", using: :btree
