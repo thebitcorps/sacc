@@ -63,6 +63,9 @@
       mail: React.findDOMNode(@refs.client_e_mail).value
       profiled: React.findDOMNode(@refs.client_profiled).checked
       potential: React.findDOMNode(@refs.client_potential).checked
+      marital_status: React.findDOMNode(@refs.client_marital_status).value
+      spouse: React.findDOMNode(@refs.client_spouse_name).value
+      spouse_works: React.findDOMNode(@refs.client_spouse_works).checked
 
     $.ajax
       method: 'PUT'
@@ -74,6 +77,13 @@
       success: (data) =>
         @state.client = data
         @setState edit: !@state.edit
+
+  handleMaritalStatusView: (e) ->
+    selected_status = React.findDOMNode(@refs.client_marital_status).value
+    if selected_status == 'married'
+      $('#spouse-group').show()
+    else
+      $('#spouse-group').hide()
 
   renderClientData: (client) ->
     React.DOM.div
@@ -115,7 +125,7 @@
 
   renderTextField: (label, value) ->
     React.DOM.div
-      className: 'form-group string filled'
+      className: 'form-group string'
       React.DOM.label
         className: 'string control-label'
         label
@@ -165,6 +175,22 @@
           ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
         label
 
+  renderSelectField: (label, value, options, onChange) ->
+    React.DOM.div
+      className: 'form-group'
+      React.DOM.label
+        className: 'control-label'
+        label
+      React.DOM.select
+        className: 'form-control'
+        onChange: onChange
+        defaultValue: value
+        ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+        for option in options
+          React.DOM.option
+            value: option.val
+            option.dis
+
   renderClientForm: (client) ->
     React.DOM.div
       className: 'card'
@@ -194,6 +220,13 @@
             @renderRadioField("Female", !client.gender, 'client_gender', true)
         @renderTextField("Birthdate", client.birthdate)
         @renderTextField("E-Mail", client.mail)
+        @renderSelectField("Marital status", client.marital_status, [{'val' : 'single', 'dis' : 'Sinlge'}, {'val' : 'married', 'dis' : 'Married'}, {'val' : 'divorced', 'dis' : 'Divorced'}], @handleMaritalStatusView)
+        React.DOM.div
+          id: 'spouse-group'
+          hidden: if client.marital_status != 'married' then true else false
+          @renderTextField("Spouse name", client.spouse)
+          @renderSwitchField("Spouse works", client.spouse_works)
+
       React.DOM.div
         className: 'card-action clearfix'
         React.DOM.a
