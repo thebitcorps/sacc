@@ -2,10 +2,13 @@
   getInitialState: ->
     phones: @props.phones
     mainPhone: @props.mainPhone
+    editablePhones: null
     edit: false
 
   handleEdit: (e) ->
     e.preventDefault()
+    if(!@state.edit)
+      @state.editablePhones = @state.phones
     @setState edit: !@state.edit
 
   getCorrectNumber: (number) ->
@@ -17,6 +20,16 @@
   getTimeFromDate: (date) ->
     actualDate = new Date(date)
     @getCorrectNumber(actualDate.getHours()) + ":" + @getCorrectNumber(actualDate.getMinutes())
+
+  handleDeletePhone: (id, e) ->
+    e.preventDefault()
+    for phone in @state.editablePhones
+      if phone.id == id
+        phone['_destroy'] = true
+    row = React.findDOMNode(@refs['phone_row_' + id])
+    row.style.display = 'none'
+
+
 
   renderPhones: (phones, main) ->
     phoneKinds = { 'house' : 'md-home', 'cellphone' : 'md-phone-iphone', 'office' : 'md-work', 'other' : 'md md-phone'}
@@ -94,6 +107,7 @@
   renderEditableRow: (phone, main)->
     React.DOM.tr
       className: 'ng-scope'
+      ref: 'phone_row_' + phone.id 
       React.DOM.td
         className:'f20 ng-binding'
         @renderRadioField("main_" + phone.id, main && phone.id, "phone_main", false)
@@ -115,6 +129,7 @@
           className: 'btn btn-round-sm btn-link ng-scope'
           React.DOM.i
             className: 'md md-delete'
+            onClick: @handleDeletePhone.bind(this, phone.id)
 
   renderPhonesForm: (phones, main) ->
     React.DOM.div
