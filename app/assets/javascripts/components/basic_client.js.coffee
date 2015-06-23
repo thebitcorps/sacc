@@ -34,7 +34,7 @@
     if(client.marital_status == null)
       leyend =  "Marital status not specified"
     if(client.marital_status == "married")
-      if(client.spouse == null)
+      if(client.spouse == '')
         leyend = "Married but the spouse is not especified"
       else
         leyend = "Married with " + client.spouse
@@ -220,13 +220,14 @@
             @renderRadioField("Female", !client.gender, 'client_gender', true)
         @renderTextField("Birthdate", client.birthdate)
         @renderTextField("E-Mail", client.mail)
+      React.DOM.div
+        className: 'card-content'
         @renderSelectField("Marital status", client.marital_status, [{'val' : 'single', 'dis' : 'Sinlge'}, {'val' : 'married', 'dis' : 'Married'}, {'val' : 'divorced', 'dis' : 'Divorced'}], @handleMaritalStatusView)
         React.DOM.div
           id: 'spouse-group'
           hidden: if client.marital_status != 'married' then true else false
           @renderTextField("Spouse name", client.spouse)
           @renderSwitchField("Spouse works", client.spouse_works)
-
       React.DOM.div
         className: 'card-action clearfix'
         React.DOM.a

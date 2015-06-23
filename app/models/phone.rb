@@ -1,5 +1,5 @@
 class Phone < ActiveRecord::Base
-  KINDS = %w(casa oficina celular otro)
+  KINDS = %w(house office cellphone other)
   belongs_to :client
   validates :kind, presence: true, inclusion: KINDS
 end
