@@ -59,7 +59,7 @@ class ClientsController < ApplicationController
                                      :gender, :marital_status, :spouse_works,
                                      :credit_type, :fiscal_entity,
                                      :profiled, :potential,
-                                     phones_attributes: [:id, :number, :kind, :available_from, :available_to, :_destroy])
+                                     phones_attributes: [:id, :number, :kind, :available_from, :available_to, :_destroy, :is_main])
     end
 
     def sort_column

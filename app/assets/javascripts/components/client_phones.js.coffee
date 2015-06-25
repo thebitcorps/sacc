@@ -1,6 +1,7 @@
 @ClientPhones = React.createClass
   getInitialState: ->
     phones: @props.phones
+    client_id: @props.client_id
     editablePhones: null
     newCount: 1
     newDeletedCount: 0
@@ -72,6 +73,32 @@
       React.findDOMNode(@refs['phone_new_main_' + @state.newCount]).checked = true
     @state.newCount++
 
+  getDateString: (dateInput) ->
+    hm = dateInput.split(':')
+    actualDate = new Date(2000, 1, 1, hm[0], hm[1], 0, 0)
+    actualDate.toUTCString()
+
+  handleSubmit: (id, e) ->
+    e.preventDefault()
+    for phone in @state.editablePhones
+      if !phone['_destroy']
+        phone['is_main'] = React.findDOMNode(@refs['phone_main_' + phone.id]).checked
+        phone['kind'] = React.findDOMNode(@refs['phone_kind_' + phone.id]).value
+        phone['number'] = React.findDOMNode(@refs['phone_number_' + phone.id]).value
+        phone['available_from'] = @getDateString(React.findDOMNode(@refs['phone_av_from_' + phone.id]).value)
+        phone['available_to'] = @getDateString(React.findDOMNode(@refs['phone_av_to_' + phone.id]).value)
+    $.ajax
+      method: 'PUT'
+      url: "/clients/#{ id }"
+      dataType: 'JSON'
+      data:
+        client:
+          phones_attributes:
+            @state.editablePhones
+      success: (data) =>
+        @state.phones = data.phones
+        @setState edit: !@state.edit
+
   renderPhones: (phones) ->
     phoneKinds = { 'house' : 'md-home', 'cellphone' : 'md-phone-iphone', 'office' : 'md-work', 'other' : 'md md-phone'}
     React.DOM.div
@@ -103,7 +130,7 @@
                   className: phoneKinds[phone.kind]
                   style:
                     marginRight: '5px'
-                phone.number + " " + phone['_destroy']
+                phone.number
       React.DOM.div
         className: 'card-action clearfix'
         React.DOM.a
@@ -253,6 +280,7 @@
         className: 'card-action clearfix'
         React.DOM.a
           className: 'btn btn-warning pull-right'
+          onClick: @handleSubmit.bind(this, @state.client_id)
           'update'
         React.DOM.a
           className: 'btn btn-default'

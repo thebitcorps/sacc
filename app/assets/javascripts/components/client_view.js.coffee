@@ -9,4 +9,4 @@
     React.DOM.div
       className: 'row'
       React.createElement BasicClient, client: @state.client
-      React.createElement ClientPhones, phones: @state.phones
+      React.createElement ClientPhones, phones: @state.phones, client_id: @state.client.id
