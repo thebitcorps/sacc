@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605192627) do
+ActiveRecord::Schema.define(version: 20150624180433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.date     "date"
     t.string   "place"
     t.time     "time"
+    t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "status"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.date     "birthdate"
     t.string   "mail"
     t.text     "notes"
+    t.integer  "zipcode"
     t.integer  "current_salesman_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
@@ -52,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.string   "salutation"
     t.boolean  "profiled",            default: true
     t.boolean  "potential",           default: true
-    t.integer  "main_phone_id"
   end
 
   add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree
@@ -149,9 +150,9 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.time     "available_from"
     t.time     "available_to"
     t.integer  "client_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.boolean  "main",           default: true
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "is_main",        default: false
   end
 
   add_index "phones", ["client_id"], name: "index_phones_on_client_id", using: :btree
