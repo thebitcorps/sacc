@@ -11,8 +11,9 @@
   handleEdit: (e) ->
     e.preventDefault()
     if(!@state.edit)
-      @state.editablePhones = @state.phones
-      @state.newCount = 1
+      @state.editablePhones = []
+      for phone in @state.phones
+        @state.editablePhones.push({'id' : phone.id})
       @state.oldCount = @state.phones.length
       @state.newDeletedCount = 0
       @state.assignedNewMain = false
@@ -30,15 +31,16 @@
 
   checkSomething: () ->
     if @state.oldCount > 0
-      for phone in @state.phones
+      for phone in @state.editablePhones
         if !phone['_destroy']
           React.findDOMNode(@refs['phone_main_' + phone.id]).checked = true
           return
     else
-      for num in [30..1]
+      for num in [1..30]
         if React.findDOMNode(@refs['phone_new_main_' + num]).checked == false && React.findDOMNode(@refs['new_phone_row_' + num]).style.display != 'none'
           React.findDOMNode(@refs['phone_new_main_' + num]).checked = true
           @state.assignedNewMain = true
+          return
 
   handleDeletePhone: (id, e) ->
     e.preventDefault()
@@ -101,7 +103,7 @@
                   className: phoneKinds[phone.kind]
                   style:
                     marginRight: '5px'
-                phone.number
+                phone.number + " " + phone['_destroy']
       React.DOM.div
         className: 'card-action clearfix'
         React.DOM.a
