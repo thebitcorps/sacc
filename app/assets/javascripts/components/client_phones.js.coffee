@@ -87,6 +87,15 @@
         phone['number'] = React.findDOMNode(@refs['phone_number_' + phone.id]).value
         phone['available_from'] = @getDateString(React.findDOMNode(@refs['phone_av_from_' + phone.id]).value)
         phone['available_to'] = @getDateString(React.findDOMNode(@refs['phone_av_to_' + phone.id]).value)
+    for num in [1..30]
+      if React.findDOMNode(@refs['new_phone_row_' + num]).style.display != 'none'
+        new_main = React.findDOMNode(@refs['phone_new_main_' + num]).checked
+        new_kind = React.findDOMNode(@refs['phone_new_kind_' + num]).value
+        new_number = React.findDOMNode(@refs['phone_new_number_' + num]).value
+        new_av_from = @getDateString(React.findDOMNode(@refs['phone_new_av_from_' + num]).value)
+        new_av_to = @getDateString(React.findDOMNode(@refs['phone_new_av_to_' + num]).value)
+        @state.editablePhones.push({'is_main' : new_main, 'kind' : new_kind, 'number' : new_number, 'available_to' : new_av_from, 'available_to' : new_av_to})
+    
     $.ajax
       method: 'PUT'
       url: "/clients/#{ id }"
