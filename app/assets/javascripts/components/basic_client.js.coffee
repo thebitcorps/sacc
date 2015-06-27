@@ -3,6 +3,13 @@
     client: @props.client
     edit: false
 
+  componentDidMount: ->
+    alert document.getElementById('client_birthdate').getAttribute("onClick")
+
+  componentDidUpdate: (prevProps, prevState) ->
+    # React.findDOMNode(@refs.client_birthdate).setAttribute('bs-datepicker', true)
+    # React.findDOMNode(@refs.client_birthdate).setAttribute('ng-model', 'birthdate')
+
   getBirthDateFormated: (date) ->
     if(date == null)
       return "Birthdate not specified"

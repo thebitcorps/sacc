@@ -11063,7 +11063,7 @@ aside.sidebar .user-logged-in .content .user-actions {
 }
 
 aside.sidebar .user-logged-in:after {
-    background: url(../img/user-bg.png);
+    background: url(user-bg.png);
     background-size: cover;
     opacity: .2;
     top: 0;
