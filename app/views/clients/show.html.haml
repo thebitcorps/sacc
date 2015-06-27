@@ -1,4 +1,2 @@
-%input#client_birthdate{"bs-datepicker" => "true", "ng-model" => "birthdate", :type => "text"}
-
 %section.cards.ng-scope
-	= react_component 'ClientView', { client: @client, phones: @phones}
+	= react_component 'ClientView', { client: @client, phones: @phones, dossier: @dossier}

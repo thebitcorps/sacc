@@ -15,6 +15,7 @@ class ClientsController < ApplicationController
 
   def show
     @phones = @client.phones
+    @dossier = JSON.parse @client.dossier.to_json include: [:documents], except: [:created_at, :updated_at]
   end
 
   def new
