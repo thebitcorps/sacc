@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627034254) do
+ActiveRecord::Schema.define(version: 20150628180501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150627034254) do
     t.text     "notes"
     t.integer  "zipcode"
     t.integer  "current_salesman_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "marital_status"
     t.boolean  "gender"
     t.boolean  "spouse_works"
@@ -50,10 +50,18 @@ ActiveRecord::Schema.define(version: 20150627034254) do
     t.string   "fiscal_entity"
     t.integer  "interactions_count",  default: 0
     t.integer  "appointments_count",  default: 0
-    t.string   "fullname",                           null: false
+    t.string   "fullname",                        null: false
     t.string   "salutation"
-    t.boolean  "profiled",            default: true
-    t.boolean  "potential",           default: true
+    t.string   "current_place"
+    t.string   "address"
+    t.string   "division"
+    t.string   "town"
+    t.decimal  "total_incume"
+    t.date     "spouse_birtdate"
+    t.string   "pathway"
+    t.string   "sales_channel"
+    t.string   "status"
+    t.boolean  "qualifies"
   end
 
   add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree

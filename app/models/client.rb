@@ -12,16 +12,15 @@ class Client < ActiveRecord::Base
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_one :dossier, dependent: :destroy
-  belongs_to :main_phone, class_name: "Phone", foreign_key: "main_phone_id"
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
   validates :name, :paternal_lastname, presence: true
   validates_inclusion_of :gender, in: [true, false]
   validates :fullname, uniqueness: true
 
-  #validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced']
-  #validates :credit_type, inclusion: ['bank', 'infonavit', 'fovissste']
-  #validates :fiscal_entity, inclusion: ['wage', 'natural', 'legal']
+  validates :marital_status, inclusion: ['single', 'married', 'widowed', 'divorced', 'free_union', 'other', nil]
+  validates :credit_type, inclusion: ['bank', 'infonavit', 'fovissste', nil]
+  validates :fiscal_entity, inclusion: ['wage', 'natural', 'legal', nil]
 
   accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
 
@@ -34,7 +33,7 @@ class Client < ActiveRecord::Base
   end
 
   def self.my_clients(salesman)
-    where(salesman: salesman).order('created_at DESC')
+    where(salesman: salesman)
   end
 
   def self.created_today(salesman)
@@ -67,14 +66,6 @@ class Client < ActiveRecord::Base
 
   def has_dossier?
     !dossier.nil?
-  end
-
-  def self.all_profiled
-    where(profiled: true)
-  end
-
-  def profiled?
-    profiled
   end
 
   def select_main_phone

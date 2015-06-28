@@ -1,6 +1,5 @@
 %tr
-  %td
-    %i{class: "md #{status_helper(client)}"}
+  %td= client.status
   %td= link_to name_decorator(client), client
   %td
     %i{class: "md #{has_dossier_helper(client)}"}

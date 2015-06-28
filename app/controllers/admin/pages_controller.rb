@@ -4,8 +4,6 @@ class Admin::PagesController < ApplicationController
   def dashboard
     @salesmen = User.salesmen
     @clients = Client.all
-    @profiled_clients = Client.where(profiled: true)
-    @potential_clients = Client.where(potential: true)
   end
 
 end

@@ -24,6 +24,9 @@
           %th
             %i{class: "md-access-time"}
           %th
+          %th
+            = link_to(new_client_path, class: "btn btn-round-sm btn-link ng-scope", "bs-tooltip" => :true, title: "New client") do
+              %i{class: "md md-person-add"}
       %tbody#clients
         = render partial: 'clients', collection: @clients, as: :client
     #paginator
