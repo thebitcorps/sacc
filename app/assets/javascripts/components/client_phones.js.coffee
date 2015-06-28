@@ -98,14 +98,14 @@
     
     $.ajax
       method: 'PUT'
-      url: "/clients/#{ id }"
+      url: "/phones?id=#{ id }"
       dataType: 'JSON'
       data:
         client:
           phones_attributes:
             @state.editablePhones
       success: (data) =>
-        @state.phones = data.phones
+        @state.phones = data
         @setState edit: !@state.edit
 
   renderPhones: (phones) ->

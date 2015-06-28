@@ -58,7 +58,7 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
-            "Documents"
+            "Editing documents"
       React.DOM.div
         className: 'card-content'
         for doc in documents

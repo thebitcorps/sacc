@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :update_phones, :update_credit, :destroy]
   skip_before_filter  :verify_authenticity_token
   helper_method :sort_column, :sort_direction
 
@@ -39,6 +39,24 @@ class ClientsController < ApplicationController
     if @client.update(client_params)
       @client.update_documents
       render json: @client.to_json(include: :phones)
+    else
+      render json: @client.errors , status: :unprocessable_entity
+    end
+  end
+
+  def update_phones
+    if @client.update(client_params)
+      @client.update_documents
+      render json: @client.phones.to_json
+    else
+      render json: @client.errors , status: :unprocessable_entity
+    end
+  end
+
+  def update_credit
+    if @client.update(client_params)
+      @client.update_documents
+      render json: @client.dossier.documents.to_json
     else
       render json: @client.errors , status: :unprocessable_entity
     end
