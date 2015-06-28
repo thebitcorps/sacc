@@ -76,8 +76,13 @@ class ClientsController < ApplicationController
       params.require(:client).permit(:search, :sort, :direction, :page, :name,
                                      :paternal_lastname, :maternal_lastname,
                                      :spouse, :birthdate, :mail, :notes,
+                                     :spouse_birtdate,
                                      :gender, :marital_status, :spouse_works,
                                      :credit_type, :fiscal_entity,
+                                     :offsprings, :dependents,
+                                     :address, :division, :town, :zipcode,
+                                     :current_place, :total_income,
+                                     :pathway, :sales_channel, :status, :qualifies,
                                      phones_attributes: [:id, :number, :kind, :available_from, :available_to, :_destroy, :is_main])
     end
 

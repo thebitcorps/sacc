@@ -34,7 +34,7 @@
     if(client.marital_status == null)
       leyend =  "Marital status not specified"
     if(client.marital_status == "married")
-      if(client.spouse == '')
+      if(client.spouse == '' || client.spouse == null)
         leyend = "Married but the spouse is not especified"
       else
         leyend = "Married with " + client.spouse
@@ -51,6 +51,7 @@
   handleEdit: (e) ->
     e.preventDefault()
     @setState edit: !@state.edit
+    #window.scrollTo(0, 0)
 
   handleSubmit: (id, e) ->
     e.preventDefault()
@@ -60,12 +61,17 @@
       maternal_lastname: React.findDOMNode(@refs.client_maternal_lastname).value
       gender: React.findDOMNode(@refs.client_male).checked
       birthdate: React.findDOMNode(@refs.client_birthdate).value
-      mail: React.findDOMNode(@refs.client_e_mail).value
-      profiled: React.findDOMNode(@refs.client_profiled).checked
-      potential: React.findDOMNode(@refs.client_potential).checked
+      #mail: React.findDOMNode(@refs.client_e_mail).value
       marital_status: React.findDOMNode(@refs.client_marital_status).value
+      offsprings: React.findDOMNode(@refs.client_offsprings).value
+      dependents: React.findDOMNode(@refs.client_dependents).value
       spouse: React.findDOMNode(@refs.client_spouse_name).value
       spouse_works: React.findDOMNode(@refs.client_spouse_works).checked
+      spouse_birtdate: React.findDOMNode(@refs.client_spouse_birthdate).value
+      address: React.findDOMNode(@refs.client_address).value
+      zipcode: React.findDOMNode(@refs.client_zipcode).value
+      division: React.findDOMNode(@refs.client_division).value
+      town: React.findDOMNode(@refs.client_town).value
 
     $.ajax
       method: 'PUT'
@@ -98,8 +104,6 @@
           React.DOM.h1
             className: ''
             client.fullname
-            @renderStatus(client.profiled)
-            @renderStatus(client.potential)
       React.DOM.div
         className: 'card-content'
         React.DOM.ul
@@ -126,7 +130,7 @@
           className: 'btn btn-warning pull-right'
           'Edit Information'
 
-  renderTextField: (label, value) ->
+  renderTextField: (label, value, reference) ->
     React.DOM.div
       className: 'form-group string'
       React.DOM.label
@@ -136,9 +140,9 @@
         className: 'string form-control'
         type: 'text'
         defaultValue: value
-        ref:  'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+        ref:  reference
 
-  renderCheckBoxField: (label, value) ->
+  renderCheckBoxField: (label, value, reference) ->
     React.DOM.div
       className: 'form-group'
       React.DOM.div
@@ -146,11 +150,11 @@
         React.DOM.label
           React.DOM.input
             type: 'checkbox'
-            ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+            ref: reference
             defaultChecked: value
           label
 
-  renderSwitchField: (label, value) ->
+  renderSwitchField: (label, value, reference) ->
     React.DOM.div
       className: 'form-group'
       React.DOM.div
@@ -159,13 +163,13 @@
           className: 'filled'
           React.DOM.input
             type: 'checkbox'
-            ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+            ref: reference
             defaultChecked: value
           React.DOM.span
             className: 'lever'
           label
 
-  renderRadioField: (label, value, name, inline) ->
+  renderRadioField: (label, value, name, inline, reference) ->
     React.DOM.div
       className:  if inline then 'radio-inline' else 'radio'
       React.DOM.label
@@ -175,10 +179,10 @@
           type: 'radio'
           name: name
           defaultChecked: value
-          ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+          ref: reference
         label
 
-  renderSelectField: (label, value, options, onChange) ->
+  renderSelectField: (label, value, options, onChange, reference) ->
     React.DOM.div
       className: 'form-group'
       React.DOM.label
@@ -188,7 +192,7 @@
         className: 'form-control'
         onChange: onChange
         defaultValue: value
-        ref: 'client_' + label.toLowerCase().replace(' ', '_').replace('-', '_')
+        ref: reference
         for option in options
           React.DOM.option
             value: option.val
@@ -207,30 +211,73 @@
             client.fullname
       React.DOM.div
         className: 'card-content'
-        @renderSwitchField("Profiled", client.profiled)
-        @renderSwitchField("Potential", client.potential)
-        @renderTextField("Name", client.name)
-        @renderTextField("Paternal lastname", client.paternal_lastname)
-        @renderTextField("Maternal lastname", client.maternal_lastname)
         React.DOM.div
-          className: 'input radio_buttons'
-          React.DOM.label
-            className: 'radio_buttons'
-            "Gender"
+          className: 'row'
           React.DOM.div
-            className: 'clearfix'
-            @renderRadioField("Male", client.gender, 'client_gender', true)
-            @renderRadioField("Female", !client.gender, 'client_gender', true)
-        @renderTextField("Birthdate", client.birthdate)
-        @renderTextField("E-Mail", client.mail)
-      React.DOM.div
-        className: 'card-content'
-        @renderSelectField("Marital status", client.marital_status, [{'val' : 'single', 'dis' : 'Sinlge'}, {'val' : 'married', 'dis' : 'Married'}, {'val' : 'divorced', 'dis' : 'Divorced'}], @handleMaritalStatusView)
+            className: 'col-md-4'
+            @renderTextField("Name", client.name, 'client_name')
+          React.DOM.div
+            className: 'col-md-4'
+            @renderTextField("Paternal lastname", client.paternal_lastname, 'client_paternal_lastname')
+          React.DOM.div
+            className: 'col-md-4'
+            @renderTextField("Maternal lastname", client.maternal_lastname, 'client_maternal_lastname')
+        React.DOM.div
+          className: 'row'
+          React.DOM.div
+            className: 'input radio_buttons col-md-4'
+            React.DOM.label
+              className: 'radio_buttons'
+              "Gender"
+            React.DOM.div
+              className: 'clearfix'
+              @renderRadioField("Male", client.gender, 'client_gender', true, 'client_male')
+              @renderRadioField("Female", !client.gender, 'client_gender', true, 'client_female')
+          React.DOM.div
+            className: 'col-md-8'
+            @renderTextField("Birthdate", client.birthdate, 'client_birthdate')
+        React.DOM.div
+          className: 'row'
+          React.DOM.div
+            className: 'col-md-8'
+            @renderTextField("Address", client.address, 'client_address')
+          React.DOM.div
+            className: 'col-md-4'
+            @renderTextField("Zipcode", client.zipcode, 'client_zipcode')
+          React.DOM.div
+            className: 'col-md-6'
+            @renderTextField("Division", client.division, 'client_division')
+          React.DOM.div
+            className: 'col-md-6'
+            @renderTextField("Town", client.town, 'client_town')
+        React.DOM.div
+          className: 'row'
+          React.DOM.div
+            className: 'col-md-4'
+            @renderSelectField("Marital status", client.marital_status, [{'val' : 'single', 'dis' : 'Sinlge'}, {'val' : 'married', 'dis' : 'Married'}, {'val' : 'divorced', 'dis' : 'Divorced'}], @handleMaritalStatusView, 'client_marital_status')
+          React.DOM.div
+            className: 'col-md-4'
+            @renderSelectField("Offsprings", client.offsprings, [{'val' : '0', 'dis' : '0'}, {'val' : '1', 'dis' : '1'}, {'val' : '2', 'dis' : '2'}, {'val' : '3', 'dis' : '3'}, {'val' : '4', 'dis' : '4'}, {'val' : '5', 'dis' : '5'}, {'val' : '6', 'dis' : '6'}, {'val' : '7', 'dis' : '7'}, {'val' : '8', 'dis' : '8'}, {'val' : '9', 'dis' : '9'}, {'val' : '10', 'dis' : '10'}], @handleMaritalStatusView, 'client_offsprings')
+          React.DOM.div
+            className: 'col-md-4'
+            @renderSelectField("Dependents", client.dependents, [{'val' : '0', 'dis' : '0'}, {'val' : '1', 'dis' : '1'}, {'val' : '2', 'dis' : '2'}, {'val' : '3', 'dis' : '3'}, {'val' : '4', 'dis' : '4'}, {'val' : '5', 'dis' : '5'}, {'val' : '6', 'dis' : '6'}, {'val' : '7', 'dis' : '7'}, {'val' : '8', 'dis' : '8'}, {'val' : '9', 'dis' : '9'}, {'val' : '10', 'dis' : '10'}], @handleMaritalStatusView, 'client_dependents')
         React.DOM.div
           id: 'spouse-group'
           hidden: if client.marital_status != 'married' then true else false
-          @renderTextField("Spouse name", client.spouse)
-          @renderSwitchField("Spouse works", client.spouse_works)
+          React.DOM.div
+            className: 'row'
+            React.DOM.div
+              className: 'col-md-4'
+              @renderTextField("Spouse name", client.spouse, 'client_spouse_name')
+            React.DOM.div
+              className: 'col-md-6'
+              @renderTextField("Spouse birthdate", client.spouse_birtdate, 'client_spouse_birthdate')
+            React.DOM.div
+              className: 'col-md-2'
+              React.DOM.label
+                className: 'control-label'
+                " "
+              @renderSwitchField("Spouse works", client.spouse_works, 'client_spouse_works')
       React.DOM.div
         className: 'card-action clearfix'
         React.DOM.a
