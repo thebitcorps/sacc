@@ -62,7 +62,7 @@ SimpleForm.setup do |config|
     b.use :label_input
   end
 
-  config.wrappers :material_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :material_input, tag: 'div', class: 'form-group filled', error_class: 'has-error' do |b|
     b.use :html5
     b.optional :maxlength
     b.optional :readonly
@@ -73,7 +73,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end
 
-  config.wrappers :material_text, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :material_text, tag: 'div', class: 'form-group filled', error_class: 'has-error' do |b|
     b.use :html5
     b.optional :maxlength
     b.optional :readonly
@@ -83,7 +83,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end
 
-  config.wrappers :material_time, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :material_time, tag: 'div', class: 'form-group filled', error_class: 'has-error' do |b|
     b.use :html5
     b.use :label, class: 'control-label'
     b.use :input, class: 'form-control', "bs-timepicker" => 'true', "data-autoclose" => '1'
@@ -91,7 +91,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end
 
-  config.wrappers :material_date, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :material_date, tag: 'div', class: 'form-group filled', error_class: 'has-error' do |b|
     b.use :html5
     b.use :label, class: 'control-label'
     b.use :input, class: 'form-control', "bs-datepicker" => 'true', "data-autoclose" => '1'
