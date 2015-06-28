@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605192627) do
+ActiveRecord::Schema.define(version: 20150627034254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.date     "date"
     t.string   "place"
     t.time     "time"
+    t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "status"
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.date     "birthdate"
     t.string   "mail"
     t.text     "notes"
+    t.integer  "zipcode"
     t.integer  "current_salesman_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
@@ -96,6 +98,26 @@ ActiveRecord::Schema.define(version: 20150605192627) do
 
   add_index "employment_records", ["dossier_id"], name: "index_employment_records_on_dossier_id", using: :btree
 
+  create_table "houses", force: :cascade do |t|
+    t.string   "block"
+    t.integer  "interior"
+    t.string   "prototype"
+    t.decimal  "land_size"
+    t.decimal  "common_area"
+    t.decimal  "undivided"
+    t.decimal  "selling_area"
+    t.decimal  "lot_type"
+    t.decimal  "land_oversize"
+    t.decimal  "proposed_price"
+    t.decimal  "corner"
+    t.decimal  "sale_price_compound"
+    t.integer  "stage"
+    t.integer  "production"
+    t.string   "status",              default: "available"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
     t.date     "date"
@@ -115,24 +137,6 @@ ActiveRecord::Schema.define(version: 20150605192627) do
   add_index "interactions", ["created_at"], name: "index_interactions_on_created_at", using: :btree
   add_index "interactions", ["user_id"], name: "index_interactions_on_user_id", using: :btree
 
-  create_table "location_informations", force: :cascade do |t|
-    t.string   "pattern"
-    t.string   "interior"
-    t.string   "sale_price"
-    t.string   "land"
-    t.string   "construction_size"
-    t.string   "lot"
-    t.boolean  "excess"
-    t.string   "over_cost"
-    t.string   "promo"
-    t.string   "final_sale_price"
-    t.integer  "dossier_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "location_informations", ["dossier_id"], name: "index_location_informations_on_dossier_id", using: :btree
-
   create_table "messages", force: :cascade do |t|
     t.string   "phone_number"
     t.string   "body"
@@ -149,9 +153,8 @@ ActiveRecord::Schema.define(version: 20150605192627) do
     t.time     "available_from"
     t.time     "available_to"
     t.integer  "client_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.boolean  "main",           default: true
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "phones", ["client_id"], name: "index_phones_on_client_id", using: :btree
@@ -205,6 +208,5 @@ ActiveRecord::Schema.define(version: 20150605192627) do
   add_foreign_key "employment_records", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
-  add_foreign_key "location_informations", "dossiers"
   add_foreign_key "phones", "clients"
 end

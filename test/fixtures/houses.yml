@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  block: MyString
+  interior: MyString
+  prototype: MyString
+  land_size: 9.99
+  comun_area: 9.99
+  undivided: 9.99
+  selling_area: 9.99
+  lot_type: 9.99
+  land_oversize: 9.99
+  proposed_price: 9.99
+  corner: 9.99
+  sale_price_compound: 9.99
+  stage: 1
+  production: 1
+
+two:
+  block: MyString
+  interior: MyString
+  prototype: MyString
+  land_size: 9.99
+  comun_area: 9.99
+  undivided: 9.99
+  selling_area: 9.99
+  lot_type: 9.99
+  land_oversize: 9.99
+  proposed_price: 9.99
+  corner: 9.99
+  sale_price_compound: 9.99
+  stage: 1
+  production: 1

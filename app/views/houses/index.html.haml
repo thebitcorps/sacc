@@ -1,0 +1,45 @@
+%section
+  %h4{class: "grey-text"}
+    %i{class: 'md md-dashboard'}
+    %span.hidden-xs
+      Houses
+  %div{role: 'tabpanel'}
+    %ul{class: "nav nav-tabs", role: "tablist", ng: {init: "actionTab=1"}}
+      -#here we can implemet the active class for the li elements but only would work for js response no html
+      %li{role: "presentation"}
+        = link_to houses_path(type_list: 'available'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+          Available
+          .ripple-wrapper
+      %li{role: "presentation"}
+        = link_to houses_path(type_list: 'booked'), remote: true, "ng-click" => "actionTab=2", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+          Booked
+          .ripple-wrapper
+      %li{role: "presentation"}
+        = link_to houses_path(type_list: 'sold'), remote: true, "ng-click" => "actionTab=3", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
+          Sold
+          .ripple-wrapper
+    .tab-content
+      .card.white
+        %table.table.striped
+          %thead
+            %tr
+              %th Block
+              %th Interior
+              %th Prototype
+              %th Land size
+              %th Common area
+              %th Undivided
+              %th Selling area
+              %th Lot type
+              %th Land oversize
+              %th Proposed price
+              %th Corner
+              %th Sale Price Compound
+              %th Stage
+              %th Production
+              %th Status
+          %tbody#houses
+            = render partial: 'house', collection: @houses, house: :client
+
+        #paginator
+          = paginate @houses,remote: true

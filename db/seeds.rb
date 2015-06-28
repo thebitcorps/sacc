@@ -6,3 +6,8 @@ admin.admin!
               password: '12345678', email: "dev#{i}@thebitcorps.com", cellphone: '(449) 123 1234', gender: true)
   user.salesman!
 end
+
+
+
+
+

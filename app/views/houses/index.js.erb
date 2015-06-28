@@ -1,0 +1,2 @@
+$("#houses").html("<%= j(render partial: 'house', collection: @houses, house: :client) %>");
+$("#paginator").html("<%= j(paginate(@houses, remote: true)) %>");

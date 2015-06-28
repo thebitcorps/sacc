@@ -26,7 +26,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def can_reshedule?
-    status == 'upcoming' and date > Date.today
+    status == 'upcoming' and date >= Date.today
   end
 
   belongs_to :client, counter_cache: true
