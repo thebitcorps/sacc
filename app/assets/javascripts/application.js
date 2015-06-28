@@ -9,27 +9,27 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require angular.min
-//= require materialism.min
-//= require vendors.min
 //
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
+// require angular.min
+// require vendors.min
+// require materialism.min
 //= require react
 //= require react_ujs
 //= require components
 //= require_tree .
 
-$(document).on("page:load",function(){
-    $('#phones').on("cocoon:after-insert", function() {
-        $('select').material_select();
-    });
-});
+// $(document).on("page:load",function(){
+//     $('#phones').on("cocoon:after-insert", function() {
+//         $('select').material_select();
+//     });
+// });
 
-$( document ).ready(function() {
-    $('#phones').on("cocoon:after-insert", function() {
-        $('select').material_select();
-    });
-});
+// $( document ).ready(function() {
+//     $('#phones').on("cocoon:after-insert", function() {
+//         $('select').material_select();
+//     });
+// });
 

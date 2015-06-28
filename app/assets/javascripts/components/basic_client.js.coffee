@@ -77,6 +77,9 @@
       success: (data) =>
         @state.client = data
         @setState edit: !@state.edit
+      error: (data) =>
+        @state.client = data
+        @setState edit: !@state.edit
 
   handleMaritalStatusView: (e) ->
     selected_status = React.findDOMNode(@refs.client_marital_status).value

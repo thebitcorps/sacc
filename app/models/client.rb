@@ -27,6 +27,8 @@ class Client < ActiveRecord::Base
 
   before_validation :titleize_fields, :join_fullname
 
+  after_create :documentize
+
   def self.searcheable_fields
     %w[name paternal_lastname maternal_lastname spouse mail]
   end
@@ -82,7 +84,6 @@ class Client < ActiveRecord::Base
   def documentize
     if dossier.nil?
       create_dossier
-      dossier.create_location_information
       dossier.create_nominal_work_record
       dossier.make_checklist(credit_type, fiscal_entity, spouse_active)
     end
@@ -97,6 +98,8 @@ class Client < ActiveRecord::Base
       else
         dossier.spouse_work_record.destroy if dossier.spouse_work_record
       end
+    else
+      self.documentize
     end
   end
 

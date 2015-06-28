@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :location_information
   resources :nominal_work_record
   resources :spouse_work_record
+
   match "dossier" => "dossiers#documentize", as: :documentize_client, via: :post
+  match "phones" => "clients#update_phones", as: :updtae_client_phones, via: :put
+  match "credit" => "clients#update_credit", as: :updtae_client_credit, via: :put
 
   resources :interactions
   resources :messages

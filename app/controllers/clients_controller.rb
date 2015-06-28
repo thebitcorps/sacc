@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :update_phones, :update_credit, :destroy]
+  skip_before_filter  :verify_authenticity_token
   helper_method :sort_column, :sort_direction
 
   def index
@@ -14,6 +15,7 @@ class ClientsController < ApplicationController
 
   def show
     @phones = @client.phones
+    @dossier = JSON.parse @client.dossier.to_json include: [:documents], except: [:created_at, :updated_at]
   end
 
   def new
@@ -38,7 +40,25 @@ class ClientsController < ApplicationController
       @client.update_documents
       render json: @client.to_json(include: :phones)
     else
-      render json: @dossier.errors , status: :unprocessable_entity
+      render json: @client.errors , status: :unprocessable_entity
+    end
+  end
+
+  def update_phones
+    if @client.update(client_params)
+      @client.update_documents
+      render json: @client.phones.to_json
+    else
+      render json: @client.errors , status: :unprocessable_entity
+    end
+  end
+
+  def update_credit
+    if @client.update(client_params)
+      @client.update_documents
+      render json: @client.dossier.documents.to_json
+    else
+      render json: @client.errors , status: :unprocessable_entity
     end
   end
 
@@ -59,7 +79,7 @@ class ClientsController < ApplicationController
                                      :gender, :marital_status, :spouse_works,
                                      :credit_type, :fiscal_entity,
                                      :profiled, :potential,
-                                     phones_attributes: [:id, :number, :kind, :available_from, :available_to, :_destroy])
+                                     phones_attributes: [:id, :number, :kind, :available_from, :available_to, :_destroy, :is_main])
     end
 
     def sort_column

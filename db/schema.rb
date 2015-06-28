@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20150627034254) do
     t.string   "salutation"
     t.boolean  "profiled",            default: true
     t.boolean  "potential",           default: true
-    t.integer  "main_phone_id"
   end
 
   add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree
@@ -153,8 +152,9 @@ ActiveRecord::Schema.define(version: 20150627034254) do
     t.time     "available_from"
     t.time     "available_to"
     t.integer  "client_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "is_main",        default: false
   end
 
   add_index "phones", ["client_id"], name: "index_phones_on_client_id", using: :btree
