@@ -76,7 +76,7 @@ class ClientsController < ApplicationController
       params.require(:client).permit(:search, :sort, :direction, :page, :name,
                                      :paternal_lastname, :maternal_lastname,
                                      :spouse, :birthdate, :mail, :notes,
-                                     :spouse_birtdate,
+                                     :spouse_birthdate,
                                      :gender, :marital_status, :spouse_works,
                                      :credit_type, :fiscal_entity,
                                      :offsprings, :dependents,

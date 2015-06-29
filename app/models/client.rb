@@ -33,7 +33,7 @@ class Client < ActiveRecord::Base
   end
 
   def self.my_clients(salesman)
-    where(salesman: salesman)
+    where(salesman: salesman).includes(:dossier)
   end
 
   def self.created_today(salesman)
