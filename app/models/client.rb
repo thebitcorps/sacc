@@ -12,6 +12,8 @@ class Client < ActiveRecord::Base
   has_many :interactions, dependent: :destroy
   has_many :phones, dependent: :destroy
   has_one :dossier, dependent: :destroy
+  has_one :negociation
+  has_one :house, through: :negociation
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
   validates :name, :paternal_lastname, presence: true

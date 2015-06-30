@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client_id: 
+  house_id: 
+  final_price: 9.99
+  months: 1
+  due: 2015-06-29
+  signature_date: 2015-06-29
+  witness1: MyString
+  witness2: MyString
+
+two:
+  client_id: 
+  house_id: 
+  final_price: 9.99
+  months: 1
+  due: 2015-06-29
+  signature_date: 2015-06-29
+  witness1: MyString
+  witness2: MyString
