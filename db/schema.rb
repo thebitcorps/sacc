@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628222538) do
+ActiveRecord::Schema.define(version: 20150630044554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,29 +41,30 @@ ActiveRecord::Schema.define(version: 20150628222538) do
     t.text     "notes"
     t.integer  "zipcode"
     t.integer  "current_salesman_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "marital_status"
     t.boolean  "gender"
     t.boolean  "spouse_works"
     t.string   "credit_type"
     t.string   "fiscal_entity"
-    t.integer  "interactions_count",  default: 0
-    t.integer  "appointments_count",  default: 0
-    t.string   "fullname",                        null: false
+    t.integer  "interactions_count",     default: 0
+    t.integer  "appointments_count",     default: 0
+    t.string   "fullname",                           null: false
     t.string   "salutation"
     t.string   "current_place"
     t.string   "address"
     t.string   "division"
     t.string   "town"
     t.decimal  "total_income"
-    t.date     "spouse_birtdate"
+    t.date     "spouse_birthdate"
     t.string   "pathway"
     t.string   "sales_channel"
     t.string   "status"
     t.boolean  "qualifies"
     t.integer  "offsprings"
     t.integer  "dependents"
+    t.string   "which_one_motherfucker"
   end
 
   add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree
@@ -156,6 +157,22 @@ ActiveRecord::Schema.define(version: 20150628222538) do
     t.boolean  "sent",         default: false
   end
 
+  create_table "negociations", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "house_id"
+    t.decimal  "final_price"
+    t.integer  "months"
+    t.date     "due"
+    t.date     "signature_date"
+    t.string   "witness1"
+    t.string   "witness2"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "negociations", ["client_id"], name: "index_negociations_on_client_id", using: :btree
+  add_index "negociations", ["house_id"], name: "index_negociations_on_house_id", using: :btree
+
   create_table "phones", force: :cascade do |t|
     t.string   "number"
     t.string   "kind"
@@ -218,5 +235,7 @@ ActiveRecord::Schema.define(version: 20150628222538) do
   add_foreign_key "employment_records", "dossiers"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "users"
+  add_foreign_key "negociations", "clients"
+  add_foreign_key "negociations", "houses"
   add_foreign_key "phones", "clients"
 end
