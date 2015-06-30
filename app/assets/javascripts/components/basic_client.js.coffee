@@ -84,6 +84,7 @@
       total_income: React.findDOMNode(@refs.client_total_income).value
       pathway: @getpathWay()
       sales_channel: @getSalesChannel()
+      which_one_motherfucker: React.findDOMNode(@refs.client_which_one_motherfucker).value
 
     $.ajax
       method: 'PUT'
@@ -106,6 +107,12 @@
       $('#spouse-group').show()
     else
       $('#spouse-group').hide()
+
+  handleMotherfuckerView: (view, e) ->
+    if view
+      $('#motherfucker-group').show()
+    else
+      $('#motherfucker-group').hide()
 
   renderClientData: (client) ->
     React.DOM.div
@@ -182,7 +189,7 @@
             className: 'lever'
           label
 
-  renderRadioField: (label, value, testvalue, name, inline, reference) ->
+  renderRadioField: (label, value, testvalue, name, inline, reference, onChange) ->
     React.DOM.div
       className:  if inline then 'radio-inline' else 'radio'
       React.DOM.label
@@ -192,6 +199,7 @@
           type: 'radio'
           name: name
           value: value
+          onChange: onChange
           defaultChecked: value == testvalue
           ref: reference
         label
@@ -351,7 +359,11 @@
               for saleschannel in client.salesChannelsArray
                 React.DOM.div
                   className: 'col-md-6'
-                  @renderRadioField(saleschannel.dis, saleschannel.val, client.sales_channel, 'client_sales_channel', true, 'sales_channel_' + saleschannel.val)
+                  @renderRadioField(saleschannel.dis, saleschannel.val, client.sales_channel, 'client_sales_channel', true, 'sales_channel_' + saleschannel.val, @handleMotherfuckerView.bind(this, saleschannel.val == 'activation_point'))
+            React.DOM.div
+              id: 'motherfucker-group'
+              hidden: if client.sales_channel != 'activation_point' then true else false
+              @renderTextField('Which one motherfucker', client.which_one_motherfucker, 'client_which_one_motherfucker')
             @renderTextField('E-mail', client.email, 'client_email')
       React.DOM.div
         className: 'card-action clearfix'

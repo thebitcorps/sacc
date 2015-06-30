@@ -83,6 +83,7 @@ class ClientsController < ApplicationController
                                      :address, :division, :town, :zipcode,
                                      :current_place, :total_income,
                                      :pathway, :sales_channel, :status, :qualifies,
+                                     :which_one_motherfucker,
                                      phones_attributes: [:id, :number, :kind, :available_from, :available_to, :_destroy, :is_main])
     end
 
