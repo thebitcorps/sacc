@@ -28,6 +28,10 @@ class Client < ActiveRecord::Base
 
   after_create :documentize
 
+  def order_interactions
+    interactions.order 'created_at DESC'
+  end
+
   def self.searcheable_fields
     %w[name paternal_lastname maternal_lastname spouse mail]
   end

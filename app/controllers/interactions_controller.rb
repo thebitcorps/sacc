@@ -20,13 +20,15 @@ class InteractionsController < ApplicationController
   def create
     @interaction = Interaction.new(interaction_params)
     @interaction.user = current_user
-    if @interaction.save
-      redirect_to Client.find(params[:interaction][:client_id]), notice: 'Interaction was successfully created.'
-    else
-      @client = Client.find params[:interaction][:client_id]
-      render :new
+    respond_to do |format|
+      if @interaction.save
+       format.html { redirect_to Client.find(params[:interaction][:client_id]), notice: 'Interaction was successfully created.'}
+       format.json{ render json: @interaction}
+      else
+        @client = Client.find params[:interaction][:client_id]
+        render :new
+      end
     end
-
   end
 
   def update

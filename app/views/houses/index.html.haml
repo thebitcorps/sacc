@@ -1,8 +1,10 @@
 %section
-  %h4{class: "grey-text"}
-    %i{class: 'md md-dashboard'}
-    %span.hidden-xs
+  .page-header
+    %h1
+      %i{class: 'md md-home'}
       Houses
+    %p.lead
+      All house in Burdeos
   %div{role: 'tabpanel'}
     %ul{class: "nav nav-tabs", role: "tablist", ng: {init: "actionTab=1"}}
       -#here we can implemet the active class for the li elements but only would work for js response no html
@@ -20,19 +22,19 @@
           .ripple-wrapper
     .tab-content
       .card.white
-        %table.table.striped
+        %table.table
           %thead
             %tr
-              %th Block
+              -#%th Block
               %th Interior
               %th Prototype
               %th Land size
-              %th Common area
-              %th Undivided
+              -#%th Common area
+              -#%th Undivided
               %th Selling area
               %th Lot type
               %th Land oversize
-              %th Proposed price
+              -#%th Proposed price
               %th Corner
               %th Sale Price Compound
               %th Stage

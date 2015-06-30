@@ -1,2 +1,3 @@
 %section.cards.ng-scope
 	= react_component 'ClientView', { client: @client, phones: @phones, dossier: @dossier}
+	= react_component 'Interaction',{interactions: @interactions,client_id: @client.id}
