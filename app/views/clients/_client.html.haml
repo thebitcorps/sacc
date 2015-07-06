@@ -1,4 +1,5 @@
 %tr
+  %td= client.status
   %td= link_to client.fullname, client
   %td= link_to client.interactions.size, interactions_path(client_id: client)
   %td= link_to client.appointments.size, client_appointments_path(client_id: client)
@@ -7,3 +8,5 @@
       %i{class: "md md-message"}
     = link_to edit_client_path(client), class: 'btn btn-round-sm btn-link ng-scope' do
       %i{class: "md md-mode-edit"}
+    = link_to new_negociation_path(client: client), class: 'btn btn-round-sm btn-link ng-scope' do
+      %i{class: "md md-attach-money"}
