@@ -5,9 +5,9 @@
       %span.text-muted status
       %span{class: "text-#{appointment.status_color}"}=  appointment.status
   .card-content
-    %p
-      %b Salesman:
-      = appointment.user.fullname
+    -#%p
+    -#  %b Salesman:
+    -#  = appointment.user.fullname
     %p
       %b Date:
       = appointment.date

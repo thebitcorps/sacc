@@ -47,7 +47,7 @@ class Appointment < ActiveRecord::Base
   end
 
   def self.all_from(user_id)
-    where(user_id: user_id).order('date')
+    where(user_id: user_id, status: 'upcoming').order('date')
   end
 
   def self.today_from(user_id)
@@ -78,8 +78,23 @@ class Appointment < ActiveRecord::Base
           date: self.date,
           time: self.time,
           # should add mood and interest in the complted form in appoitment
-          mood: nil,
-          interest: nil,
+          mood: self.mood,
+          interest: self.interest,
+          user_id: self.user_id,
+          client_id: self.client_id,
+          notes: self.notes,
+          # dont know what are those for
+          completed: false,
+          position: 0
+      )
+    elsif status == 'cancelled'
+      Interaction.create(
+          kind: 'Appoitment',
+          date: self.date,
+          time: self.time,
+          # should add mood and interest in the compelted form in appoitment
+          mood: self.mood,
+          interest: self.interest,
           user_id: self.user_id,
           client_id: self.client_id,
           notes: self.notes,

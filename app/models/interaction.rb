@@ -9,7 +9,7 @@ class Interaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :client, counter_cache: true
   validates :kind, presence: true, inclusion: KINDS
-  validates :date, :time, :date, presence: true
+  # validates :date, :time, :date, presence: true
   scope :from_today, -> { where("created_at::date = ?", Date.today) }
 
   def self.my_interactions(salesman)

@@ -26,7 +26,8 @@ class InteractionsController < ApplicationController
        format.json{ render json: @interaction}
       else
         @client = Client.find params[:interaction][:client_id]
-        render :new
+        format.html {render :new}
+        format.json{ render json: @interaction.errors,status: :unprocessable_entity}
       end
     end
   end

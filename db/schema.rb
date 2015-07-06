@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20150630044554) do
     t.string   "division"
     t.string   "town"
     t.decimal  "total_income"
-    t.date     "spouse_birthdate"
+    t.date     "spouse_birtdate"
     t.string   "pathway"
     t.string   "sales_channel"
     t.string   "status"

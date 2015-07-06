@@ -42,8 +42,6 @@
     e.preventDefault()
     @setState edit: false
 
-  handleChange: (e) ->
-    @setState "#{ e.target.name }": e.target.value
   renderSelectField: (reference,value, options) ->
     React.DOM.div
       className: 'form-group'
@@ -62,7 +60,18 @@
         className: 'string form-control'
         type: 'text'
         ref:  reference
-        onChange: @handleChange
+  renderNumericalSelect: (from,to,reference) ->
+    React.DOM.div
+      className: 'form-group'
+      React.DOM.select
+        className: 'form-control'
+        defaultValue: 1
+        ref: reference
+        for i in [from..to]
+          React.DOM.option
+            value: i
+            i
+
   makeInteractionIcon: (type) ->
     icons = {'Phone':'md-phone','Module':' md-business', 'House':' md-home', 'Appoitment':'md-adjust', 'Other':'md-adjust'}
     colors = {'Phone':' green','Module':' teal', 'House':' orange', 'Appoitment':' red', 'Other':' yellow'}
@@ -77,8 +86,8 @@
       React.DOM.td null,interaction.mood
       React.DOM.td null,interaction.interest
       React.DOM.td null,interaction.notes
-  render: ->
 
+  render: ->
     React.DOM.div
       className: 'card'
       React.DOM.div
@@ -110,7 +119,11 @@
               React.DOM.tr null,
                 React.DOM.td null, @renderSelectField('kind','Phone',[{'val' : 'Phone', 'dis' : 'Phone'}, {'val' : 'Module', 'dis' : 'Module'}, {'val' : 'House', 'dis' : 'House'}, {'val' : 'Appoitment', 'dis' : 'Appoitment'}, {'val' : 'Other', 'dis' : 'Other'}])
                 for input in ['date','time','mood','interest','notes']
-                  React.DOM.td null, @renderTextField(input)
+                  if input == 'mood' or input == 'interest'
+                    React.DOM.td null, @renderNumericalSelect(1,10,input)
+                  else
+                    React.DOM.td null, @renderTextField(input)
+
                 React.DOM.td null,
                   React.DOM.div
                     className: 'btn-group'
