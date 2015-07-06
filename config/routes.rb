@@ -1,6 +1,8 @@
 # require 'sidekiq/web'
 Rails.application.routes.draw do
 
+  resources :negociations, only: [:index, :new, :create, :show, :cancel]
+
   resources :houses
   namespace :admin do 
     resources :users

@@ -1,0 +1,3 @@
+Apartar casa mediante negociación (status)
+Nancy puede cambiar los estados de la casa (desapartar)
+Nancy en su dashboard puede ver las negociaciones que no se hayan cerrado, superiores a 7 días

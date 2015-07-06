@@ -158,8 +158,9 @@ ActiveRecord::Schema.define(version: 20150630044554) do
   end
 
   create_table "negociations", force: :cascade do |t|
-    t.integer  "client_id"
-    t.integer  "house_id"
+    t.integer  "client_id",      null: false
+    t.integer  "house_id",       null: false
+    t.integer  "authorized_by"
     t.decimal  "final_price"
     t.integer  "months"
     t.date     "due"
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(version: 20150630044554) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "negociations", ["authorized_by"], name: "index_negociations_on_authorized_by", using: :btree
   add_index "negociations", ["client_id"], name: "index_negociations_on_client_id", using: :btree
   add_index "negociations", ["house_id"], name: "index_negociations_on_house_id", using: :btree
 
