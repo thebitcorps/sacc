@@ -8,18 +8,21 @@ class NegociationsController < ApplicationController
 
   def new
     @client = Client.find(params[:client])
-    salesman = current_user
+    @salesman = current_user
     @available_houses = House.available 
     @negociation = Negociation.new(client: @client)
   end
 
   def create
+
   end
 
   def show
+    @negociation = Negociation.find(params[:id])
   end
 
   def edit
+    @negociation = Negociation.find(params[:id])
   end
 
   def update
