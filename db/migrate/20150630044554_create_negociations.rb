@@ -1,8 +1,8 @@
 class CreateNegociations < ActiveRecord::Migration
   def change
     create_table :negociations do |t|
-      t.references :client, index: true, foreign_key: true, null: false
-      t.references :house, index: true, foreign_key: true, null: false
+      t.references :client, index: true, foreign_key: true
+      t.references :house, index: true, foreign_key: true
       t.integer :authorized_by, index: true, foreign_key: true
       t.decimal :final_price
       t.integer :months

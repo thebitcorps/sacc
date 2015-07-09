@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 20150630044554) do
   end
 
   create_table "negociations", force: :cascade do |t|
-    t.integer  "client_id",      null: false
-    t.integer  "house_id",       null: false
+    t.integer  "client_id"
+    t.integer  "house_id"
     t.integer  "authorized_by"
     t.decimal  "final_price"
     t.integer  "months"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20150630044554) do
     t.date     "signature_date"
     t.string   "witness1"
     t.string   "witness2"
+    t.boolean  "done"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

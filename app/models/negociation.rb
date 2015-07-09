@@ -6,7 +6,7 @@ class Negociation < ActiveRecord::Base
   belongs_to :client
   belongs_to :house
 
-  validates :house, :client, presence: true
+  # validates :house, :client, presence: true
   def self.complete
     # correr validaciones para ver si los demás no están en blanco
     # sólo client y house son obligatorios para crear
