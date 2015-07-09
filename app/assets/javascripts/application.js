@@ -16,6 +16,7 @@
 // require angular.min
 // require vendors.min
 // require materialism.min
+// require bootstrap-material-datetimepicker
 //= require react
 //= require react_ujs
 //= require components
