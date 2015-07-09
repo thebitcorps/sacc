@@ -2,10 +2,11 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :phone_number
+    -#= f.input :phone_number
+    =f.input :client_id,as: :hidden, input_html: {value: params[:client_id]}
     = f.input :body
-    = f.input :to_date
-    = f.input :to_time
+    -#= f.input :to_date
+    -#= f.input :to_time
 
   .form-actions
     = f.button :submit, class: 'btn-primary btn'

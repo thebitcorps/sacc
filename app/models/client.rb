@@ -74,9 +74,15 @@ class Client < ActiveRecord::Base
     !dossier.nil?
   end
 
-  def select_main_phone
-    main_phone || phones.first
+  def main_phone
+    phones.where(is_main: true, kind: 'cellphone').first
   end
+
+  def has_main_phone?
+    !main_phone.nil?
+  end
+
+
 
   def documentize
     if dossier.nil?

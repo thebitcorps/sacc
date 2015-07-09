@@ -50,10 +50,12 @@ class Appointment < ActiveRecord::Base
     where(user_id: user_id, status: 'upcoming').order('date')
   end
 
+  # lambda for date.today
   def self.today_from(user_id)
     where(date: Date.today,user_id: user_id).order('date')
   end
 
+  # lambda for Date.today
   def self.previous_from(user_id)
     where( "date < ? and user_id = ? and status = ?" ,Date.today, user_id ,  'upcoming').order('date')
   end
@@ -72,9 +74,10 @@ class Appointment < ActiveRecord::Base
         notes: self.notes,
         status: 'upcoming'
       )
+    #   should cancel the last message
     elsif status == 'successful'
       Interaction.create(
-          kind: 'Appoitment',
+          kind: 'Appointment',
           date: self.date,
           time: self.time,
           # should add mood and interest in the complted form in appoitment
@@ -89,7 +92,7 @@ class Appointment < ActiveRecord::Base
       )
     elsif status == 'cancelled'
       Interaction.create(
-          kind: 'Appoitment',
+          kind: 'Appointment',
           date: self.date,
           time: self.time,
           # should add mood and interest in the compelted form in appoitment

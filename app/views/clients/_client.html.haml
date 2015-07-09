@@ -4,8 +4,9 @@
   %td= link_to client.interactions.size, interactions_path(client_id: client)
   %td= link_to client.appointments.size, client_appointments_path(client_id: client)
   %td
-    = link_to nil, class: 'btn btn-round-sm btn-link ng-scope' do
-      %i{class: "md md-message"}
+    - active = client.has_main_phone? ? '' : 'disabled'
+    = link_to new_message_path(client_id: client.id), class: "btn btn-round-sm btn-link ng-scope #{active}" do
+      %i{class: "md md-message "}
     = link_to edit_client_path(client), class: 'btn btn-round-sm btn-link ng-scope' do
       %i{class: "md md-mode-edit"}
     = link_to new_negociation_path(client: client), class: 'btn btn-round-sm btn-link ng-scope' do

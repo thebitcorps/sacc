@@ -1,5 +1,6 @@
 @CompleteAppoitmentForm = React.createClass
-
+  componentDidMount: ->
+#    alert 'caca'
   getInitialState: ->
     options: @props.data.options
     selectOptions: @props.data.selectOptions
