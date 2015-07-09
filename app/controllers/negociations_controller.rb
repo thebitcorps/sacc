@@ -44,7 +44,7 @@ class NegociationsController < ApplicationController
     # @negociation.house.status = disponible # cambiar el status antes de nulificar la negociacion
     # @negocation.house = nil ; save # nulificar la negociación para tener la casa disponible y dejarla en un log
     # buscar destruir la pura asociación
-    @negociation.house.update_attributes(:status, 'available')
+    @negociation.house.set_status('available')
     @negociation.house = nil
     if @negociation.save
       # Log cancelled negociation for management ! # Logger model maybe?

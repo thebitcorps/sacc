@@ -18,7 +18,7 @@ class House < ActiveRecord::Base
     where(status: 'booked').order('interior ASC')
   end
 
-  # def set_untaken # works, but don't feel like it :\
-  #   self.update_attributes(negociation: nil)
-  # end
+  def set_status(status)
+    update_attributes(status: status)
+  end
 end

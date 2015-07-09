@@ -10,7 +10,7 @@ class CreateNegociations < ActiveRecord::Migration
       t.date :signature_date
       t.string :witness1
       t.string :witness2
-      t.boolean :done
+      t.boolean :done, default: false
 
       t.timestamps null: false
     end

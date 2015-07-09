@@ -5,14 +5,14 @@ class Negociation < ActiveRecord::Base
 
   belongs_to :client
   belongs_to :house
+  before_save :set_house_status
 
-  # validates :house, :client, presence: true
-  def self.complete
+  def complete
     # correr validaciones para ver si los demás no están en blanco
-    # sólo client y house son obligatorios para crear
   end
 
-#falta un callback que cambie el estado de la casa a no disponible en cuanto se cierre la venta
-# algo como self.house.taken
-
+  def set_house_status # condition found: if house is deleted, can't change status, all clean-up can be done from controller
+    house.set_status('booked') if house_id
+    house.set_status('sold') if done # if done, it's sold, and takes prescendence over booking
+  end
 end
