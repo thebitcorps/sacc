@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_client, only: [:show, :edit, :update, :update_phones, :update_credit, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :update_phones, :update_credit, :destroy, :notice_of_privacy]
   skip_before_filter  :verify_authenticity_token
   helper_method :sort_column, :sort_direction
 
@@ -17,6 +17,10 @@ class ClientsController < ApplicationController
     @interactions = JSON.parse @client.order_interactions.to_json
     @phones = @client.phones
     @dossier = JSON.parse @client.dossier.to_json include: [:documents], except: [:created_at, :updated_at]
+  end
+
+  def notice_of_privacy
+    
   end
 
   def new

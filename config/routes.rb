@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   match "phones" => "clients#update_phones", as: :updtae_client_phones, via: :put
   match "credit" => "clients#update_credit", as: :updtae_client_credit, via: :put
 
+  resources :clients do
+    get 'notice_of_privacy', on: :member
+  end
+  
   resources :interactions
   resources :messages
   resources :appointments do

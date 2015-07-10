@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20150630044554) do
     t.string   "division"
     t.string   "town"
     t.decimal  "total_income"
-    t.date     "spouse_birtdate"
+    t.date     "spouse_birthdate"
     t.string   "pathway"
     t.string   "sales_channel"
     t.string   "status"
@@ -167,9 +167,9 @@ ActiveRecord::Schema.define(version: 20150630044554) do
     t.date     "signature_date"
     t.string   "witness1"
     t.string   "witness2"
-    t.boolean  "done"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "done",           default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "negociations", ["authorized_by"], name: "index_negociations_on_authorized_by", using: :btree
