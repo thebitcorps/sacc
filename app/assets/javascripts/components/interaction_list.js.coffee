@@ -73,8 +73,8 @@
             i
 
   makeInteractionIcon: (type) ->
-    icons = {'Phone':'md-phone','Module':' md-business', 'House':' md-home', 'Appoitment':'md-adjust', 'Other':'md-adjust'}
-    colors = {'Phone':' green','Module':' teal', 'House':' orange', 'Appoitment':' red', 'Other':' yellow'}
+    icons = {'Phone':'md-phone','Module':' md-business', 'House':' md-home', 'Appointment':'md-adjust', 'Other':'md-adjust'}
+    colors = {'Phone':' green','Module':' teal', 'House':' orange', 'Appointment':' red', 'Other':' yellow'}
     React.DOM.i
       className: 'md darken-1 icon-color ' + icons[type] + colors[type]
   interactionColumn: (interaction) ->

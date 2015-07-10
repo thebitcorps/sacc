@@ -65,46 +65,18 @@ class Appointment < ActiveRecord::Base
   # if successful will create a new interaction
   def status_change_action
     if status == 'rescheduled'
-      Appointment.create(
-        client_id: self.client_id,
-        user_id: self.user_id,
-        date: date,
-        place: time,
-        time: self.time,
-        notes: self.notes,
-        status: 'upcoming'
-      )
+      Appointment.create(client_id: self.client_id, user_id: self.user_id, date: date,
+                         place: self.place, time: self.time, notes: self.notes, status: 'upcoming')
+      Interaction.create(
+          kind: 'Appointment', date: self.date, time: self.time, mood: 0, interest: 0, user_id: self.user_id,
+          client_id: self.client_id, notes: "Appoitment reshedule - #{self.notes}", completed: false, position: 0)
     #   should cancel the last message
     elsif status == 'successful'
-      Interaction.create(
-          kind: 'Appointment',
-          date: self.date,
-          time: self.time,
-          # should add mood and interest in the complted form in appoitment
-          mood: self.mood,
-          interest: self.interest,
-          user_id: self.user_id,
-          client_id: self.client_id,
-          notes: self.notes,
-          # dont know what are those for
-          completed: false,
-          position: 0
-      )
+      Interaction.create(kind: 'Appointment', date: self.date, time: self.time, mood: 0, interest: 0, user_id: self.user_id,
+          client_id: self.client_id, notes: self.notes, completed: false, position: 0)
     elsif status == 'cancelled'
-      Interaction.create(
-          kind: 'Appointment',
-          date: self.date,
-          time: self.time,
-          # should add mood and interest in the compelted form in appoitment
-          mood: self.mood,
-          interest: self.interest,
-          user_id: self.user_id,
-          client_id: self.client_id,
-          notes: self.notes,
-          # dont know what are those for
-          completed: false,
-          position: 0
-      )
+      Interaction.create(kind: 'Appointment', date: self.date, time: self.time, mood: 0, interest: 0, user_id: self.user_id,
+                         client_id: self.client_id, notes: self.notes, completed: false, position: 0)
     end
   end
 

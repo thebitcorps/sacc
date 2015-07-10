@@ -2,7 +2,7 @@ class Interaction < ActiveRecord::Base
   #we need to define the interaction types
   # FOO = { phone: 'md-phone', module: 'md-business', house: 'md-people', other: 'md-phone' }
 
-  KINDS = %w[Phone Module House Appoitment Other]
+  KINDS = %w[Phone Module House Appointment Other]
   KIND_ICON = { KINDS[0] => 'md-phone', KINDS[1]=> ' md-business',KINDS[2]=> ' md-people', KINDS[3] => ' md-adjust',KINDS[5] => 'md-adjust' }
   KIND_COLOR = { KINDS[0] => 'green', KINDS[1]=> 'teal',KINDS[2]=> ' orange', KINDS[3] => ' red',KINDS[4] => ' yellow' }
 
