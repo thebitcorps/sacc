@@ -94,7 +94,7 @@ SimpleForm.setup do |config|
   config.wrappers :material_date, tag: 'div', class: 'form-group filled', error_class: 'has-error' do |b|
     b.use :html5
     b.use :label, class: 'control-label'
-    b.use :input, class: 'form-control', "bs-datepicker" => 'true', "data-autoclose" => '1'
+    b.use :input, class: 'form-control datepicker'
     b.use :error, wrap_with: { tag: 'span', class: 'error-block' }
     b.use :hint,  wrap_with: { tag: 'span', class: 'help-block' }
   end

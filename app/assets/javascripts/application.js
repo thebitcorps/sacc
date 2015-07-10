@@ -16,9 +16,10 @@
 // require angular.min
 // require vendors.min
 // require materialism.min
-// require bootstrap-material-datetimepicker
 //= require react
 //= require react_ujs
+//= require moment.min
+//= require bootstrap-material-datetimepicker
 //= require components
 //= require_tree .
 
@@ -39,4 +40,8 @@
 //         $('select').material_select();
 //     });
 // });
+
+$(document).ready(function() {
+  $('.datepicker').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
+});
 

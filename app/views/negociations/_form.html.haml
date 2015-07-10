@@ -6,8 +6,8 @@
     #house-info
     = f.input :final_price, wrapper: :material_input
     = f.input :months, wrapper: :material_input
-    = f.input :due, wrapper: :material_date
-    = f.input :signature_date, wrapper: :material_input
+    = f.input :due, as: :string, wrapper: :material_date
+    = f.input :signature_date, as: :string, wrapper: :material_date
     = f.input :witness1, wrapper: :material_input
     = f.input :witness2, wrapper: :material_input
   .form-actions
