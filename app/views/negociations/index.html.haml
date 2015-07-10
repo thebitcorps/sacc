@@ -1,4 +1,16 @@
 %section
   %h1 Sales
-
-  %p Tabla con las ventas, ya sean activas o pendientes, aquí se verá si tienen ventas que no se han cerrado
+  %table.table.stripped
+    %thead
+      %tr
+        %th Status
+        %th Client
+        %th House
+        %th Final price
+    %tbody
+      - @negociations.each do |negociation|
+        %tr
+          %td= link_to(negociation.done? ? 'Sold' : 'In progress', negociation)
+          %td= link_to(negociation.client.name, negociation.client) if negociation.client
+          %td= link_to(negociation.house.interior, negociation.house) if negociation.house
+          %td= number_to_currency negociation.final_price
