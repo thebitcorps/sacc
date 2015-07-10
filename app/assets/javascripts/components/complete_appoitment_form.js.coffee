@@ -22,6 +22,7 @@
   handleCancel: (e) ->
     window.location.replace('/appointments/')
   dataWithOrWitoutDate: ->
+
     data =
       client_id: @props.data.client_id
       status:  React.findDOMNode(@refs.status).value
@@ -32,7 +33,8 @@
         client_id: @props.data.client_id
         status:  React.findDOMNode(@refs.status).value
         notes: React.findDOMNode(@refs.notes).value
-        date: React.findDOMNode(@refs.date).value
+        date: $("#date").val()
+        place: React.findDOMNode(@refs.place).value
         time: React.findDOMNode(@refs.time).value
     return data
   handleUpdate: (e) ->
@@ -69,16 +71,21 @@
 #        make then work with materialize date pickers
         if @state.dateTimeFields
           React.DOM.div null,
-            React.DOM.input
-              className: 'string required form-control ng-pristine ng-valid ng-touched'
-              name: 'date'
-              type: 'text'
-              ref: 'date'
+            React.createElement DatePicker, id: 'date', reference: 'date'
             React.DOM.input
               className: 'string required form-control ng-pristine ng-valid ng-touched'
               name: 'time'
               type: 'text'
               ref: 'time'
+            React.DOM.label
+              className: 'text optional control-label'
+              for: 'appoitment-notes'
+              'Place'
+            React.DOM.input
+              className: 'string required form-control ng-pristine ng-valid ng-touched'
+              name: 'place'
+              type: 'text'
+              ref: 'place'
         React.DOM.label
          className: 'text optional control-label'
          for: 'appoitment-notes'

@@ -42,15 +42,15 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    if @appointment.update(appointment_params)
-      @appointment.user = current_user
-      respond_to do |format|
-        format.html{redirect_to @appointment, notice: 'Appointment was successfully updated.'}
-        format.json{ render json: @appointment }
+    respond_to do |format|
+      if @appointment.update(appointment_params)
+        @appointment.user = current_user
+          format.html{redirect_to @appointment, notice: 'Appointment was successfully updated.'}
+          format.json{ render json: @appointment }
+      else
+        format.html {render :edit}
+        format.json{render json: @appointment.errors,status: :unprocessable_entity  }
       end
-
-    else
-      render :edit
     end
   end
 
