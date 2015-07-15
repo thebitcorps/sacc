@@ -1,4 +1,7 @@
 class House < ActiveRecord::Base
+  # "block", "interior", "prototype", "land_size", "common_area", "undivided", "selling_area",
+  # "lot_type", "land_oversize", "proposed_price", "corner", "sale_price_compound", "stage", "production", "status"
+
   has_one :negociation #, -> {includes :client} some experimentation, do not delete //Rob
   has_one :client, through: :negociation
   scope :untaken, -> { includes(:negociation).where(negociations: {id: nil}) }
