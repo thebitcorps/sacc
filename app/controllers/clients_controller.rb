@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_filter :authenticate_user!
-  before_action :set_client, only: [:show, :edit, :update, :update_phones, :update_credit, :destroy, :notice_of_privacy]
+  before_action :set_client, only: [:show, :edit, :update, :update_phones, :update_credit, :destroy, :notice_of_privacy, :san_andreas_equipment]
   skip_before_filter  :verify_authenticity_token
   helper_method :sort_column, :sort_direction
 
@@ -20,7 +20,9 @@ class ClientsController < ApplicationController
   end
 
   def notice_of_privacy
-    
+  end
+
+  def san_andreas_equipment
   end
 
   def new

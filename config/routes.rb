@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :clients do
     get 'notice_of_privacy', on: :member
+    get 'san_andreas_equipment', on: :member
   end
   
   resources :interactions
