@@ -123,11 +123,7 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
-            client.fullname
-            React.DOM.a
-              className: 'btn btn-primary'
-              href: "/appointments/new?client_id=#{client.id}"
-              'Make apoitment'
+            client.fullname 
       React.DOM.div
         className: 'card-content'
         React.DOM.ul

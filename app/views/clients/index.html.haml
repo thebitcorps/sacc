@@ -1,12 +1,12 @@
 %section
   .row.no-gutter
-    %h4{class: "grey-text"}
-      %i{class: 'md md-dashboard'}
+    %h2.grey-text
+      %i.md.md-dashboard
       %span.hidden-xs
-        Clients
+        Clientes
     #new_client{class: "pull-right"}
-    = link_to(new_client_path, class: "btn btn-round-sm btn-link ng-scope", "bs-tooltip" => :true, title: "New client") do
-      %i{class: "md md-person-add"}
+    = link_to(new_client_path, class: "btn btn-round-sm btn-link ng-scope") do
+      %i.md.md-person-add
     #search_client{class: "pull-right"}
     = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-group' do
       = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search', id: 'search_input'

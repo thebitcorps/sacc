@@ -1,3 +1,42 @@
 %section.cards.ng-scope
-	= react_component 'ClientView', { client: @client, phones: @phones, dossier: @dossier}
-	= react_component 'Interaction',{interactions: @interactions,client_id: @client.id}
+.p-h-40
+  %div{:role => "tabpanel"}
+    / Nav tabs
+    %ul.nav.nav-tabs{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a{"aria-controls" => "home", "aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab-basic", :role => "tab"}
+          Informacion Basica
+          .ripple-wrapper
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab-credit", :role => "tab"}
+          Informacion de credito
+          .ripple-wrapper
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab-phone", :role => "tab"}
+          Telefonos
+          .ripple-wrapper
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab-loc", :role => "tab"}
+          Locacion
+          .ripple-wrapper
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab-inter", :role => "tab"}
+          Interacciones
+          .ripple-wrapper
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "home", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#tab-apoit", :role => "tab"}
+          Citas
+          .ripple-wrapper
+    / Tab panes
+    .tab-content.m-t-10
+      #tab-basic.tab-pane{:role => "tabpanel"}
+        = react_component 'BasicClient', client: @client
+      #tab-credit.tab-pane{:role => "tabpanel"}
+        = react_component 'Documents', {dossier: @dossier, client: @client}
+      #tab-phone.tab-pane{:role => "tabpanel"}
+        = react_component 'ClientPhones', {phones: @phones, client_id: @client.id}
+      #tab-loc.tab-pane{:role => "tabpanel"}
+
+      #tab-inter.tab-pane{:role => "tabpanel"}
+        = react_component 'Interaction', interactions: @interactions
+      #tab-apoit.tab-pane{:role => "tabpanel"}

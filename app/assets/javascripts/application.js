@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
-// require angular.min
-// require vendors.min
-// require materialism.min
+//= require angular.min
+//= require vendors.min
+//= require materialism.min
 //= require react
 //= require react_ujs
 //= require moment.min
