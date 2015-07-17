@@ -9,9 +9,9 @@
       'nominal_work_record'
   titleSelect: (typeV) ->
     if typeV == 'SpouseWorkRecord'
-      'Spouse Work Record'
+      'Información laboral de cónyugue'
     else
-      'Nominal Work record'
+      'Información laboral'
   nominalInput: (defaultV,reference,label) ->
     React.DOM.div
       className: 'input-group'
@@ -58,23 +58,23 @@
           @titleSelect(@props.nominalWork.type)
         React.DOM.div
           className: 'well white'
-          @nominalInput(@props.nominalWork.name,'name','Name: ')
-          @nominalInput(@props.nominalWork.address,'address','Address: ')
-          @nominalInput(@props.nominalWork.phone,'phone','Phone: ')
-          @nominalInput(@props.nominalWork.extension,'extension','Extension: ')
-          @nominalInput(@props.nominalWork.zip_code,'zip_code','Zipcode: ')
-          @nominalInput(@props.nominalWork.position,'position','Position: ')
+          @nominalInput(@props.nominalWork.name,'name','Nombre: ')
+          @nominalInput(@props.nominalWork.address,'address','Dirección: ')
+          @nominalInput(@props.nominalWork.phone,'phone','Teléfono: ')
+          @nominalInput(@props.nominalWork.extension,'extension','Extensión: ')
+          @nominalInput(@props.nominalWork.zip_code,'zip_code','Código postal: ')
+          @nominalInput(@props.nominalWork.position,'position','Puesto: ')
           @nominalInput(@props.nominalWork.email,'email','Email: ')
-          @nominalInput(@props.nominalWork.seniority,'seniority','Senority: ')
-          @nominalInput(@props.nominalWork.income,'income','Income: ')
+          @nominalInput(@props.nominalWork.seniority,'seniority','Antigüedad: ')
+          @nominalInput(@props.nominalWork.income,'income','Ingresos: ')
         React.DOM.div
           className: 'card-action clearfix'
           React.DOM.a
             className: 'btn btn-warning'
             onClick: @handleSubmit
-            'update'
+            'Actualizar'
           React.DOM.a
             className: 'btn btn-default'
             onClick: @props.handleCancel
-            'Cancel'
+            'Cancelar'
        @refs.name

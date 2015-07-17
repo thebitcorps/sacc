@@ -11,9 +11,9 @@
 
   titleSelect: (typeV) ->
     if typeV == 'SpouseWorkRecord'
-      'Spouse Work Record'
+      'InInformación laboral de cónyugue'
     else
-      'Nominal Work record'
+      'Información laboral'
   updateNominalWork: (nominal)->
     @setState edit: false
     @setState nominalWork: nominal
@@ -35,21 +35,21 @@
           @titleSelect(@state.nominalWork.type)
         React.DOM.div
           className: 'form-horizontal'
-          @nomimalWorkElement(@state.nominalWork.name,'Name: ')
-          @nomimalWorkElement(@state.nominalWork.address,'Address: ')
-          @nomimalWorkElement(@state.nominalWork.phone,'phone: ')
-          @nomimalWorkElement(@state.nominalWork.extension,'Extension: ')
-          @nomimalWorkElement(@state.nominalWork.zip_code,'Zip code: ')
-          @nomimalWorkElement(@state.nominalWork.position,'Position: ')
+          @nomimalWorkElement(@state.nominalWork.name,'Nombre: ')
+          @nomimalWorkElement(@state.nominalWork.address,'Dirección: ')
+          @nomimalWorkElement(@state.nominalWork.phone,'Teléfono: ')
+          @nomimalWorkElement(@state.nominalWork.extension,'Extensión: ')
+          @nomimalWorkElement(@state.nominalWork.zip_code,'Código postal: ')
+          @nomimalWorkElement(@state.nominalWork.position,'Puesto: ')
           @nomimalWorkElement(@state.nominalWork.email,'Email: ')
-          @nomimalWorkElement(@state.nominalWork.seniority,'Seniority: ')
-          @nomimalWorkElement(@state.nominalWork.income,'Income: ')
+          @nomimalWorkElement(@state.nominalWork.seniority,'Antogüedad: ')
+          @nomimalWorkElement(@state.nominalWork.income,'Ingresos: ')
         React.DOM.div
           className: 'clearfix'
           React.DOM.a
             className: 'btn btn-warning'
             onClick: @handleToggle
-            'Edit'
+            'Editar'
 
   render: ->
     React.DOM.div
