@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
     @interactions = JSON.parse @client.order_interactions.to_json
     @phones = @client.phones
     @dossier = JSON.parse @client.dossier.to_json include: [:documents], except: [:created_at, :updated_at]
+    @houses = JSON.parse House.all.to_json except: [:created_at, :updated_at]
   end
 
   def notice_of_privacy

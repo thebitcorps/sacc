@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630044554) do
+ActiveRecord::Schema.define(version: 20150717170633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,10 +65,12 @@ ActiveRecord::Schema.define(version: 20150630044554) do
     t.integer  "offsprings"
     t.integer  "dependents"
     t.string   "which_one_motherfucker"
+    t.integer  "house_id"
   end
 
   add_index "clients", ["created_at"], name: "index_clients_on_created_at", using: :btree
   add_index "clients", ["fullname"], name: "index_clients_on_fullname", using: :btree
+  add_index "clients", ["house_id"], name: "index_clients_on_house_id", using: :btree
 
   create_table "documents", force: :cascade do |t|
     t.string   "title"
@@ -233,6 +235,7 @@ ActiveRecord::Schema.define(version: 20150630044554) do
 
   add_foreign_key "appointments", "clients"
   add_foreign_key "appointments", "users"
+  add_foreign_key "clients", "houses"
   add_foreign_key "documents", "dossiers"
   add_foreign_key "dossiers", "clients"
   add_foreign_key "employment_records", "dossiers"

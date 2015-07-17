@@ -4,6 +4,7 @@ class House < ActiveRecord::Base
 
   has_one :negociation #, -> {includes :client} some experimentation, do not delete //Rob
   has_one :client, through: :negociation
+  has_many :interested_clients, class_name: 'Client'
   scope :untaken, -> { includes(:negociation).where(negociations: {id: nil}) }
 
   def self.type_list

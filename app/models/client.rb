@@ -14,6 +14,7 @@ class Client < ActiveRecord::Base
   has_one :dossier, dependent: :destroy
   has_one :negociation
   has_one :house, through: :negociation
+  belongs_to :interested_house, class_name: 'House', foreign_key: 'house_id'
   scope :today, -> { where("created_at::date = ?", Date.today) }
 
   validates :name, :paternal_lastname, presence: true

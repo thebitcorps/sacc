@@ -36,7 +36,7 @@
       #tab-phone.tab-pane{:role => "tabpanel"}
         = react_component 'ClientPhones', {phones: @phones, client_id: @client.id}
       #tab-loc.tab-pane{:role => "tabpanel"}
-
+        = react_component 'ClientLocationInf', {houses: @houses, client_id: @client.id, selectedHouse: @client.house_id}
       #tab-inter.tab-pane{:role => "tabpanel"}
         = react_component 'Interaction', interactions: @interactions
       #tab-apoit.tab-pane{:role => "tabpanel"}
