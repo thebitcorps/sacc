@@ -6,7 +6,7 @@
       className: 'form-group filled'
       React.DOM.label
         className: 'control-label'
-        'Date'
+        'Fecha'
       React.DOM.input
         className: 'form-control datepicker'
         id: @props.id

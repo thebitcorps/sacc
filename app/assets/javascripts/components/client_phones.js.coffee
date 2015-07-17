@@ -118,7 +118,7 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
-            "Phones"
+            "Teléfonos"
       React.DOM.div
         className: 'card-content'
         React.DOM.ul
@@ -130,7 +130,7 @@
                 className: 'md-warning'
                 style:
                   marginRight: '5px'
-              "The client has no phones registered"
+              "El cliente no tiene teléfonos registrados"
           else
             for phone in phones
               React.DOM.li
@@ -145,7 +145,7 @@
         React.DOM.a
           onClick: @handleEdit
           className: 'btn btn-warning pull-right'
-          'Edit Phones'
+          'Editar teléfonos'
 
   renderTextField: (id, value) ->
     React.DOM.div
@@ -190,7 +190,7 @@
         @renderRadioField("main_" + phone.id, phone.is_main, "phone_main", false)
       React.DOM.td
         className:'ng-binding'
-        @renderSelectField("kind_" + phone.id, phone.kind, [{'val' : 'office', 'dis' : 'Office'}, {'val' : 'house', 'dis' : 'House'}, {'val' : 'cellphone', 'dis' : 'Cellphone'}, {'val' : 'other', 'dis' : 'Other'}])
+        @renderSelectField("kind_" + phone.id, phone.kind, [{'val' : 'office', 'dis' : 'Oficina'}, {'val' : 'house', 'dis' : 'Casa'}, {'val' : 'cellphone', 'dis' : 'Celular'}, {'val' : 'other', 'dis' : 'Otro'}])
       React.DOM.td
         className:'ng-binding'
         @renderTextField("number_" + phone.id, phone.number)
@@ -219,7 +219,7 @@
         @renderRadioField("new_main_" + id, false, "phone_main", false)
       React.DOM.td
         className:'ng-binding'
-        @renderSelectField("new_kind_" + id, "", [{'val' : 'office', 'dis' : 'Office'}, {'val' : 'house', 'dis' : 'House'}, {'val' : 'cellphone', 'dis' : 'Cellphone'}, {'val' : 'other', 'dis' : 'Other'}])
+        @renderSelectField("new_kind_" + id, "", [{'val' : 'office', 'dis' : 'Oficina'}, {'val' : 'house', 'dis' : 'Casa'}, {'val' : 'cellphone', 'dis' : 'Celular'}, {'val' : 'other', 'dis' : 'Otro'}])
       React.DOM.td
         className:'ng-binding'
         @renderTextField("new_number_" + id, "")
@@ -246,7 +246,7 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
-            "Editing phones"
+            "Editando teléfonos"
       React.DOM.table
         className: 'table table-full table-full-small'
         React.DOM.colgroup
@@ -259,19 +259,19 @@
             className: ''
             React.DOM.th
               className: ''
-              "Main"
+              "Principal"
             React.DOM.th
               className: ''
-              "Kind"
+              "Tipo"
             React.DOM.th
               className: ''
-              "Number"
+              "Número"
             React.DOM.th
               className: ''
-              "Available from"
+              "Disponible desde:"
             React.DOM.th
               className: ''
-              "Available to"
+              "Disponible hasta:"
             React.DOM.th
               className:'ng-binding'
               React.DOM.a
@@ -290,11 +290,11 @@
         React.DOM.a
           className: 'btn btn-warning pull-right'
           onClick: @handleSubmit.bind(this, @state.client_id)
-          'update'
+          'Actualizar'
         React.DOM.a
           className: 'btn btn-default'
           onClick: @handleEdit
-          'Cancel'
+          'Cancelar'
 
   render: ->
     if @state.edit

@@ -17,7 +17,7 @@
       React.DOM.label
         className: 'text optional control-label'
         for: 'appoitment-notes'
-        'Date'
+        'Fecha'
 
   handleCancel: (e) ->
     window.location.replace('/appointments/')
@@ -56,7 +56,7 @@
       className: 'form-inputs'
       React.DOM.label
         className: 'select optional'
-        'Status'
+        'Estado'
         React.DOM.select
           className: 'form-control'
           name: 'status'
@@ -80,7 +80,7 @@
             React.DOM.label
               className: 'text optional control-label'
               for: 'appoitment-notes'
-              'Place'
+              'Lugar'
             React.DOM.input
               className: 'string required form-control ng-pristine ng-valid ng-touched'
               name: 'place'
@@ -89,7 +89,7 @@
         React.DOM.label
          className: 'text optional control-label'
          for: 'appoitment-notes'
-         'notes'
+         'Notas'
         React.DOM.textarea
           className: 'text optional form-control vertical'
           id: 'appoitment-notes'
@@ -98,8 +98,8 @@
         React.DOM.a
           className: 'waves-effect waves-light btn btn-primary btn'
           onClick: @handleUpdate
-          'complete'
+          'Completar'
         React.DOM.a
           className: 'waves-effect waves-light btn btn-primary btn'
           onClick: @handleCancel
-          'Cancel'
+          'Cancelar'

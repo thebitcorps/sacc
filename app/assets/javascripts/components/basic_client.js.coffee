@@ -5,8 +5,8 @@
 
   getBirthDateFormated: (date) ->
     if(date == null)
-      return "Birthdate not specified"
-    months = { '01': 'January', '02': 'February', '03': 'March', '04': 'April', '05': 'May', '06': 'June', '07': 'July', '08': 'August', '09': 'September', '10': 'October', '11': 'November', '12': 'December' }
+      return "Fecha de nacimiento no especificada"
+    months = { '01': 'Enerp', '02': 'Febrero', '03': 'Marzo', '04': 'Abril', '05': 'Mayo', '06': 'Junio', '07': 'Julio', '08': 'Agosto', '09': 'Septiembre', '10': 'Octubre', '11': 'Noviembre', '12': 'Diciembre' }
     ymd = date.split('-')
     birthDate = new Date(ymd[0], ymd[1] - 1, ymd[2])
     today = new Date
@@ -15,7 +15,7 @@
 
   getEMail: (email) ->
     if(email == null)
-      return "Email not specified"
+      return "Email no especificado"
     else
       email
 
@@ -38,14 +38,14 @@
       ""
 
   renderMaritalStatus: (client) ->
-    maritals = {'married' : 'Married', 'divorced' : 'Divorced', 'single' : 'Single'}
+    maritals = {'married' : 'Casado', 'divorced' : 'Divorciado', 'single' : 'Soltero'}
     if(client.marital_status == null)
-      leyend =  "Marital status not specified"
+      leyend =  "Estado civil no especificado"
     if(client.marital_status == "married")
       if(client.spouse == '' || client.spouse == null)
-        leyend = "Married but the spouse is not especified"
+        leyend = "Casado, información de cónyugue no especificada"
       else
-        leyend = "Married with " + client.spouse
+        leyend = "Casado con " + client.spouse
     else
       leyend = maritals[client.marital_status]
     React.DOM.li
@@ -148,7 +148,7 @@
         React.DOM.a
           onClick: @handleEdit
           className: 'btn btn-warning pull-right'
-          'Edit Information'
+          'Editar Información'
 
   renderTextField: (label, value, reference) ->
     React.DOM.div
@@ -241,7 +241,7 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
-            "Editing "
+            "Editando a "
             client.fullname
       React.DOM.div
         className: 'card-content'
@@ -249,68 +249,68 @@
           className: 'row'
           React.DOM.div
             className: 'col-md-4'
-            @renderTextField("Name", client.name, 'client_name')
+            @renderTextField("Nombre", client.name, 'client_name')
           React.DOM.div
             className: 'col-md-4'
-            @renderTextField("Paternal lastname", client.paternal_lastname, 'client_paternal_lastname')
+            @renderTextField("Apellido paterno", client.paternal_lastname, 'client_paternal_lastname')
           React.DOM.div
             className: 'col-md-4'
-            @renderTextField("Maternal lastname", client.maternal_lastname, 'client_maternal_lastname')
+            @renderTextField("Apellido materno", client.maternal_lastname, 'client_maternal_lastname')
         React.DOM.div
           className: 'row'
           React.DOM.div
             className: 'input radio_buttons col-md-4'
             React.DOM.h5
               className: 'radio_buttons'
-              "Gender"
+              "Género"
             React.DOM.div
               className: 'clearfix'
-              @renderRadioField("Male", true,  client.gender, 'client_gender', true, 'client_male')
-              @renderRadioField("Female", false, client.gender, 'client_gender', true, 'client_female')
+              @renderRadioField("Masculino", true,  client.gender, 'client_gender', true, 'client_male')
+              @renderRadioField("Femenino", false, client.gender, 'client_gender', true, 'client_female')
           React.DOM.div
             className: 'col-md-8'
             React.DOM.div
               className: 'col-md-4'
-              @renderSelectField("Day", @getElementFromDate(client.birthdate, 2), @getRangeForSelect([1..31]), null, 'client_birthdate_day')
+              @renderSelectField("Día", @getElementFromDate(client.birthdate, 2), @getRangeForSelect([1..31]), null, 'client_birthdate_day')
             React.DOM.div
               className: 'col-md-4'
-              @renderSelectField("month", @getElementFromDate(client.birthdate, 1), [{'val' : '1', 'dis' : 'January'}, {'val' : '2', 'dis' : 'February'}, {'val' : '3', 'dis' : 'March'}, {'val' : '4', 'dis' : 'April'}, {'val' : '5', 'dis' : 'May'}, {'val' : '6', 'dis' : 'June'}, {'val' : '7', 'dis' : 'July'}, {'val' : '8', 'dis' : 'August'}, {'val' : '9', 'dis' : 'September'}, {'val' : '10', 'dis' : 'October'}, {'val' : '11', 'dis' : 'November'}, {'val' : '12', 'dis' : 'December'}], null, 'client_birthdate_month')
+              @renderSelectField("Mes", @getElementFromDate(client.birthdate, 1), [{'val' : '1', 'dis' : 'Enero'}, {'val' : '2', 'dis' : 'Febrero'}, {'val' : '3', 'dis' : 'Marzo'}, {'val' : '4', 'dis' : 'Abril'}, {'val' : '5', 'dis' : 'Mayo'}, {'val' : '6', 'dis' : 'Junio'}, {'val' : '7', 'dis' : 'Julio'}, {'val' : '8', 'dis' : 'Agosto'}, {'val' : '9', 'dis' : 'Septiembre'}, {'val' : '10', 'dis' : 'Octubre'}, {'val' : '11', 'dis' : 'Noviembre'}, {'val' : '12', 'dis' : 'Diciembre'}], null, 'client_birthdate_month')
             React.DOM.div
               className: 'col-md-4'
-              @renderSelectField("Year", @getElementFromDate(client.birthdate, 0), @getRangeForSelect([1940..1993]), null, 'client_birthdate_year')
+              @renderSelectField("Año", @getElementFromDate(client.birthdate, 0), @getRangeForSelect([1940..1993]), null, 'client_birthdate_year')
         React.DOM.div
           className: 'row'
           React.DOM.div
             className: 'col-md-8'
-            @renderTextField("Address", client.address, 'client_address')
+            @renderTextField("Dirección", client.address, 'client_address')
           React.DOM.div
             className: 'col-md-4'
-            @renderTextField("Zipcode", client.zipcode, 'client_zipcode')
+            @renderTextField("Código postal", client.zipcode, 'client_zipcode')
           React.DOM.div
             className: 'col-md-6'
-            @renderTextField("Division", client.division, 'client_division')
+            @renderTextField("Colonia", client.division, 'client_division')
           React.DOM.div
             className: 'col-md-6'
-            @renderTextField("Town", client.town, 'client_town')
+            @renderTextField("Ciudad", client.town, 'client_town')
         React.DOM.div
           className: 'row'
           React.DOM.div
             className: 'col-md-6'
-            @renderSelectField("Current place", client.current_place, [{'val' : 'own', 'dis' : 'Own'}, {'val' : 'rented', 'dis' : 'Rented'}, {'val' : 'family', 'dis' : 'Family'}, {'val' : 'borrowed', 'dis' : 'Borrowed'}, {'val' : 'mortgaged', 'dis' : 'Mortaged'}], null, 'client_current_place')
+            @renderSelectField("Vive en casa...", client.current_place, [{'val' : 'own', 'dis' : 'Propia'}, {'val' : 'rented', 'dis' : 'Rentada'}, {'val' : 'family', 'dis' : 'Familia'}, {'val' : 'borrowed', 'dis' : 'Prestada'}, {'val' : 'mortgaged', 'dis' : 'Hipotecada'}], null, 'client_current_place')
           React.DOM.div
             className: 'col-md-6'
-            @renderTextField("Total income $", client.total_income, 'client_total_income')
+            @renderTextField("Ingresos mensuales $", client.total_income, 'client_total_income')
         React.DOM.div
           className: 'row'
           React.DOM.div
             className: 'col-md-4'
-            @renderSelectField("Marital status", client.marital_status, [{'val' : 'single', 'dis' : 'Sinlge'}, {'val' : 'married', 'dis' : 'Married'}, {'val' : 'divorced', 'dis' : 'Divorced'}], @handleMaritalStatusView, 'client_marital_status')
+            @renderSelectField("Estado civil", client.marital_status, [{'val' : 'single', 'dis' : 'Soltero'}, {'val' : 'married', 'dis' : 'Casado'}, {'val' : 'divorced', 'dis' : 'Divorciado'}], @handleMaritalStatusView, 'client_marital_status')
           React.DOM.div
             className: 'col-md-4'
-            @renderSelectField("Offsprings", client.offsprings, [{'val' : '0', 'dis' : '0'}, {'val' : '1', 'dis' : '1'}, {'val' : '2', 'dis' : '2'}, {'val' : '3', 'dis' : '3'}, {'val' : '4', 'dis' : '4'}, {'val' : '5', 'dis' : '5'}, {'val' : '6', 'dis' : '6'}, {'val' : '7', 'dis' : '7'}, {'val' : '8', 'dis' : '8'}, {'val' : '9', 'dis' : '9'}, {'val' : '10', 'dis' : '10'}], null, 'client_offsprings')
+            @renderSelectField("Hijos", client.offsprings, [{'val' : '0', 'dis' : '0'}, {'val' : '1', 'dis' : '1'}, {'val' : '2', 'dis' : '2'}, {'val' : '3', 'dis' : '3'}, {'val' : '4', 'dis' : '4'}, {'val' : '5', 'dis' : '5'}, {'val' : '6', 'dis' : '6'}, {'val' : '7', 'dis' : '7'}, {'val' : '8', 'dis' : '8'}, {'val' : '9', 'dis' : '9'}, {'val' : '10', 'dis' : '10'}], null, 'client_offsprings')
           React.DOM.div
             className: 'col-md-4'
-            @renderSelectField("Dependents", client.dependents, [{'val' : '0', 'dis' : '0'}, {'val' : '1', 'dis' : '1'}, {'val' : '2', 'dis' : '2'}, {'val' : '3', 'dis' : '3'}, {'val' : '4', 'dis' : '4'}, {'val' : '5', 'dis' : '5'}, {'val' : '6', 'dis' : '6'}, {'val' : '7', 'dis' : '7'}, {'val' : '8', 'dis' : '8'}, {'val' : '9', 'dis' : '9'}, {'val' : '10', 'dis' : '10'}], null, 'client_dependents')
+            @renderSelectField("Dependientes", client.dependents, [{'val' : '0', 'dis' : '0'}, {'val' : '1', 'dis' : '1'}, {'val' : '2', 'dis' : '2'}, {'val' : '3', 'dis' : '3'}, {'val' : '4', 'dis' : '4'}, {'val' : '5', 'dis' : '5'}, {'val' : '6', 'dis' : '6'}, {'val' : '7', 'dis' : '7'}, {'val' : '8', 'dis' : '8'}, {'val' : '9', 'dis' : '9'}, {'val' : '10', 'dis' : '10'}], null, 'client_dependents')
         React.DOM.div
           id: 'spouse-group'
           hidden: if client.marital_status != 'married' then true else false
@@ -318,31 +318,31 @@
             className: 'row'
             React.DOM.div
               className: 'col-md-4'
-              @renderTextField("Spouse name", client.spouse, 'client_spouse_name')
+              @renderTextField("Nombre de cónyugue", client.spouse, 'client_spouse_name')
             React.DOM.div
               className: 'col-md-6'
               React.DOM.div
                 className: 'col-md-4'
-                @renderSelectField("Day", @getElementFromDate(client.spouse_birthdate, 2), @getRangeForSelect([1..31]), null, 'client_spouse_birthdate_day')
+                @renderSelectField("Día", @getElementFromDate(client.spouse_birthdate, 2), @getRangeForSelect([1..31]), null, 'client_spouse_birthdate_day')
               React.DOM.div
                 className: 'col-md-4'
-                @renderSelectField("month", @getElementFromDate(client.spouse_birthdate, 1), [{'val' : '1', 'dis' : 'January'}, {'val' : '2', 'dis' : 'February'}, {'val' : '3', 'dis' : 'March'}, {'val' : '4', 'dis' : 'April'}, {'val' : '5', 'dis' : 'May'}, {'val' : '6', 'dis' : 'June'}, {'val' : '7', 'dis' : 'July'}, {'val' : '8', 'dis' : 'August'}, {'val' : '9', 'dis' : 'September'}, {'val' : '10', 'dis' : 'October'}, {'val' : '11', 'dis' : 'November'}, {'val' : '12', 'dis' : 'December'}], null, 'client_spouse_birthdate_month')
+                @renderSelectField("Mes", @getElementFromDate(client.spouse_birthdate, 1), [{'val' : '1', 'dis' : 'Enero'}, {'val' : '2', 'dis' : 'febrero'}, {'val' : '3', 'dis' : 'Marzo'}, {'val' : '4', 'dis' : 'Abril'}, {'val' : '5', 'dis' : 'Mayo'}, {'val' : '6', 'dis' : 'Junio'}, {'val' : '7', 'dis' : 'Julio'}, {'val' : '8', 'dis' : 'Agosto'}, {'val' : '9', 'dis' : 'Septiembre'}, {'val' : '10', 'dis' : 'Octubre'}, {'val' : '11', 'dis' : 'Noviembre'}, {'val' : '12', 'dis' : 'Diciembre'}], null, 'client_spouse_birthdate_month')
               React.DOM.div
                 className: 'col-md-4'
-                @renderSelectField("Year", @getElementFromDate(client.spouse_birthdate, 0), @getRangeForSelect([1940..1993]), null, 'client_spouse_birthdate_year')
+                @renderSelectField("Año", @getElementFromDate(client.spouse_birthdate, 0), @getRangeForSelect([1940..1993]), null, 'client_spouse_birthdate_year')
             React.DOM.div
               className: 'col-md-2'
               React.DOM.label
                 className: 'control-label'
                 " "
-              @renderSwitchField("Spouse works", client.spouse_works, 'client_spouse_works')
+              @renderSwitchField("¿Su cónyugue trabaja?", client.spouse_works, 'client_spouse_works')
         React.DOM.div
           className: 'row'
           React.DOM.div
             className: 'input radio_buttons col-md-6'
             React.DOM.h5
               className: 'radio_buttons'
-              "Pathway"
+              "¿Cómo se enteró de nosotros?"
             React.DOM.div
               className: 'clearfix'
               for pathway in client.pathWaysArray
@@ -353,7 +353,7 @@
             className: 'col-md-6'
             React.DOM.h5
               className: 'radio_buttons'
-              "Sales channel"
+              "Canal de ventas"
             React.DOM.div
               className: 'clearfix'
               for saleschannel in client.salesChannelsArray
@@ -370,16 +370,16 @@
         React.DOM.a
           className: 'btn btn-warning pull-right'
           onClick: @handleSubmit.bind(this, client.id)
-          'update'
+          'Actualizar'
         React.DOM.a
           className: 'btn btn-default'
           onClick: @handleEdit
-          'Cancel'
+          'Cancelar'
 
   render: ->
     client = @state.client
-    client['pathWaysArray'] = [{'val' : 'signal', 'dis' : 'Signal'}, {'val' : 'references', 'dis' : 'References'}, {'val' : 'flyers', 'dis' : 'Flyers'}, {'val' : 'billboard', 'dis' : 'Billboard'}, {'val' : 'radio', 'dis' : 'radio'}, {'val' : 'event_activation', 'dis' : 'Event activation'}, {'val' : 'business_prospecting ', 'dis' : 'Business prospecting'}, {'val' : 'email ', 'dis' : 'E-mail'}, {'val' : 'tv ', 'dis' : 'TV'}, {'val' : 'banks ', 'dis' : 'Banks'}, {'val' : 'web_page ', 'dis' : 'Web page'}, {'val' : 'social_networks ', 'dis' : 'Social networks'}]
-    client['salesChannelsArray'] = [{'val' : 'point_of_sale', 'dis' : 'Point of sale'}, {'val' : 'business_promo', 'dis' : 'Business promo'}, {'val' : 'activation_point', 'dis' : 'Activation point'}, {'val' : 'references', 'dis' : 'References'}, {'val' : 'brokers', 'dis' : 'Brokers'}]
+    client['pathWaysArray'] = [{'val' : 'signal', 'dis' : 'Señalización'}, {'val' : 'references', 'dis' : 'Referido'}, {'val' : 'flyers', 'dis' : 'Volantes'}, {'val' : 'billboard', 'dis' : 'Cartelera'}, {'val' : 'radio', 'dis' : 'Radio'}, {'val' : 'event_activation', 'dis' : 'Activación de evento'}, {'val' : 'business_prospecting ', 'dis' : 'Prospección empresarial'}, {'val' : 'email ', 'dis' : 'E-mail'}, {'val' : 'tv ', 'dis' : 'TV'}, {'val' : 'banks ', 'dis' : 'Bancos'}, {'val' : 'web_page ', 'dis' : 'Página de Internet'}, {'val' : 'social_networks ', 'dis' : 'Redes sociales'}]
+    client['salesChannelsArray'] = [{'val' : 'point_of_sale', 'dis' : 'Punto de venta'}, {'val' : 'business_promo', 'dis' : 'Promoción empresarial'}, {'val' : 'activation_point', 'dis' : 'Activación punto de promoción'}, {'val' : 'references', 'dis' : 'Referidos'}, {'val' : 'brokers', 'dis' : 'Brokers'}]
     if @state.edit
       @renderClientForm(client)
     else

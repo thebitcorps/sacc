@@ -96,7 +96,7 @@
           className: 'card-title'
           React.DOM.h1
             className: ''
-            "Interactions"
+            "Interacciones"
               React.DOM.a
                 className: 'btn btn-round-sm btn-link ng-scope'
                 React.DOM.i
@@ -109,15 +109,15 @@
           React.DOM.thead null,
             React.DOM.tr null,
               if @state.edit
-                for head in ['Kind','Date','Hour','Mood','Interest','Notes']
+                for head in ['Tipo','Fecha','Hora','Humor','Interés','Observaciones']
                   React.DOM.th null,head
               else
-                for head in ['','Kind','Date','Hour','Mood','Interest','Notes']
+                for head in ['','Tipo','Fecha','Hora','Humor','Interés','Observaciones']
                   React.DOM.th null,head
           React.DOM.tbody null,
             if @state.edit
               React.DOM.tr null,
-                React.DOM.td null, @renderSelectField('kind','Phone',[{'val' : 'Phone', 'dis' : 'Phone'}, {'val' : 'Module', 'dis' : 'Module'}, {'val' : 'House', 'dis' : 'House'}, {'val' : 'Appoitment', 'dis' : 'Appoitment'}, {'val' : 'Other', 'dis' : 'Other'}])
+                React.DOM.td null, @renderSelectField('kind','Phone',[{'val' : 'Phone', 'dis' : 'Teléfono'}, {'val' : 'Module', 'dis' : 'Módulo'}, {'val' : 'House', 'dis' : 'Casa'}, {'val' : 'Appoitment', 'dis' : 'Cita'}, {'val' : 'Other', 'dis' : 'Otro'}])
                 for input in ['date','time','mood','interest','notes']
                   if input == 'mood' or input == 'interest'
                     React.DOM.td null, @renderNumericalSelect(1,10,input)
