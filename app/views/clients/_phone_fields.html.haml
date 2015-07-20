@@ -3,4 +3,4 @@
   = f.input :kind, collection: Phone::KINDS
   = f.input :available_from, as: :string, wrapper: :material_time, input_html: { "ng-model" => "availableFrom", placeholder: placeholder_timepicker(f.object, "availableFrom"), id: "phone_#{f.object.id}" }
   = f.input :available_to, as: :string, wrapper: :material_time, input_html: { "ng-model" => "availableTo", placeholder: placeholder_timepicker(f.object, "availableTo") }
-  = link_to_remove_association "Delete phone", f, {class: 'btn red darken-4'}
+  = link_to_remove_association "Borrar teléfono", f, {class: 'btn red darken-4'}

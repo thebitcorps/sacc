@@ -14,9 +14,9 @@
     %table.table.table-full.table-full-small
       %thead
         %tr
-          %th Status
+          %th Estado
           %th= sortable "Name"
-          %th Phone
+          %th Teléfono
           %th e-Mail
           %th
             %i{class: "md-repeat"}
@@ -28,7 +28,7 @@
     #paginator
       = paginate @clients, remote: true
     - if @clients.empty?
-      %p.flow-text No result found
+      %p.flow-text No se obtuvieron resultados
 
 = hidden_field_tag :direction, params[:direction]
 = hidden_field_tag :sort, params[:sort]

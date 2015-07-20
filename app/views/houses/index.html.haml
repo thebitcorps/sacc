@@ -2,23 +2,23 @@
   .page-header
     %h1
       %i{class: 'md md-home'}
-      Houses
+      Casas
     %p.lead
-      All house in Burdeos
+      Todas las casas en Burdeos Residencial
   %div{role: 'tabpanel'}
     %ul{class: "nav nav-tabs", role: "tablist", ng: {init: "actionTab=1"}}
       -#here we can implemet the active class for the li elements but only would work for js response no html
       %li{role: "presentation"}
         = link_to houses_path(type_list: 'available'), remote: true, "ng-click" => "actionTab=1", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
-          Available
+          Disponible
           .ripple-wrapper
       %li{role: "presentation"}
         = link_to houses_path(type_list: 'booked'), remote: true, "ng-click" => "actionTab=2", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
-          Booked
+          Apartada
           .ripple-wrapper
       %li{role: "presentation"}
         = link_to houses_path(type_list: 'sold'), remote: true, "ng-click" => "actionTab=3", "aria-controls" => "home", role: "tab", "data-toggle" => "tab", "aria-expanded" => "false" do
-          Sold
+          Vendida
           .ripple-wrapper
     .tab-content
       .card.white
@@ -27,19 +27,19 @@
             %tr
               -#%th Block
               %th Interior
-              %th Prototype
-              %th Land size
+              %th Prototipo
+              %th Terreno
               -#%th Common area
               -#%th Undivided
-              %th Selling area
-              %th Lot type
-              %th Land oversize
+              %th Superficie comercial
+              %th Lote
+              %th Terreno excedente
               -#%th Proposed price
-              %th Corner
-              %th Sale Price Compound
-              %th Stage
-              %th Production
-              %th Status
+              %th Esquina
+              %th Precio de venta compuesto
+              %th Etapa
+              %th Producción
+              %th Estado
           %tbody#houses
             = render partial: 'house', collection: @houses, house: :client
 

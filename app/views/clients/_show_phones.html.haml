@@ -1,4 +1,4 @@
-%b Phones
+%b Teléfonos
 %br
 %ul
   - @client.phones.each do |phone|
@@ -7,6 +7,6 @@
         %b="#{phone.kind} number:"
         = phone.number
       %p
-        %b Contact hours:
+        %b Horario de disponibilidad:
         = ["From", phone.available_from.to_s, "to", phone.available_to.to_s].join(" ")
     -#%br
