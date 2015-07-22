@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require vendors.min
+//= require materialism.min
 //= require jquery_ujs
 // require cocoon
 //= require react
