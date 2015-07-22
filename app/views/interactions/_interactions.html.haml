@@ -1,7 +1,7 @@
 .card.z-depth-3
   .row
     .col-md-6
-      %h3.table-title.p-20  Interactions
+      %h3.table-title.p-20  Interacciones
 
 
   .table-responsive.white
@@ -9,14 +9,14 @@
       %thead
         %tr
         %th
-        %th Kind
-        %th Date
-        %th Time
-        %th Mood
-        %th Interest
-        %th User
-        %th Client
-        %th Notes
+        %th Tipo
+        %th Fecha
+        %th Hora
+        %th Humor
+        %th Interés
+        %th Usuario
+        %th Cliente
+        %th Observaciones
         %th
         %th
         %th
@@ -35,10 +35,10 @@
             %td= interaction.user.fullname
             %td= interaction.client.fullname
             %td= interaction.notes
-            %td= link_to 'Show', interaction
-            %td= link_to 'Edit', edit_interaction_path(interaction,client_id: interaction.client_id)
-            %td= link_to 'Destroy', interaction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %td= link_to 'Mostrar', interaction
+            %td= link_to 'Editar', edit_interaction_path(interaction,client_id: interaction.client_id)
+            %td= link_to 'Eliminar', interaction, :method => :delete, :data => { :confirm => '¿Estás segura?' }
 
 %br
 
-= link_to 'New Interaction', new_interaction_path(client_id: @client.id)
+= link_to 'Nueva interacción', new_interaction_path(client_id: @client.id)

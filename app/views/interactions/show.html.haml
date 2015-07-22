@@ -2,30 +2,30 @@
   .card-content
 
     %p
-      %b Kind:
+      %b Tipo:
       = @interaction.kind
     %p
-      %b Date:
+      %b Fecha:
       = @interaction.date
     %p
-      %b Time:
+      %b Hora:
       = @interaction.time
     %p
-      %b Mood:
+      %b Humor:
       = @interaction.mood
     %p
-      %b Interest:
+      %b Interés:
       = @interaction.interest
     %p
-      %b User:
+      %b Usuario:
       = @interaction.user.fullname
     %p
-      %b Client:
+      %b Cliente:
       = @interaction.client.fullname
     %p
-      %b Notes:
+      %b Observaciones:
       = @interaction.notes
   .card-action
-    = link_to 'Edit', edit_interaction_path(@interaction,client_id: @interaction.client_id)
+    = link_to 'Editar', edit_interaction_path(@interaction,client_id: @interaction.client_id)
 
 

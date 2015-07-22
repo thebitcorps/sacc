@@ -1,12 +1,12 @@
-%h1 Listing messages
-%h2 Sent Messages
+%h1 Mostrando mensajes
+%h2 Enviar mensaje
 %table
   %thead
     %tr
-      %th Phone number
-      %th Body
-      %th To date
-      %th To time
+      %th Número telefónico
+      %th Cuerpo del mensaje
+      %th Fecha para enviar
+      %th Hora para enviar
       %th
       %th
       %th
@@ -18,9 +18,9 @@
         %td= message.body
         %td= message.to_date
         %td= message.to_time
-        %td= link_to 'Show', message
-        %td= link_to 'Edit', edit_message_path(message)
-        %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Mostrar', message
+        %td= link_to 'Editar', edit_message_path(message)
+        %td= link_to 'Eliminar', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
@@ -28,10 +28,10 @@
 %table
   %thead
     %tr
-      %th Phone number
-      %th Body
-      %th To date
-      %th To time
+      %th Número telefónico
+      %th Cuerpo del mensaje
+      %th Fecha para enviar
+      %th Hora para enviar
       %th
       %th
       %th
@@ -43,10 +43,10 @@
         %td= message.body
         %td= message.to_date
         %td= message.to_time
-        %td= link_to 'Show', message
-        %td= link_to 'Edit', edit_message_path(message)
-        %td= link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Mostrar', message
+        %td= link_to 'Editar', edit_message_path(message)
+        %td= link_to 'Eliminar', message, :method => :delete, :data => { :confirm => '¿Estás segura?' }
 
 %br
 
-= link_to 'New Message', new_message_path
+= link_to 'Nuevo mensaje', new_message_path

@@ -6,10 +6,10 @@
       %b Email:
       = @user.email
     %p
-      %b Cellphone:
+      %b Teléfono celular:
       = @user.cellphone
     %p
-      %b Gender:
-      = @user.gender ? 'Male' : 'Female'
+      %b Género:
+      = @user.gender ? 'Hombre' : 'Mujer'
   .card-action
-    = link_to 'Edit', edit_user_path(@user)
+    = link_to 'Editar', edit_user_path(@user)

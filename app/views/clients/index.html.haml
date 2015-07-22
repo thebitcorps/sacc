@@ -9,13 +9,13 @@
       %i.md.md-person-add
     #search_client{class: "pull-right"}
     = form_tag clients_path, method: 'GET', id: "clients_search", remote: true, autocomplete: 'off', class: 'form-group' do
-      = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Search', id: 'search_input'
+      = search_field_tag :search, params[:search], autofocus: true, class: 'form-control', placeholder: 'Buscar', id: 'search_input'
   .table-responsive.white
     %table.table.table-full.table-full-small
       %thead
         %tr
           %th Estado
-          %th= sortable "Name"
+          %th= sortable "Nombre"
           %th Teléfono
           %th e-Mail
           %th

@@ -41,16 +41,16 @@ ActiveRecord::Schema.define(version: 20150717170633) do
     t.text     "notes"
     t.integer  "zipcode"
     t.integer  "current_salesman_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "marital_status"
     t.boolean  "gender"
     t.boolean  "spouse_works"
     t.string   "credit_type"
     t.string   "fiscal_entity"
-    t.integer  "interactions_count",     default: 0
-    t.integer  "appointments_count",     default: 0
-    t.string   "fullname",                           null: false
+    t.integer  "interactions_count",  default: 0
+    t.integer  "appointments_count",  default: 0
+    t.string   "fullname",                        null: false
     t.string   "salutation"
     t.string   "current_place"
     t.string   "address"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150717170633) do
     t.boolean  "qualifies"
     t.integer  "offsprings"
     t.integer  "dependents"
-    t.string   "which_one_motherfucker"
+    t.string   "which_one"
     t.integer  "house_id"
   end
 
@@ -169,9 +169,9 @@ ActiveRecord::Schema.define(version: 20150717170633) do
     t.date     "signature_date"
     t.string   "witness1"
     t.string   "witness2"
-    t.boolean  "done"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "done",           default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "negociations", ["authorized_by"], name: "index_negociations_on_authorized_by", using: :btree
