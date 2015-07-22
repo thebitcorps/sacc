@@ -12,34 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require cocoon
-//= require angular.min
-//= require vendors.min
-//= require materialism.min
+// require cocoon
 //= require react
 //= require react_ujs
 //= require moment.min
 //= require bootstrap-material-datetimepicker
 //= require components
 //= require_tree .
-
-// $(document).on("page:load",function(){
-//   $("input[type='text']").on('focus blur', function(){
-//        $(this).parent().toggleClass('filled');
-//   });
-// });
-
-// $(document).on("page:load",function(){
-//     $('#phones').on("cocoon:after-insert", function() {
-//         $('select').material_select();
-//     });
-// });
-
-// $( document ).ready(function() {
-//     $('#phones').on("cocoon:after-insert", function() {
-//         $('select').material_select();
-//     });
-// });
 
 $(document).ready(function() {
   $('.datepicker').bootstrapMaterialDatePicker({ weekStart : 0, time: false });
